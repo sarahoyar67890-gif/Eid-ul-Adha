@@ -1,4 +1,3 @@
-cat > /home/claude/sara_eid_full.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,6 +72,7 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
 #mTitle{font-size:7px;font-family:'Nunito',sans-serif;font-weight:800}
 @keyframes mPulse{0%,100%{box-shadow:0 4px 18px rgba(196,85,120,.4)}50%{box-shadow:0 4px 28px rgba(196,85,120,.9),0 0 0 8px rgba(232,130,154,.15)}}
 
+/* SONG SELECTOR */
 #songSel{position:fixed;bottom:80px;right:20px;z-index:499;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border:1.5px solid rgba(230,150,180,.5);border-radius:18px;padding:10px;display:none;flex-direction:column;gap:5px;box-shadow:0 4px 20px rgba(220,120,150,.2);min-width:180px}
 #songSel.show{display:flex}
 .sSongBtn{background:rgba(255,220,235,.6);border:1px solid rgba(230,150,180,.4);border-radius:50px;padding:7px 14px;font-size:.78rem;font-weight:800;color:#c05070;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;text-align:left}
@@ -170,117 +170,45 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
 
 .sbadge{display:inline-block;background:linear-gradient(135deg,#f8c8d4,#e8729a);color:#fff;border-radius:50px;padding:8px 22px;font-size:1rem;font-weight:800;margin:10px 0}
 
+/* NEW: RIDDLE */
 .riddle-card{background:linear-gradient(135deg,rgba(255,220,240,.8),rgba(230,200,255,.8));border-radius:20px;padding:22px;border:2px solid rgba(230,150,180,.4);margin:10px 0;font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:#9a3060;line-height:1.7;min-height:70px}
 .rhint{background:rgba(255,255,255,.6);border-radius:14px;padding:10px 14px;font-size:.85rem;color:#b07090;margin:8px 0;border:1px solid rgba(230,150,180,.3)}
 
+/* NEW: COLORING */
 .color-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:10px 0}
 .ccolor{width:36px;height:36px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .2s}
 .ccolor.selected{border-color:#c45578;transform:scale(1.2)}
 #colorCanvas{border-radius:16px;border:2px solid rgba(230,150,180,.4);cursor:crosshair;touch-action:none}
 
+/* NEW: STORY */
 .story-text{font-family:'Playfair Display',serif;font-style:italic;color:#8a4060;font-size:.95rem;line-height:1.9;background:rgba(255,255,255,.55);border-radius:18px;padding:18px;border:1.5px solid rgba(230,150,180,.3);margin:10px 0;min-height:80px}
 .story-choice{background:rgba(255,255,255,.65);border:2px solid rgba(230,140,170,.4);border-radius:16px;padding:11px 16px;cursor:pointer;font-size:.9rem;color:#9a4060;transition:all .2s;display:block;width:100%;font-family:'Nunito',sans-serif;margin-bottom:7px}
 .story-choice:hover{background:rgba(255,200,220,.4);border-color:#e8829a;transform:translateX(4px)}
 
+/* NEW: COMPLIMENT MACHINE */
 .cmachine{background:linear-gradient(135deg,rgba(255,200,220,.7),rgba(200,180,255,.7));border-radius:24px;padding:26px;border:2px solid rgba(230,150,180,.4);min-height:100px;display:flex;align-items:center;justify-content:center;font-family:'Dancing Script',cursive;font-size:1.4rem;color:#c05070;line-height:1.5;text-align:center;cursor:pointer;transition:all .4s;margin:12px 0}
 .cmachine:hover{transform:scale(1.02)}
 
+/* NEW: QUIZ CATEGORIES */
 .qcat{background:rgba(255,255,255,.65);border:2px solid rgba(230,140,170,.4);border-radius:18px;padding:14px;cursor:pointer;text-align:center;transition:all .2s;font-weight:800;color:#c05070}
 .qcat:hover{background:rgba(255,200,220,.4);border-color:#e8829a;transform:translateY(-3px)}
 
+/* NEW: TRAVEL TICKET */
 .ticket{background:linear-gradient(135deg,rgba(255,240,245,.9),rgba(240,230,255,.9));border-radius:20px;border:2px dashed rgba(230,150,180,.6);padding:20px;margin:10px 0;position:relative;overflow:hidden}
 .ticket::before{content:'✂️';position:absolute;left:-14px;top:50%;transform:translateY(-50%);font-size:1.2rem}
 .ticket::after{content:'✂️';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:1.2rem}
 
+/* NEW: AFFIRMATION CARDS */
 .aff-card{background:linear-gradient(135deg,rgba(255,215,230,.8),rgba(215,200,255,.8));border-radius:22px;padding:24px 20px;border:2px solid rgba(230,150,180,.5);font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#9a3060;line-height:1.7;min-height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 6px 24px rgba(220,120,150,.12);transition:all .4s;cursor:pointer}
 .aff-card:hover{transform:scale(1.02)}
 
+/* PROGRESS BAR TOP */
 #pgbar{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#e8829a,#f5c842,#d8b8f8);z-index:999;transition:width .5s ease;display:none}
 #pgbar.show{display:block}
 
 .song-now{position:fixed;bottom:20px;left:20px;z-index:499;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border:1.5px solid rgba(230,150,180,.4);border-radius:50px;padding:8px 16px;font-size:.75rem;font-weight:800;color:#c05070;display:none;align-items:center;gap:6px;box-shadow:0 3px 14px rgba(220,120,150,.18)}
 .song-now.show{display:flex}
 .song-dot{width:8px;height:8px;border-radius:50%;background:#e8829a;animation:mPulse 1s ease-in-out infinite}
-
-/* ─── NEW: EMOJI RAIN BUTTON ─── */
-.erain-btn{background:rgba(255,255,255,.6);border:2px solid rgba(230,150,180,.4);border-radius:16px;padding:12px 16px;cursor:pointer;font-size:1.4rem;transition:all .2s;display:inline-block;margin:4px}
-.erain-btn:hover{transform:scale(1.15) rotate(10deg);background:rgba(255,220,235,.7)}
-
-/* ─── NEW: HANGMAN ─── */
-.hm-letter{display:inline-block;width:30px;height:36px;border-bottom:2px solid #e8829a;margin:3px;font-size:1.4rem;font-weight:800;color:#c45578;text-align:center;line-height:36px}
-.hm-key{background:rgba(255,255,255,.7);border:1.5px solid rgba(230,150,180,.4);border-radius:10px;padding:8px 10px;cursor:pointer;font-size:.9rem;font-weight:800;color:#c05070;transition:all .2s;min-width:36px}
-.hm-key:hover:not(.used){background:rgba(255,200,220,.5);transform:scale(1.08)}
-.hm-key.used{opacity:.3;pointer-events:none}
-.hm-key.correct{background:rgba(180,240,180,.5);border-color:#60c880;color:#2a7a3a}
-.hm-key.wrong{background:rgba(255,180,180,.5);border-color:#e05060;color:#8a1a2a}
-
-/* ─── NEW: EMOJI MATCH ─── */
-.emojiCard{aspect-ratio:1;border-radius:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2rem;transition:all .3s cubic-bezier(.34,1.56,.64,1);border:2px solid rgba(230,150,180,.4);background:linear-gradient(135deg,#f8c8d4,#e8a0b8);user-select:none;transform-style:preserve-3d}
-.emojiCard.flipped{background:rgba(255,255,255,.75);border-color:#e8829a}
-.emojiCard.matched{background:rgba(180,240,180,.4);border-color:#60c880;animation:mPop .4s ease}
-
-/* ─── NEW: SARA SOUNDBOARD ─── */
-.snd-btn{background:linear-gradient(135deg,rgba(255,220,235,.8),rgba(230,200,255,.8));border:2px solid rgba(230,150,180,.4);border-radius:18px;padding:16px;cursor:pointer;font-size:1.8rem;transition:all .25s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column;align-items:center;gap:4px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.75rem;color:#c05070}
-.snd-btn:hover{transform:scale(1.1) rotate(-3deg);box-shadow:0 8px 24px rgba(220,120,150,.3)}
-.snd-btn:active{transform:scale(.92)}
-.snd-btn .icon{font-size:2rem;display:block}
-
-/* ─── NEW: TRUTH OR DARE ─── */
-.tod-card{background:linear-gradient(135deg,rgba(255,215,230,.8),rgba(215,200,255,.85));border-radius:24px;padding:26px 22px;border:2px solid rgba(230,150,180,.5);min-height:110px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#9a3060;line-height:1.7;text-align:center;margin:12px 0;box-shadow:0 6px 24px rgba(220,120,150,.12)}
-.tod-badge{display:inline-block;border-radius:50px;padding:5px 18px;font-size:.82rem;font-weight:800;margin-bottom:8px}
-.tod-badge.truth{background:linear-gradient(135deg,#a8d8f8,#60a8e8);color:#fff}
-.tod-badge.dare{background:linear-gradient(135deg,#f8c8d4,#e8729a);color:#fff}
-
-/* ─── NEW: MEME GENERATOR ─── */
-.meme-box{background:rgba(0,0,0,.8);border-radius:18px;overflow:hidden;position:relative;min-height:180px;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px;border:2px solid rgba(230,150,180,.4)}
-.meme-top{position:absolute;top:12px;left:0;right:0;text-align:center;font-size:1.2rem;font-weight:900;color:#fff;text-transform:uppercase;text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;font-family:'Nunito',sans-serif;letter-spacing:1px;padding:0 12px}
-.meme-bottom{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:1.2rem;font-weight:900;color:#fff;text-transform:uppercase;text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;font-family:'Nunito',sans-serif;letter-spacing:1px;padding:0 12px}
-.meme-emoji{font-size:4rem;margin:10px 0}
-
-/* ─── NEW: LOVE CALCULATOR ─── */
-.lc-hearts{font-size:1.8rem;letter-spacing:4px;animation:heartbeat .6s ease-in-out infinite}
-@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-.lc-bar{height:32px;background:rgba(255,220,235,.6);border-radius:50px;overflow:hidden;border:1.5px solid rgba(230,150,180,.4);margin:10px 0}
-.lc-fill{height:100%;border-radius:50px;transition:width 1.5s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:#fff}
-
-/* ─── NEW: MAGIC 8 BALL ─── */
-.ball8{width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#444,#111);box-shadow:0 8px 32px rgba(0,0,0,.5),inset 0 -4px 12px rgba(255,255,255,.05);margin:16px auto;position:relative;cursor:pointer;transition:all .3s}
-.ball8:hover{transform:scale(1.05)}
-.ball8:active{transform:scale(.95)}
-.ball8-inner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#1a1a2e,#0d0d1a);display:flex;align-items:center;justify-content:center}
-.ball8-text{color:#a8d8f0;font-size:.65rem;font-weight:800;text-align:center;line-height:1.3;padding:6px;font-family:'Nunito',sans-serif}
-
-/* ─── NEW: PHOTO BOOTH ─── */
-.booth-frame{background:linear-gradient(135deg,rgba(255,220,240,.85),rgba(230,200,255,.85));border-radius:20px;border:3px solid rgba(230,150,180,.5);padding:18px;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer;transition:all .3s;margin:10px 0}
-.booth-frame:hover{transform:scale(1.02)}
-.booth-sticker{position:absolute;font-size:1.8rem;cursor:move;user-select:none;transition:transform .2s;z-index:5}
-.booth-sticker:hover{transform:scale(1.3)}
-.sticker-btn{background:rgba(255,255,255,.7);border:1.5px solid rgba(230,150,180,.4);border-radius:50%;width:42px;height:42px;cursor:pointer;font-size:1.3rem;transition:all .2s;display:inline-flex;align-items:center;justify-content:center}
-.sticker-btn:hover{transform:scale(1.2) rotate(15deg);background:rgba(255,220,235,.8)}
-
-/* ─── NEW: MEMORY LANE ─── */
-.timeline-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;opacity:0;transform:translateX(-20px);transition:all .5s cubic-bezier(.34,1.56,.64,1)}
-.timeline-item.vis{opacity:1;transform:translateX(0)}
-.tl-dot{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#f8c8d4,#e8729a);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;box-shadow:0 3px 12px rgba(220,120,150,.3)}
-.tl-content{background:rgba(255,255,255,.6);border-radius:16px;padding:12px 16px;border:1.5px solid rgba(230,150,180,.3);flex:1}
-
-/* ─── NEW: ZODIAC ─── */
-.zodiac-card{background:linear-gradient(135deg,rgba(30,20,60,.85),rgba(60,20,80,.85));border-radius:22px;padding:22px;border:2px solid rgba(180,140,240,.4);color:#f0e0ff;font-family:'Playfair Display',serif;font-style:italic;line-height:1.7;min-height:80px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.95rem;margin:10px 0}
-.star-bg{position:absolute;inset:0;overflow:hidden;border-radius:22px;pointer-events:none}
-
-/* ─── NEW: COOKING GAME ─── */
-.ingredient{background:rgba(255,255,255,.7);border:2px solid rgba(230,150,180,.4);border-radius:14px;padding:10px;cursor:pointer;text-align:center;font-size:1.4rem;transition:all .25s cubic-bezier(.34,1.56,.64,1);user-select:none}
-.ingredient:hover{transform:scale(1.15) rotate(5deg)}
-.ingredient.added{background:rgba(180,240,180,.4);border-color:#60c880}
-.pot{font-size:3rem;transition:all .4s;display:block;margin:10px auto}
-
-/* ─── NEW: WORD CLOUD ─── */
-.wcloud-word{display:inline-block;border-radius:50px;padding:6px 16px;margin:5px;cursor:pointer;font-weight:800;transition:all .25s cubic-bezier(.34,1.56,.64,1);animation:popIn .4s cubic-bezier(.34,1.56,.64,1)}
-.wcloud-word:hover{transform:scale(1.15) rotate(-3deg)}
-
-/* ─── NEW: SARA'S HOROSCOPE ─── */
-.horo-box{background:linear-gradient(135deg,rgba(20,10,50,.9),rgba(50,15,70,.9));border-radius:22px;padding:22px;border:1px solid rgba(180,140,240,.3);color:#f0e0ff;font-family:'Playfair Display',serif;font-style:italic;line-height:1.8;font-size:.92rem;text-align:center;position:relative;overflow:hidden}
-.star-sparkle{position:absolute;font-size:1rem;animation:twink ease-in-out infinite}
 
 @media(max-width:480px){
   .card,.sbox{padding:22px 14px;border-radius:20px}
@@ -307,6 +235,7 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
 </div>
 
 <div class="song-now" id="songNow"><div class="song-dot"></div><span id="songNowTxt">Playing...</span></div>
+
 <div id="ticker">♪ Sara ki taraf se — Eid Mubarak janab! 🌙 ♪</div>
 <div class="toast" id="toast"></div>
 <div id="s6bg"></div>
@@ -318,10 +247,16 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
     <h1 class="title-dance" style="font-size:clamp(1.8rem,6vw,2.8rem);margin:8px 0">Ruko, ruko, RUKO!</h1>
     <p style="font-size:1rem;color:#9a5070;margin-bottom:6px">Yeh message Sara ne bheja hai — sirf aap ke liye!</p>
     <div class="sara-stamp">📱 Sara ka Special Eid Message 🌙</div>
+
     <div style="background:rgba(255,255,255,.6);border-radius:18px;padding:18px;border:1.5px dashed rgba(230,150,180,.5);margin:14px 0;text-align:left">
       <p style="font-size:.88rem;color:#b07090;margin-bottom:8px;font-style:italic">⚠️ Sara ka disclaimer pehle parhein:</p>
-      <p style="font-size:.9rem;color:#9a4060;line-height:1.8">✅ Main Sara hoon, aur aap mere dost hain<br>✅ Maine yeh sab sirf aap ke liye banaya<br>❌ Iss message mein koi boring birthday cake nahi<br>❌ "Eid Mubarak!" ka simple text nahi — boring hai!<br>🌙 Sirf <strong style="color:#c45578">pure desi drama</strong> + pyaar hai!</p>
+      <p style="font-size:.9rem;color:#9a4060;line-height:1.8">✅ Main Sara hoon, aur aap mere dost hain<br>
+      ✅ Maine yeh sab sirf aap ke liye banaya<br>
+      ❌ Iss message mein koi boring birthday cake nahi<br>
+      ❌ "Eid Mubarak!" ka simple text nahi — boring hai!<br>
+      🌙 Sirf <strong style="color:#c45578">pure desi drama</strong> + pyaar hai!</p>
     </div>
+
     <p style="font-size:.95rem;color:#b07090;margin-bottom:12px">Pehle bataiye — aap kaun hain? 👇</p>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px">
       <button class="btn btn-pink" onclick="setRole('bestie','👑')">👑 Sara ke Best Friend</button>
@@ -344,11 +279,17 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
     <span class="moon bounce">🌙</span>
     <h1 class="title-dance" style="font-size:clamp(1.8rem,5.5vw,2.6rem);margin:8px 0">Eid ul Adha Mubarak! 🌙✨</h1>
     <div class="sara-stamp">💌 Sara ki taraf se — personally!</div>
-    <p class="eid-msg">Haan haan, yeh Sara hai! Wo SARA!<br>Jis ne yeh <em>poora surprise</em> sirf <strong style="color:#c45578">aap ke liye</strong> banaya! 🌸<br>Kyunke ek boring "Eid Mubarak" aap deserve nahi karte — <br>aap <strong style="color:#9060b0">zyada special hain</strong> janab! 💖</p>
+
+    <p class="eid-msg">Haan haan, yeh Sara hai! Wo SARA!<br>
+    Jis ne yeh <em>poora surprise</em> sirf <strong style="color:#c45578">aap ke liye</strong> banaya! 🌸<br>
+    Kyunke ek boring "Eid Mubarak" aap deserve nahi karte — <br>
+    aap <strong style="color:#9060b0">zyada special hain</strong> janab! 💖</p>
+
     <div style="background:rgba(255,255,255,.55);border-radius:16px;padding:14px;border:1.5px solid rgba(230,150,180,.3);margin:12px 0;font-size:.9rem;color:#9a4060;font-style:italic;cursor:pointer;transition:all .2s" id="saraNoteBox">
       😂 Sara ki urgent baat: "Main ne 3 dafa yeh banane ki koshish ki. Pehli baar crash hua, doosri baar bhool gayi save karna. Teesri baar — yeh hai! Appreciate karo please!" 🙏
     </div>
     <p style="font-size:.72rem;color:#c07090;margin-top:-6px;margin-bottom:10px">👆 Tap for more Sara confessions!</p>
+
     <p style="font-size:.9rem;color:#b07090;margin-bottom:8px">Eid pe aap ka mood kya hai? 🌙</p>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap" id="moods">
       <div style="font-size:1.8rem;cursor:pointer;border:2px solid transparent;border-radius:50%;width:50px;height:50px;display:flex;align-items:center;justify-content:center;transition:all .2s;background:rgba(255,255,255,.5)" data-msg="Sahi! Sara ko pata tha! Aap hamesha swag mein! 😎🔥" data-m="90">😎</div>
@@ -359,10 +300,12 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
     </div>
     <p id="moodResp" style="font-family:'Dancing Script',cursive;font-size:1rem;color:#c05070;min-height:22px;margin-top:8px;font-weight:700"></p>
     <div id="moodMW" style="display:none;margin-top:6px"><div style="height:22px;background:rgba(255,220,235,.6);border-radius:50px;overflow:hidden;border:1px solid rgba(230,150,180,.3)"><div id="moodMB" style="height:100%;border-radius:50px;width:0%;background:linear-gradient(90deg,#f8c8d4,#e8729a,#f5c842);transition:width 1.2s cubic-bezier(.34,1.56,.64,1)"></div></div></div>
+
     <div style="text-align:center;margin:10px 0">
       <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
       <span style="font-size:.78rem;color:#b07090;font-style:italic;margin-left:6px">Sara ka surprise load ho raha hai...</span>
     </div>
+
     <div class="btn-row">
       <button class="btn btn-pink" id="btnS1Yes">Shukriya Sara! 💖🌙</button>
       <button class="btn btn-purple" id="btnS1Hmm">Main suspect hoon Sara ka 👀</button>
@@ -380,13 +323,17 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
     <div class="ntab" data-tab="t2ttt">🎮 Game</div>
     <div class="ntab" data-tab="t2dua">🤲 Dua</div>
   </div>
+
   <div id="t2eid">
     <div class="card">
       <span class="moon">🌙</span>
       <div style="margin:4px 0;font-size:1.1rem;opacity:.8">🐐 ✨ 🕌 ✨ 🐐</div>
       <h2 class="title-serif" style="font-size:clamp(1.6rem,5vw,2.4rem);margin:8px 0 6px">Eid ul Adha Mubarak! 🌙</h2>
       <div class="sara-stamp">Sara ki taraf se officially! 📜</div>
-      <p class="eid-msg">May Allah bless aap ko<br><strong style="color:#c05070">kamyabi, khushiyan & himmat</strong> 💪<br>Sara dua karti hai aap ke liye hamesha 🤲<br>Aur yeh Eid aap ke liye <em>extra special</em> ho! ✨</p>
+      <p class="eid-msg">May Allah bless aap ko<br>
+      <strong style="color:#c05070">kamyabi, khushiyan & himmat</strong> 💪<br>
+      Sara dua karti hai aap ke liye hamesha 🤲<br>
+      Aur yeh Eid aap ke liye <em>extra special</em> ho! ✨</p>
       <div style="margin:10px 0">
         <button class="btn-crazy" id="btnEidi" style="display:block;margin:0 auto;padding:10px 22px;font-size:.9rem">🤑 Sara ka Eidi Generate Karo!</button>
         <div id="eidiR" style="font-family:'Dancing Script',cursive;font-size:1.2rem;color:#c05070;margin-top:8px;min-height:28px;text-align:center;font-weight:700"></div>
@@ -398,6 +345,7 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       </div>
     </div>
   </div>
+
   <div id="t2quiz" style="display:none">
     <div class="card" style="max-width:550px">
       <span class="bounce" style="font-size:2rem;display:block;margin-bottom:6px">🧠⚡</span>
@@ -414,6 +362,7 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       </div>
     </div>
   </div>
+
   <div id="t2fortune" style="display:none">
     <div class="card">
       <span style="font-size:2.4rem;display:block;margin-bottom:8px">🔮</span>
@@ -427,6 +376,7 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       </div>
     </div>
   </div>
+
   <div id="t2roast" style="display:none">
     <div class="card" style="max-width:550px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">😂🎭</span>
@@ -446,6 +396,7 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       <div id="savedR" style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center"></div>
     </div>
   </div>
+
   <div id="t2ttt" style="display:none">
     <div class="card" style="max-width:420px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">🎮✨</span>
@@ -455,10 +406,15 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:270px;margin:10px auto" id="tttG"></div>
       <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap">
         <button class="btn btn-pink" id="btnTReset">New Game 🔄</button>
-        <div style="display:flex;gap:8px;align-items:center;background:rgba(255,255,255,.5);border-radius:50px;padding:6px 14px;font-size:.82rem;color:#b07090">W:<span id="tW" style="font-weight:800;color:#40b870">0</span> L:<span id="tL" style="font-weight:800;color:#e05060">0</span> D:<span id="tD" style="font-weight:800;color:#f0a820">0</span></div>
+        <div style="display:flex;gap:8px;align-items:center;background:rgba(255,255,255,.5);border-radius:50px;padding:6px 14px;font-size:.82rem;color:#b07090">
+          W:<span id="tW" style="font-weight:800;color:#40b870">0</span>
+          L:<span id="tL" style="font-weight:800;color:#e05060">0</span>
+          D:<span id="tD" style="font-weight:800;color:#f0a820">0</span>
+        </div>
       </div>
     </div>
   </div>
+
   <div id="t2dua" style="display:none">
     <div class="card">
       <span style="font-size:2.4rem;display:block;margin-bottom:8px">🤲</span>
@@ -479,16 +435,22 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
     <div class="ntab" data-tab="t3letter">💌 Letter</div>
     <div class="ntab" data-tab="t3music">🎵 Music</div>
   </div>
+
   <div id="t3dosti">
     <div class="card">
       <span class="bounce" style="font-size:2.8rem;display:block;margin-bottom:8px">💖</span>
       <h2 class="title-dance" style="font-size:clamp(1.4rem,4.5vw,2rem);margin-bottom:12px">Aap hain toh sab kuch hai, dost! 🌙</h2>
       <div class="sara-stamp">Sara personally guarantee karti hai! ✍️</div>
-      <p class="eid-msg" style="margin-top:12px">May Allah hamesha<br><strong style="color:#c05070">aap ka safar protect kare</strong> 🛡️<br><strong style="color:#9060b0">aap ki duayen qabool kare</strong> 🤲<br><strong style="color:#c05070">aap ka har khwab pura kare</strong> 🎯<br>Aur Sara hamesha aap ke saath rahe — <br><em>whether aap chahein ya nahi!</em> 😂💖</p>
+      <p class="eid-msg" style="margin-top:12px">May Allah hamesha<br>
+      <strong style="color:#c05070">aap ka safar protect kare</strong> 🛡️<br>
+      <strong style="color:#9060b0">aap ki duayen qabool kare</strong> 🤲<br>
+      <strong style="color:#c05070">aap ka har khwab pura kare</strong> 🎯<br>
+      Aur Sara hamesha aap ke saath rahe — <br><em>whether aap chahein ya nahi!</em> 😂💖</p>
       <div class="sparkle">🌸 💕 🌟 💕 🌸</div>
       <button class="btn btn-gold" id="btnS3Next" style="margin-top:14px">Eid Mubarak Sara! 🌙</button>
     </div>
   </div>
+
   <div id="t3memory" style="display:none">
     <div class="card" style="max-width:430px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">🃏✨</span>
@@ -502,6 +464,7 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       <button class="btn btn-pink" id="btnMNew" style="margin-top:8px">New Game 🔄</button>
     </div>
   </div>
+
   <div id="t3spin" style="display:none">
     <div class="card" style="max-width:430px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">🎡✨</span>
@@ -514,6 +477,7 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       <button class="btn btn-pink" id="btnSpinA" style="margin-top:8px">Dobara Spin! 🎡</button>
     </div>
   </div>
+
   <div id="t3scramble" style="display:none">
     <div class="card" style="max-width:470px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">🔤✨</span>
@@ -535,24 +499,40 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       <p style="font-size:.82rem;color:#b07090;margin-top:8px">Score: <span id="srSc" style="font-weight:800;color:#c05070">0</span> | 🔥<span id="srSt" style="font-weight:800;color:#f0a820">0</span></p>
     </div>
   </div>
+
   <div id="t3letter" style="display:none">
     <div class="card" style="max-width:540px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">💌✨</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 8px">Sara ka Personal Letter! 🌸</h2>
       <div class="lwrap">
-        <div class="ltext lblur" id="lTxt">Mere pyare dost,<br><br>Yeh mat sochain ke Sara sirf Eid par yaad karti hai —<br>sach yeh hai ke aap hamesha dil mein rehte hain. 💖<br><br>Aap ki dosti ne mujhe woh confidence diya hai<br>jo koi aur nahi de sakta tha. 💪✨<br><br>Is Eid par, main dua karti hoon ke Allah aap ko<br>woh sab de jo aap sachchi mein deserve karte hain —<br>kamyabi, sukoon, pyaar aur khushiyan. 🤲🌙<br><br>Meri taraf se — with full Sara energy,<br>Eid Mubarak, dost. 🌙💖<br><br><em>— Sara (jo hamesha aap ke liye hai!) 🌸</em></div>
+        <div class="ltext lblur" id="lTxt">
+          Mere pyare dost,<br><br>
+          Yeh mat sochain ke Sara sirf Eid par yaad karti hai —<br>
+          sach yeh hai ke aap hamesha dil mein rehte hain. 💖<br><br>
+          Aap ki dosti ne mujhe woh confidence diya hai<br>
+          jo koi aur nahi de sakta tha. 💪✨<br><br>
+          Is Eid par, main dua karti hoon ke Allah aap ko<br>
+          woh sab de jo aap sachchi mein deserve karte hain —<br>
+          kamyabi, sukoon, pyaar aur khushiyan. 🤲🌙<br><br>
+          Meri taraf se — with full Sara energy,<br>
+          Eid Mubarak, dost. 🌙💖<br><br>
+          <em>— Sara (jo hamesha aap ke liye hai!) 🌸</em>
+        </div>
       </div>
       <button class="btn btn-pink" id="btnRevL">Sara ka Letter Kholna Hai! 💌</button>
     </div>
   </div>
+
   <div id="t3music" style="display:none">
     <div class="card" style="max-width:470px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">🎵✨</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 4px">Sara's Eid Songs 🎶</h2>
       <p style="font-size:.8rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara ne personally select kiye! 🌸</p>
       <canvas id="vizC" width="360" height="110" style="display:block;margin:10px auto;border-radius:14px;opacity:.85"></canvas>
-      <div id="lyrD" style="margin:12px 0;padding:14px;background:rgba(255,255,255,.5);border-radius:16px;border:1.5px solid rgba(230,150,180,.4);font-family:'Dancing Script',cursive;font-size:1.1rem;color:#c05070;min-height:52px;line-height:1.6;text-align:center">♪ Sara keh rahi hai: Play dabao! ♪</div>
-      <p style="font-size:.78rem;color:#b07090;margin-bottom:6px">🎵 Sara ke 5 songs:</p>
+      <div id="lyrD" style="margin:12px 0;padding:14px;background:rgba(255,255,255,.5);border-radius:16px;border:1.5px solid rgba(230,150,180,.4);font-family:'Dancing Script',cursive;font-size:1.1rem;color:#c05070;min-height:52px;line-height:1.6;text-align:center">
+        ♪ Sara keh rahi hai: Play dabao! ♪
+      </div>
+      <p style="font-size:.78rem;color:#b07090;margin-bottom:6px">🎵 Sara ke 5 songs select karein:</p>
       <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:10px">
         <button class="rtype active" data-song="0" onclick="selectSong(0)">🌙 Eid Nasheed</button>
         <button class="rtype" data-song="1" onclick="selectSong(1)">🎶 Dosti Dhun</button>
@@ -577,23 +557,27 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
     <div class="ntab" data-tab="t4battle">🥊 Battle</div>
     <div class="ntab" data-tab="t4goals">🎯 Goals</div>
   </div>
+
   <div id="t4ch">
     <div class="card" style="max-width:500px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">⚔️🌙</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Eid Challenge! 🎯</h2>
+      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara ne yeh challenges khud soché hain! 😂</p>
       <div style="background:linear-gradient(135deg,rgba(255,220,235,.7),rgba(230,200,255,.7));border-radius:18px;padding:20px;border:1.5px solid rgba(230,150,180,.4);min-height:90px;margin:10px 0;font-family:'Playfair Display',serif;font-style:italic;color:#9a3060;font-size:1rem;line-height:1.6" id="chCard">🎯 "Get Challenge" dabao — Sara waiting hai!</div>
       <div class="btn-row">
         <button class="btn btn-pink" id="btnGetCh">Get Challenge! ⚔️</button>
         <button class="btn btn-gold" id="btnDoneCh" style="display:none">Done! ✅ Sara Proud!</button>
       </div>
-      <p style="font-size:.82rem;color:#b07090;margin-top:10px">Completed: <span id="chCnt" style="font-weight:800;color:#c05070">0</span> 🏆</p>
+      <p style="font-size:.82rem;color:#b07090;margin-top:10px">Completed: <span id="chCnt" style="font-weight:800;color:#c05070">0</span> 🏆 Sara kaafi impress hai!</p>
       <div id="chList" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;max-height:100px;overflow-y:auto"></div>
     </div>
   </div>
+
   <div id="t4wish" style="display:none">
     <div class="card">
       <span style="font-size:2rem;display:block;margin-bottom:6px">💌</span>
       <h2 class="title-dance" style="font-size:1.9rem;margin:6px 0 8px">Sara ko Reply Karein! 🌸</h2>
+      <p style="font-size:.85rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara eagerly wait kar rahi hai! 🥺</p>
       <div style="display:flex;gap:10px;margin:10px 0;flex-wrap:wrap;justify-content:center">
         <input class="winput" id="wIn" type="text" placeholder="Sara ko kuch likhein... 💕" maxlength="60">
         <button class="btn btn-pink" id="btnWish">Send! 💖</button>
@@ -609,6 +593,7 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-height:140px;overflow-y:auto" id="wBoard"></div>
     </div>
   </div>
+
   <div id="t4poem" style="display:none">
     <div class="card" style="max-width:540px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">📜✨</span>
@@ -623,10 +608,12 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       <button class="btn btn-pink" id="btnNPoem" style="margin-top:10px">Next Poem 📜</button>
     </div>
   </div>
+
   <div id="t4battle" style="display:none">
     <div class="card" style="max-width:480px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">🥊✨</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara ka Tap Battle! 🏆</h2>
+      <p style="font-size:.85rem;color:#b07090;margin-bottom:8px">Sara ke AI agent se ladai! Fast tap karein! 💪</p>
       <div style="background:rgba(255,255,255,.5);border-radius:18px;padding:14px;border:1.5px solid rgba(230,150,180,.4);margin:12px 0">
         <p style="font-size:.82rem;color:#b07090;margin-bottom:4px">Aap 💪</p>
         <div class="bbar"><div class="bfill" id="bPF" style="width:50%;background:linear-gradient(90deg,#f8c8d4,#e8729a)">50%</div></div>
@@ -641,10 +628,12 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       </div>
     </div>
   </div>
+
   <div id="t4goals" style="display:none">
     <div class="card" style="max-width:480px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">🎯✨</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 8px">Sara ka Eid Goals Tracker 💪</h2>
+      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:8px">Sara bhi apne goals track kar rahi hai! 😂</p>
       <div style="display:flex;gap:10px;margin:8px 0;flex-wrap:wrap;justify-content:center">
         <input id="gIn" type="text" placeholder="Apna goal likhein..." maxlength="50" class="ginput">
         <button class="btn btn-pink" id="btnGAdd">Add! 🎯</button>
@@ -666,10 +655,12 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
     <div class="ntab" data-tab="t5aff">🌟 Affirmations</div>
     <div class="ntab" data-tab="t5ticket">✈️ Dream</div>
   </div>
+
   <div id="t5riddle">
     <div class="card" style="max-width:520px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">🧩✨</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara ki Eid Pehelihaan! 😄</h2>
+      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:8px">Sara khud bhi nahi jaanti thi jawab! 😂</p>
       <div class="riddle-card" id="riddleQ">Sara ki peheli yaad kar rahi hai... 🧩</div>
       <div class="rhint" id="riddleHint" style="display:none"></div>
       <div style="display:flex;gap:10px;justify-content:center;margin:10px 0;flex-wrap:wrap">
@@ -688,11 +679,15 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       </div>
     </div>
   </div>
+
   <div id="t5compliment" style="display:none">
     <div class="card" style="max-width:480px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">💝✨</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Compliment Machine! 💖</h2>
-      <div class="cmachine" id="cMachine">💖 Tap karein aur sara ka pyaar paiye! 💖</div>
+      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:8px">Tap karein — Sara personally compliment karengi! 🌸</p>
+      <div class="cmachine" id="cMachine">
+        💖 Tap karein aur sara ka pyaar paiye! 💖
+      </div>
       <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0">
         <button class="rtype active" data-ct="general" onclick="setCType(this,'general')">🌟 General</button>
         <button class="rtype" data-ct="friend" onclick="setCType(this,'friend')">💖 Dosti</button>
@@ -706,11 +701,15 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       <div id="savedC" style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-height:80px;overflow-y:auto"></div>
     </div>
   </div>
+
   <div id="t5aff" style="display:none">
     <div class="card" style="max-width:480px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">🌟✨</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara ki Affirmations! 🌸</h2>
-      <div class="aff-card" id="affCard" onclick="nextAff()">🌟 Tap karein — Sara ka message sunein! 🌟</div>
+      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara har roz yeh kehti hai aap ke baare mein! 💖</p>
+      <div class="aff-card" id="affCard" onclick="nextAff()">
+        🌟 Tap karein — Sara ka message sunein! 🌟
+      </div>
       <p style="font-size:.72rem;color:#b07090;margin-top:6px">👆 Tap to get next affirmation!</p>
       <div style="display:flex;gap:8px;justify-content:center;margin-top:10px">
         <button class="btn btn-pink" id="btnAff">Next Affirmation 🌟</button>
@@ -719,10 +718,12 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       <p style="font-size:.78rem;color:#b07090;margin-top:8px">Sara says: <span id="affCnt" style="font-weight:800;color:#c05070">0</span> affirmations received! 🎉</p>
     </div>
   </div>
+
   <div id="t5ticket" style="display:none">
     <div class="card" style="max-width:520px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">✈️🌙</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara ka Dream Eid Ticket! ✨</h2>
+      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Aap Eid kahan manana chahenge? Sara bhi saath chalegi! 😂</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0">
         <button class="rtype active" data-dest="mecca" onclick="setDest(this)">🕋 Mecca</button>
         <button class="rtype" data-dest="medina" onclick="setDest(this)">🕌 Medina</button>
@@ -751,9 +752,11 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
   <div class="card" style="max-width:540px">
     <span style="font-size:2rem;display:block;margin-bottom:6px">📖✨</span>
     <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 8px">Sara ki Eid Adventure Story! 🌙</h2>
+    <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:8px">Aap story mein hero hain! Sara narrator hai! 😂</p>
     <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;font-size:.82rem;color:#b07090">
       <span>Chapter: <strong id="storyChap" style="color:#c05070">1</strong></span>
-      <span>|</span><span>Ending: <strong id="storyEnd" style="color:#9060b0">???</strong></span>
+      <span>|</span>
+      <span>Ending: <strong id="storyEnd" style="color:#9060b0">???</strong></span>
     </div>
     <div class="story-text" id="storyText">Sara ki kahani shuru ho rahi hai... ✨</div>
     <div id="storyChoices" style="margin-top:12px"></div>
@@ -771,12 +774,14 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
     <div class="ntab" data-tab="t7trivia">⚡ Trivia</div>
     <div class="ntab" data-tab="t7snap">📸 Snap</div>
   </div>
+
   <div id="t7draw">
     <div class="card" style="max-width:520px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">🎨✨</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Eid Drawing Board! 🌙</h2>
+      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:8px">Sara bhi draw kar rahi hai — virtually! 😂</p>
       <div style="display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:8px 0">
-        <div id="colorPicker" style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center">
+        <div class="color-grid" id="colorPicker" style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center">
           <div class="ccolor selected" style="background:#e8829a" data-c="#e8829a"></div>
           <div class="ccolor" style="background:#c45578" data-c="#c45578"></div>
           <div class="ccolor" style="background:#d8b8f8" data-c="#d8b8f8"></div>
@@ -804,10 +809,12 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       </div>
     </div>
   </div>
+
   <div id="t7trivia" style="display:none">
     <div class="card" style="max-width:520px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">⚡🧠</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Speed Trivia! ⏱️</h2>
+      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:8px">10 seconds per question! Sara timing karengi! 😂</p>
       <div style="height:10px;background:rgba(255,220,235,.6);border-radius:50px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(230,150,180,.3)">
         <div id="triviaBar" style="height:100%;width:100%;background:linear-gradient(90deg,#40c880,#f5c842,#e8729a);border-radius:50px;transition:width .1s linear"></div>
       </div>
@@ -823,10 +830,12 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       </div>
     </div>
   </div>
+
   <div id="t7snap" style="display:none">
     <div class="card" style="max-width:480px">
       <span style="font-size:2rem;display:block;margin-bottom:6px">📸✨</span>
       <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara ka Eid Snap Filter! 🌙</h2>
+      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Apni Eid selfie ke liye Sara ka filter! 🌸</p>
       <div style="position:relative;background:linear-gradient(135deg,rgba(255,220,235,.8),rgba(230,200,255,.8));border-radius:20px;border:2px solid rgba(230,150,180,.4);padding:20px;margin:10px 0;min-height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden" id="snapFrame">
         <div style="position:absolute;top:10px;left:10px;font-size:1.5rem" id="snapTL">🌙</div>
         <div style="position:absolute;top:10px;right:10px;font-size:1.5rem" id="snapTR">✨</div>
@@ -848,8 +857,10 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
         <input class="srinput" id="snapNameIn" type="text" placeholder="Aap ka naam..." maxlength="20" style="flex:1;min-width:140px">
         <button class="btn btn-pink" id="btnSnapApply">Apply! ✨</button>
       </div>
+      <button class="btn btn-gold" id="btnSnapDownload" style="margin-top:10px;display:block;margin-left:auto;margin-right:auto">Download Frame 📸</button>
     </div>
   </div>
+
   <div class="btn-row" style="margin-top:16px;z-index:10;position:relative">
     <button class="btn btn-pink" onclick="goToScreen('s8')">Aage Chalein! 💪</button>
   </div>
@@ -860,8 +871,12 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
   <div class="card" style="max-width:540px">
     <span style="font-size:2.5rem;display:block;margin-bottom:8px">🎪🌙</span>
     <h2 class="title-dance" style="font-size:2rem;margin:4px 0 8px">Sara ka Game Show! 😂🏆</h2>
+    <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:14px">Sara khud host hai — aur biased bhi hai! 😂</p>
+
+    <!-- SNAKE & LADDER inspired number game -->
     <div style="background:rgba(255,255,255,.55);border-radius:18px;padding:16px;border:1.5px solid rgba(230,150,180,.3);margin:10px 0">
       <p class="title-dance" style="font-size:1.3rem;color:#c45578;margin-bottom:8px">🎲 Sara's Dice Game!</p>
+      <p style="font-size:.88rem;color:#9a5070;margin-bottom:10px">Roll the dice — Sara decides what happens! 😂</p>
       <div style="font-size:4rem;text-align:center;min-height:70px" id="diceEmoji">🎲</div>
       <p class="title-dance" style="font-size:1.1rem;min-height:50px;margin:8px 0;line-height:1.5" id="diceResult">Roll karein aur fate dekhein! 😄</p>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px">
@@ -869,8 +884,11 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
         <span style="display:flex;align-items:center;font-size:.82rem;color:#b07090">Rolls: <strong id="diceRolls" style="color:#c05070;margin-left:4px">0</strong></span>
       </div>
     </div>
+
+    <!-- WHO KNOWS SARA BETTER -->
     <div style="background:rgba(255,255,255,.55);border-radius:18px;padding:16px;border:1.5px solid rgba(230,150,180,.3);margin:10px 0">
       <p class="title-dance" style="font-size:1.3rem;color:#c45578;margin-bottom:6px">🤔 Sara ke baare mein Quiz!</p>
+      <p style="font-size:.88rem;color:#9a5070;margin-bottom:10px">Sara ke baare mein kitna jaante hain aap? 😂</p>
       <p class="title-serif" style="font-size:1rem;margin-bottom:10px;line-height:1.5" id="saraQ">Sara ka first question aane wala hai...</p>
       <div id="saraOpts"></div>
       <p class="title-dance" style="font-size:1.1rem;min-height:24px;margin:6px 0" id="saraRes"></p>
@@ -879,372 +897,15 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
       </div>
       <p style="font-size:.82rem;color:#b07090;margin-top:6px">Score: <span id="saraSc" style="font-weight:800;color:#c05070">0</span> / <span id="saraTotal" style="color:#b07090">0</span></p>
     </div>
+
     <div class="btn-row" style="margin-top:14px">
       <button class="btn btn-pink" onclick="goToScreen('s9')">Aage Chalein! 💪</button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════ SCREEN 9: HANGMAN + SOUNDBOARD ═══════════════ (NEW) -->
+<!-- ═══════════════ SCREEN 9: FINAL GRAND ENDING ═══════════════ -->
 <div class="screen" id="s9">
-  <div class="nav">
-    <div class="ntab active" data-tab="t9hang">🔡 Hangman</div>
-    <div class="ntab" data-tab="t9sound">🔊 Soundboard</div>
-    <div class="ntab" data-tab="t9tod">🎭 Truth/Dare</div>
-    <div class="ntab" data-tab="t9rain">🌧️ Emoji Rain</div>
-  </div>
-  <div id="t9hang">
-    <div class="card" style="max-width:520px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">🔡✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara ka Eid Hangman! 😂</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:8px">Eid-related words — Sara personally chose them! 🌙</p>
-      <div style="background:rgba(255,255,255,.5);border-radius:18px;padding:14px;border:1.5px solid rgba(230,150,180,.4);margin:10px 0;text-align:center">
-        <div style="font-size:3rem;min-height:64px;line-height:1.4" id="hmFigure">😊</div>
-        <p style="font-size:.78rem;color:#b07090;margin-bottom:4px" id="hmWrongCount">Wrong: 0 / 6</p>
-        <div id="hmLetters" style="margin:10px 0;letter-spacing:4px"></div>
-        <p style="font-size:.78rem;color:#c05070;font-style:italic;margin-top:4px" id="hmHint"></p>
-      </div>
-      <div id="hmKeys" style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:10px 0;max-width:380px;margin-left:auto;margin-right:auto"></div>
-      <p class="title-dance" style="font-size:1.3rem;min-height:30px;margin:6px 0" id="hmResult"></p>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px">
-        <button class="btn btn-pink" id="btnHmNew">New Word 🔄</button>
-        <p style="font-size:.82rem;color:#b07090;align-self:center">Score: <span id="hmScore" style="font-weight:800;color:#c05070">0</span></p>
-      </div>
-    </div>
-  </div>
-  <div id="t9sound" style="display:none">
-    <div class="card" style="max-width:520px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">🔊✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Soundboard! 😂🎵</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara ke iconic reactions — press karein! 😂</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0" id="soundBoard">
-        <button class="snd-btn" data-snd="taadat"><span class="icon">😤</span>Sara Angry</button>
-        <button class="snd-btn" data-snd="aww"><span class="icon">🥺</span>Sara Aww</button>
-        <button class="snd-btn" data-snd="haha"><span class="icon">😂</span>Sara LOL</button>
-        <button class="snd-btn" data-snd="wow"><span class="icon">🤩</span>Sara WOW</button>
-        <button class="snd-btn" data-snd="eid"><span class="icon">🌙</span>Eid Mubarak!</button>
-        <button class="snd-btn" data-snd="yay"><span class="icon">🎉</span>Sara YAY!</button>
-        <button class="snd-btn" data-snd="shhh"><span class="icon">🤫</span>Sara Shhh</button>
-        <button class="snd-btn" data-snd="biryani"><span class="icon">🍛</span>Biryani Time!</button>
-        <button class="snd-btn" data-snd="dua"><span class="icon">🤲</span>Sara's Dua</button>
-      </div>
-      <div id="sndDisplay" style="background:rgba(255,255,255,.6);border-radius:18px;padding:14px;border:1.5px solid rgba(230,150,180,.4);font-family:'Dancing Script',cursive;font-size:1.2rem;color:#c05070;min-height:52px;text-align:center;margin-top:10px">
-        ♪ Press a button — Sara reacts! ♪
-      </div>
-    </div>
-  </div>
-  <div id="t9tod" style="display:none">
-    <div class="card" style="max-width:480px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">🎭✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Truth OR Dare! 😂</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara ne personally likh ke rakha tha! 😤💕</p>
-      <div style="display:flex;gap:10px;justify-content:center;margin:10px 0">
-        <button class="btn btn-blue" id="btnTruth">🤔 TRUTH</button>
-        <button class="btn btn-pink" id="btnDare">🔥 DARE</button>
-      </div>
-      <div class="tod-card" id="todCard">
-        <div>Sara keh rahi hai: Choose karein — Truth ya Dare? 🎭</div>
-      </div>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px">
-        <button class="btn btn-gold" id="btnTodNew">New One! 🔄</button>
-        <button class="btn btn-purple" id="btnTodDone">Done! ✅</button>
-      </div>
-      <p style="font-size:.82rem;color:#b07090;margin-top:8px">Completed: <span id="todDone" style="font-weight:800;color:#c05070">0</span> | Sara rating: <span id="todRating" style="font-weight:800;color:#f0a820">⭐</span></p>
-    </div>
-  </div>
-  <div id="t9rain" style="display:none">
-    <div class="card" style="max-width:480px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">🌧️✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara ki Emoji Rain! 🌈</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Choose an emoji — Sara will make it RAIN! 😂🌟</p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:12px 0" id="rainEmojis">
-        <button class="erain-btn" data-em="🌙">🌙</button>
-        <button class="erain-btn" data-em="💖">💖</button>
-        <button class="erain-btn" data-em="🌸">🌸</button>
-        <button class="erain-btn" data-em="✨">✨</button>
-        <button class="erain-btn" data-em="🐐">🐐</button>
-        <button class="erain-btn" data-em="🍛">🍛</button>
-        <button class="erain-btn" data-em="🏆">🏆</button>
-        <button class="erain-btn" data-em="💪">💪</button>
-        <button class="erain-btn" data-em="😂">😂</button>
-        <button class="erain-btn" data-em="🤲">🤲</button>
-        <button class="erain-btn" data-em="⭐">⭐</button>
-        <button class="erain-btn" data-em="🎉">🎉</button>
-      </div>
-      <div style="background:rgba(255,255,255,.5);border-radius:18px;padding:14px;text-align:center;border:1.5px solid rgba(230,150,180,.4);font-size:.9rem;color:#9a4060;margin:8px 0" id="rainMsg">👆 Pick an emoji — Sara will shower aap ko! 😂</div>
-      <div class="btn-row">
-        <button class="btn btn-crazy" id="btnRainAll">🌈 MEGA RAIN All Emojis!</button>
-        <button class="btn btn-pink" id="btnRainStop">Stop 🛑</button>
-      </div>
-    </div>
-  </div>
-  <div class="btn-row" style="margin-top:16px;z-index:10;position:relative">
-    <button class="btn btn-pink" onclick="goToScreen('s10')">Aage Chalein! 💪</button>
-  </div>
-</div>
-
-<!-- ═══════════════ SCREEN 10: MEME + MAGIC 8 BALL ═══════════════ (NEW) -->
-<div class="screen" id="s10">
-  <div class="nav">
-    <div class="ntab active" data-tab="t10meme">😂 Meme</div>
-    <div class="ntab" data-tab="t10ball">🎱 Magic Ball</div>
-    <div class="ntab" data-tab="t10love">💕 Love Calc</div>
-    <div class="ntab" data-tab="t10cook">🍛 Cook!</div>
-  </div>
-  <div id="t10meme">
-    <div class="card" style="max-width:500px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">😂✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Eid Meme Maker! 🎭</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara ka sense of humor — generate karein! 😂</p>
-      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0" id="memeCatBtns">
-        <button class="rtype active" data-mc="eid">🌙 Eid</button>
-        <button class="rtype" data-mc="friend">💖 Dosti</button>
-        <button class="rtype" data-mc="sara">😂 Sara</button>
-        <button class="rtype" data-mc="bakra">🐐 Bakra</button>
-      </div>
-      <div class="meme-box" id="memeBox">
-        <div class="meme-top" id="memeTop">SARA KI TARAF SE</div>
-        <div class="meme-emoji" id="memeEmoji">😂</div>
-        <div class="meme-bottom" id="memeBottom">EID MUBARAK JANAB!</div>
-      </div>
-      <div class="btn-row" style="margin-top:10px">
-        <button class="btn btn-pink" id="btnMemeMake">Generate Meme! 😂</button>
-        <button class="btn btn-gold" id="btnMemeCopy">Copy Text 📋</button>
-      </div>
-    </div>
-  </div>
-  <div id="t10ball" style="display:none">
-    <div class="card" style="max-width:450px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">🎱✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Magic 8 Ball! 🔮</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:8px">Ask Sara anything — she knows everything! 😂</p>
-      <div style="display:flex;gap:10px;justify-content:center;margin:8px 0;flex-wrap:wrap">
-        <input class="srinput" id="ball8Q" type="text" placeholder="Apna sawaal likhein..." style="flex:1;min-width:180px" maxlength="60">
-      </div>
-      <div class="ball8" id="ball8Div" onclick="shake8Ball()">
-        <div class="ball8-inner">
-          <div class="ball8-text" id="ball8Ans">Sara thinking... 🤔</div>
-        </div>
-      </div>
-      <p style="font-size:.75rem;color:#b07090;text-align:center;margin-bottom:8px">👆 Tap the ball OR press Ask!</p>
-      <div class="btn-row">
-        <button class="btn btn-purple" id="btnAsk8">Ask Sara! 🔮</button>
-        <button class="btn btn-gold" id="btnShake8">Shake! 🎱</button>
-      </div>
-      <p class="title-dance" style="font-size:1rem;min-height:26px;margin-top:8px;color:#9060b0" id="ball8Msg"></p>
-    </div>
-  </div>
-  <div id="t10love" style="display:none">
-    <div class="card" style="max-width:460px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">💕✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Friendship Calculator! 💖</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara ne scientifically design kiya! (Totally fake but fun! 😂)</p>
-      <div style="display:flex;flex-direction:column;gap:10px;margin:10px 0">
-        <input class="srinput" id="lcName1" type="text" placeholder="Pehla naam (Aap) 👤" maxlength="20">
-        <div style="font-size:1.5rem;text-align:center">💕</div>
-        <input class="srinput" id="lcName2" type="text" placeholder="Sara likhein! 🌸" maxlength="20">
-      </div>
-      <button class="btn btn-crazy" id="btnCalcLove" style="margin:8px auto;display:block">Calculate Friendship! 💕</button>
-      <div id="lcResult" style="display:none">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:10px 0" id="lcHearts"></div>
-        <div class="lc-bar"><div class="lc-fill" id="lcBar" style="background:linear-gradient(90deg,#f8c8d4,#e8729a);width:0%"></div></div>
-        <div class="title-dance" style="font-size:1.5rem;margin:8px 0" id="lcPct">0%</div>
-        <div style="background:linear-gradient(135deg,rgba(255,220,235,.7),rgba(230,200,255,.7));border-radius:18px;padding:16px;border:1.5px solid rgba(230,150,180,.4);font-family:'Dancing Script',cursive;font-size:1rem;color:#c05070;line-height:1.5" id="lcMsg">Sara calculating...</div>
-      </div>
-    </div>
-  </div>
-  <div id="t10cook" style="display:none">
-    <div class="card" style="max-width:500px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">🍛✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Biryani Simulator! 😂</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara's secret recipe — add ingredients! 🌟</p>
-      <div style="background:rgba(255,255,255,.5);border-radius:18px;padding:14px;border:1.5px solid rgba(230,150,180,.4);margin:10px 0;text-align:center">
-        <span class="pot" id="pot">🥘</span>
-        <p style="font-size:.82rem;color:#b07090" id="potStatus">Empty pot — daalo kuch! 😂</p>
-        <div style="height:18px;background:rgba(255,220,235,.6);border-radius:50px;overflow:hidden;margin:8px 0;border:1px solid rgba(230,150,180,.3)">
-          <div id="cookBar" style="height:100%;width:0%;background:linear-gradient(90deg,#f5c842,#f0a820);border-radius:50px;transition:width .5s cubic-bezier(.34,1.56,.64,1)"></div>
-        </div>
-      </div>
-      <p style="font-size:.82rem;color:#b07090;margin-bottom:8px">Ingredients — tap to add! 👇</p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0" id="ingredients">
-        <div class="ingredient" data-ing="🍚" data-pct="15">🍚<br><span style="font-size:.65rem">Rice</span></div>
-        <div class="ingredient" data-ing="🥩" data-pct="20">🥩<br><span style="font-size:.65rem">Gosht</span></div>
-        <div class="ingredient" data-ing="🧅" data-pct="10">🧅<br><span style="font-size:.65rem">Pyaaz</span></div>
-        <div class="ingredient" data-ing="🌶️" data-pct="10">🌶️<br><span style="font-size:.65rem">Mirch</span></div>
-        <div class="ingredient" data-ing="🧄" data-pct="8">🧄<br><span style="font-size:.65rem">Lehsun</span></div>
-        <div class="ingredient" data-ing="🫚" data-pct="7">🫚<br><span style="font-size:.65rem">Tel</span></div>
-        <div class="ingredient" data-ing="🌿" data-pct="5">🌿<br><span style="font-size:.65rem">Dhania</span></div>
-        <div class="ingredient" data-ing="💛" data-pct="5">🌼<br><span style="font-size:.65rem">Haldi</span></div>
-      </div>
-      <div class="btn-row">
-        <button class="btn btn-pink" id="btnCookNow">Cook It! 🍛</button>
-        <button class="btn btn-gold" id="btnCookReset">Reset 🔄</button>
-      </div>
-      <div id="cookResult" style="display:none;font-family:'Dancing Script',cursive;font-size:1.1rem;color:#c05070;margin-top:8px;text-align:center"></div>
-    </div>
-  </div>
-  <div class="btn-row" style="margin-top:16px;z-index:10;position:relative">
-    <button class="btn btn-pink" onclick="goToScreen('s11')">Aage Chalein! 💪</button>
-  </div>
-</div>
-
-<!-- ═══════════════ SCREEN 11: WORD CLOUD + HOROSCOPE ═══════════════ (NEW) -->
-<div class="screen" id="s11">
-  <div class="nav">
-    <div class="ntab active" data-tab="t11cloud">☁️ Word Cloud</div>
-    <div class="ntab" data-tab="t11horo">🔭 Horoscope</div>
-    <div class="ntab" data-tab="t11photo">📷 Photo Booth</div>
-  </div>
-  <div id="t11cloud">
-    <div class="card" style="max-width:540px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">☁️✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara ki Word Cloud! 🌸</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara ke dil mein aap ke liye yeh alfaaz hain! 💖</p>
-      <div style="background:rgba(255,255,255,.55);border-radius:22px;padding:20px;border:1.5px solid rgba(230,150,180,.4);min-height:140px;line-height:2;text-align:center" id="wordCloud"></div>
-      <p style="font-size:.82rem;color:#b07090;margin:10px 0 6px">Ya apna lafz add karein:</p>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px">
-        <input class="srinput" id="cloudIn" type="text" placeholder="Koi lafz..." maxlength="15" style="flex:1;min-width:140px">
-        <button class="btn btn-pink" id="btnAddCloud">Add! ☁️</button>
-      </div>
-      <div class="btn-row">
-        <button class="btn btn-purple" id="btnShuffleCloud">Shuffle ✨</button>
-        <button class="btn btn-gold" id="btnShareCloud">Share 📤</button>
-      </div>
-    </div>
-  </div>
-  <div id="t11horo" style="display:none">
-    <div class="card" style="max-width:500px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">🔭✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Eid Horoscope! 🌟</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara asmaan se aap ka future parhti hai! 😂🌙</p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0" id="zodiacSigns">
-        <button class="rtype" data-sign="aries">♈ Aries</button>
-        <button class="rtype" data-sign="taurus">♉ Taurus</button>
-        <button class="rtype" data-sign="gemini">♊ Gemini</button>
-        <button class="rtype" data-sign="cancer">♋ Cancer</button>
-        <button class="rtype" data-sign="leo">♌ Leo</button>
-        <button class="rtype" data-sign="virgo">♍ Virgo</button>
-        <button class="rtype" data-sign="libra">♎ Libra</button>
-        <button class="rtype" data-sign="scorpio">♏ Scorpio</button>
-        <button class="rtype" data-sign="sagittarius">♐ Sagittarius</button>
-        <button class="rtype" data-sign="capricorn">♑ Capricorn</button>
-        <button class="rtype" data-sign="aquarius">♒ Aquarius</button>
-        <button class="rtype" data-sign="pisces">♓ Pisces</button>
-      </div>
-      <div class="horo-box" id="horoBox">
-        <div id="horoStars"></div>
-        <div id="horoText" style="position:relative;z-index:2">🌟 Apni rashi chunein — Sara ke stars aap ka future bataenge! ✨</div>
-      </div>
-      <div id="horoExtra" style="display:none;margin-top:10px">
-        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-          <div style="background:rgba(255,255,255,.5);border-radius:14px;padding:10px 16px;text-align:center;border:1.5px solid rgba(230,150,180,.4);font-size:.82rem;color:#9a4060">
-            <div style="font-size:1.2rem">💰</div>Rizq: <strong id="horoRizq"></strong>
-          </div>
-          <div style="background:rgba(255,255,255,.5);border-radius:14px;padding:10px 16px;text-align:center;border:1.5px solid rgba(230,150,180,.4);font-size:.82rem;color:#9a4060">
-            <div style="font-size:1.2rem">💖</div>Dosti: <strong id="horoDosti"></strong>
-          </div>
-          <div style="background:rgba(255,255,255,.5);border-radius:14px;padding:10px 16px;text-align:center;border:1.5px solid rgba(230,150,180,.4);font-size:.82rem;color:#9a4060">
-            <div style="font-size:1.2rem">⭐</div>Lucky: <strong id="horoLucky"></strong>
-          </div>
-        </div>
-      </div>
-      <button class="btn btn-pink" id="btnHoroRead" style="margin-top:10px">Sara se Puchein! 🔭</button>
-    </div>
-  </div>
-  <div id="t11photo" style="display:none">
-    <div class="card" style="max-width:500px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">📷✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Photo Booth! 🎭</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Stickers lagao — Sara ka virtual photo booth! 😂</p>
-      <div class="booth-frame" id="boothFrame">
-        <div style="font-size:1.2rem;color:#c05070;text-align:center;padding:10px">
-          <div class="title-dance" style="font-size:1.5rem" id="boothTitle">Eid Mubarak! 🌙</div>
-          <div style="font-size:.9rem;color:#9a4060;margin-top:6px" id="boothSub">Sara aur Dost — Best Eid Ever! 💖</div>
-        </div>
-      </div>
-      <p style="font-size:.82rem;color:#b07090;margin:8px 0">Stickers add karein 👇</p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:8px 0" id="stickerPicker">
-        <button class="sticker-btn" data-stk="🌙">🌙</button>
-        <button class="sticker-btn" data-stk="💖">💖</button>
-        <button class="sticker-btn" data-stk="🌸">🌸</button>
-        <button class="sticker-btn" data-stk="✨">✨</button>
-        <button class="sticker-btn" data-stk="🎀">🎀</button>
-        <button class="sticker-btn" data-stk="🐐">🐐</button>
-        <button class="sticker-btn" data-stk="🏆">🏆</button>
-        <button class="sticker-btn" data-stk="⭐">⭐</button>
-        <button class="sticker-btn" data-stk="😂">😂</button>
-        <button class="sticker-btn" data-stk="🤲">🤲</button>
-        <button class="sticker-btn" data-stk="🎉">🎉</button>
-        <button class="sticker-btn" data-stk="💪">💪</button>
-      </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-        <input class="srinput" id="boothName" type="text" placeholder="Aap ka naam..." maxlength="20" style="flex:1;min-width:140px">
-        <button class="btn btn-pink" id="btnBoothApply">Update! 🎨</button>
-      </div>
-      <div class="btn-row" style="margin-top:10px">
-        <button class="btn btn-gold" id="btnBoothClear">Clear Stickers 🗑️</button>
-      </div>
-    </div>
-  </div>
-  <div class="btn-row" style="margin-top:16px;z-index:10;position:relative">
-    <button class="btn btn-pink" onclick="goToScreen('s12')">Aage Chalein! 💪</button>
-  </div>
-</div>
-
-<!-- ═══════════════ SCREEN 12: MEMORY LANE + BUCKET LIST ═══════════════ (NEW) -->
-<div class="screen" id="s12">
-  <div class="nav">
-    <div class="ntab active" data-tab="t12mem">🕰️ Memory Lane</div>
-    <div class="ntab" data-tab="t12bucket">🪣 Bucket List</div>
-    <div class="ntab" data-tab="t12gratitude">🙏 Gratitude</div>
-  </div>
-  <div id="t12mem">
-    <div class="card" style="max-width:540px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">🕰️✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara ki Memory Lane! 💖</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara ki yaadein — dil se! (Pure fiction but cute 😂)</p>
-      <div id="timelineContainer" style="padding:6px 0">
-      </div>
-      <button class="btn btn-pink" id="btnNextMem" style="margin-top:10px">Aur Yaadein! 🕰️</button>
-    </div>
-  </div>
-  <div id="t12bucket" style="display:none">
-    <div class="card" style="max-width:500px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">🪣✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Eid Bucket List! 🌙</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:8px">Sara ne list banai hai — aap ke saath karna chahti hai! 😂💕</p>
-      <div id="bucketList" style="max-height:280px;overflow-y:auto;margin-bottom:10px"></div>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <input class="ginput" id="bucketIn" type="text" placeholder="Kuch add karein..." maxlength="50">
-        <button class="btn btn-pink" id="btnBucketAdd">Add! 🪣</button>
-      </div>
-      <p style="font-size:.82rem;color:#b07090;margin-top:10px">Done: <span id="bucketDone" style="font-weight:800;color:#c05070">0</span> / <span id="bucketTotal" style="color:#b07090">0</span> 🏆</p>
-    </div>
-  </div>
-  <div id="t12gratitude" style="display:none">
-    <div class="card" style="max-width:500px">
-      <span style="font-size:2rem;display:block;margin-bottom:6px">🙏✨</span>
-      <h2 class="title-dance" style="font-size:1.8rem;margin:4px 0 6px">Sara's Gratitude Jar! 💖</h2>
-      <p style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:10px">Sara shukr ada karti hai — aap bhi karein! 🤲</p>
-      <div style="background:linear-gradient(135deg,rgba(255,240,200,.8),rgba(255,220,180,.8));border-radius:22px;padding:20px;border:2px solid rgba(245,180,60,.4);text-align:center;min-height:100px;margin:10px 0;display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer" id="jarDisplay" onclick="newGratitude()">
-        <div style="font-size:2.5rem">🫙</div>
-        <div style="font-family:'Dancing Script',cursive;font-size:1.1rem;color:#b87030;margin-top:8px;line-height:1.5" id="jarMsg">Tap to open Sara's gratitude jar! 🙏</div>
-      </div>
-      <p style="font-size:.72rem;color:#b07090;margin-bottom:10px">👆 Tap jar for new gratitude moment!</p>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px">
-        <input class="srinput" id="gratIn" type="text" placeholder="Main shukar ada karta hoon..." maxlength="60" style="flex:1;min-width:180px">
-        <button class="btn btn-gold" id="btnAddGrat">Add! 🙏</button>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-height:100px;overflow-y:auto" id="gratList"></div>
-    </div>
-  </div>
-  <div class="btn-row" style="margin-top:16px;z-index:10;position:relative">
-    <button class="btn btn-pink" onclick="goToScreen('s13')">Grand Finale! 🎊</button>
-  </div>
-</div>
-
-<!-- ═══════════════ SCREEN 13: FINAL GRAND ENDING ═══════════════ -->
-<div class="screen" id="s13">
   <div class="card" style="max-width:590px">
     <span class="bounce" style="font-size:3.2rem;display:block">🎁</span>
     <h2 class="title-dance" style="font-size:clamp(1.8rem,6vw,3rem);margin:8px 0">Sara ka Grand Surprise! 🌙</h2>
@@ -1305,7 +966,11 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
     <div id="gCTA" style="display:none;text-align:center;margin-top:18px">
       <div class="sparkle" style="font-size:1.4rem;margin-bottom:12px">🌙 ✨ 💖 ✨ 🌙</div>
       <div class="sara-stamp" style="margin-bottom:14px">Sara ka final message! 📌</div>
-      <p style="font-family:'Playfair Display',serif;font-style:italic;color:#9a4060;font-size:1rem;line-height:1.8;margin-bottom:14px">"Main Sara hoon — aur main yeh kehna chahti hoon ke<br>aap ki dosti meri life ka ek <strong style="color:#c05070">bahut acha hissa hai.</strong><br>Eid Mubarak, dost — hamesha khush rahein! 🌙💖"</p>
+      <p style="font-family:'Playfair Display',serif;font-style:italic;color:#9a4060;font-size:1rem;line-height:1.8;margin-bottom:14px">
+        "Main Sara hoon — aur main yeh kehna chahti hoon ke<br>
+        aap ki dosti meri life ka ek <strong style="color:#c05070">bahut acha hissa hai.</strong><br>
+        Eid Mubarak, dost — hamesha khush rahein! 🌙💖"
+      </p>
       <div class="btn-row">
         <button class="btn btn-pink" id="btnGCC">🎊 Celebrate!</button>
         <button class="btn btn-gold" id="btnGShare">📤 Sara ko Share Karein!</button>
@@ -1329,155 +994,268 @@ canvas.fc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none
 </div>
 
 <script>
-(function(){"use strict";
+(function(){
+"use strict";
+
+/* ─── STATE ─── */
 var userName='Dost';var userRole='bestie';
 function rand(a,b){return Math.random()*(b-a)+a}
 
-// PROGRESS BAR
-var screenOrder=['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13'];
-function updatePgBar(id){var idx=screenOrder.indexOf(id);if(idx<0)return;var pct=Math.round((idx/(screenOrder.length-1))*100);var pb=document.getElementById('pgbar');pb.classList.add('show');pb.style.width=pct+'%'}
+/* ─── PROGRESS BAR ─── */
+var screenOrder=['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9'];
+function updatePgBar(id){
+  var idx=screenOrder.indexOf(id);
+  if(idx<0)return;
+  var pct=Math.round((idx/(screenOrder.length-1))*100);
+  var pb=document.getElementById('pgbar');
+  pb.classList.add('show');
+  pb.style.width=pct+'%';
+}
 
-// TOAST
+/* ─── TOAST ─── */
 function toast(msg,d){d=d||3000;var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show')},d)}
 
-// GLITTER
-function glitter(cx,cy,n){n=n||10;var em=['✨','💖','🌸','⭐','💫','🌟','💕','🎀','🌙','🎶','💪','🔥','🏆','⚡'];
-  for(var i=0;i<n;i++){var el=document.createElement('div');el.className='glitter';el.textContent=em[Math.floor(Math.random()*em.length)];var a=(Math.PI*2/n)*i,d=rand(50,140);el.style.cssText='left:'+cx+'px;top:'+cy+'px;--tx:translateX('+Math.cos(a)*d+'px) translateY('+Math.sin(a)*d+'px);animation-delay:'+rand(0,.18)+'s';document.body.appendChild(el);setTimeout((function(e){return function(){e.remove()}})(el),1500)}}
+/* ─── GLITTER ─── */
+function glitter(cx,cy,n){
+  n=n||10;var em=['✨','💖','🌸','⭐','💫','🌟','💕','🎀','🌙','🎶','💪','🔥','🏆','⚡'];
+  for(var i=0;i<n;i++){var el=document.createElement('div');el.className='glitter';
+    el.textContent=em[Math.floor(Math.random()*em.length)];
+    var a=(Math.PI*2/n)*i,d=rand(50,140);
+    el.style.cssText='left:'+cx+'px;top:'+cy+'px;--tx:translateX('+Math.cos(a)*d+'px) translateY('+Math.sin(a)*d+'px);animation-delay:'+rand(0,.18)+'s';
+    document.body.appendChild(el);
+    setTimeout((function(e){return function(){e.remove()}})(el),1500)}
+}
 
-// CONFETTI
+/* ─── CONFETTI ─── */
 var cC=document.getElementById('cC'),cX=cC.getContext('2d'),cP=[];
 function rCC(){cC.width=window.innerWidth;cC.height=window.innerHeight}rCC();window.addEventListener('resize',rCC);
-function launchConfetti(){var cols=['#f8c8d4','#e8829a','#d8b8f8','#b87ed4','#ffd6c0','#f5c842','#a8e0f8','#a8e8c0'];for(var i=0;i<200;i++){cP.push({x:Math.random()*cC.width,y:-10,w:Math.random()*10+4,h:Math.random()*5+3,c:cols[Math.floor(Math.random()*cols.length)],vx:(Math.random()-.5)*5,vy:Math.random()*4+2,rot:Math.random()*360,dR:(Math.random()-.5)*6,op:1})}animC()}
+function launchConfetti(){
+  var cols=['#f8c8d4','#e8829a','#d8b8f8','#b87ed4','#ffd6c0','#f5c842','#a8e0f8','#a8e8c0'];
+  for(var i=0;i<200;i++){cP.push({x:Math.random()*cC.width,y:-10,w:Math.random()*10+4,h:Math.random()*5+3,c:cols[Math.floor(Math.random()*cols.length)],vx:(Math.random()-.5)*5,vy:Math.random()*4+2,rot:Math.random()*360,dR:(Math.random()-.5)*6,op:1})}
+  animC()}
 var ccR=false;
-function animC(){if(ccR)return;ccR=true;function f(){cX.clearRect(0,0,cC.width,cC.height);var a=false;cP.forEach(function(p){if(p.y<cC.height+20)a=true;p.x+=p.vx;p.y+=p.vy;p.rot+=p.dR;if(p.y>cC.height*.55)p.op-=.014;p.op=Math.max(0,p.op);cX.save();cX.translate(p.x,p.y);cX.rotate(p.rot*Math.PI/180);cX.globalAlpha=p.op;cX.fillStyle=p.c;cX.fillRect(-p.w/2,-p.h/2,p.w,p.h);cX.restore()});if(a)requestAnimationFrame(f);else{cX.clearRect(0,0,cC.width,cC.height);cP=[];ccR=false}}requestAnimationFrame(f)}
+function animC(){
+  if(ccR)return;ccR=true;
+  function f(){cX.clearRect(0,0,cC.width,cC.height);var a=false;
+    cP.forEach(function(p){if(p.y<cC.height+20)a=true;p.x+=p.vx;p.y+=p.vy;p.rot+=p.dR;if(p.y>cC.height*.55)p.op-=.014;p.op=Math.max(0,p.op);cX.save();cX.translate(p.x,p.y);cX.rotate(p.rot*Math.PI/180);cX.globalAlpha=p.op;cX.fillStyle=p.c;cX.fillRect(-p.w/2,-p.h/2,p.w,p.h);cX.restore()});
+    if(a)requestAnimationFrame(f);else{cX.clearRect(0,0,cC.width,cC.height);cP=[];ccR=false}
+  }requestAnimationFrame(f)}
 
-// PARTICLES
+/* ─── PARTICLES ─── */
 var pC2=document.getElementById('pC'),pX=pC2.getContext('2d'),pts=[];
 function rPC(){pC2.width=window.innerWidth;pC2.height=window.innerHeight}rPC();window.addEventListener('resize',rPC);
 for(var pi=0;pi<65;pi++)pts.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:Math.random()*2.5+.5,dx:(Math.random()-.5)*.4,dy:(Math.random()-.5)*.4,a:Math.random(),da:(Math.random()-.5)*.015,c:['#f8c8d4','#e8d5f5','#ffd6c0','#f5c842','#e89ab4'][Math.floor(Math.random()*5)]});
-function aPts(){pX.clearRect(0,0,pC2.width,pC2.height);pts.forEach(function(p){p.x+=p.dx;p.y+=p.dy;p.a+=p.da;if(p.a<=0||p.a>=1)p.da*=-1;if(p.x<0||p.x>pC2.width)p.dx*=-1;if(p.y<0||p.y>pC2.height)p.dy*=-1;pX.beginPath();pX.arc(p.x,p.y,p.r,0,Math.PI*2);pX.fillStyle=p.c;pX.globalAlpha=Math.max(0,Math.min(1,p.a));pX.fill()});pX.globalAlpha=1;requestAnimationFrame(aPts)}aPts();
+function aPts(){pX.clearRect(0,0,pC2.width,pC2.height);pts.forEach(function(p){p.x+=p.dx;p.y+=p.dy;p.a+=p.da;if(p.a<=0||p.a>=1)p.da*=-1;if(p.x<0||p.x>pC2.width)p.dx*=-1;if(p.y<0||p.y>pC2.height)p.dy*=-1;pX.beginPath();pX.arc(p.x,p.y,p.r,0,Math.PI*2);pX.fillStyle=p.c;pX.globalAlpha=Math.max(0,Math.min(1,p.a));pX.fill()});pX.globalAlpha=1;requestAnimationFrame(aPts)}
+aPts();
 
-// TRAIL
+/* ─── TRAIL ─── */
 var tC2=document.getElementById('tC'),tX=tC2.getContext('2d'),trail=[];
 function rTC(){tC2.width=window.innerWidth;tC2.height=window.innerHeight}rTC();window.addEventListener('resize',rTC);
 document.addEventListener('mousemove',function(e){trail.push({x:e.clientX,y:e.clientY,life:1,e:['✨','🌸','💕','⭐'][Math.floor(Math.random()*4)]});if(trail.length>18)trail.shift()});
 document.addEventListener('touchmove',function(e){var t=e.touches[0];trail.push({x:t.clientX,y:t.clientY,life:1,e:'🌸'});if(trail.length>12)trail.shift()},{passive:true});
-function aTrl(){tX.clearRect(0,0,tC2.width,tC2.height);trail.forEach(function(t,i){t.life-=0.06;if(t.life<=0)return;tX.globalAlpha=t.life*.7;tX.font=(12+i*.5)+'px serif';tX.fillText(t.e,t.x-8,t.y+8)});trail=trail.filter(function(t){return t.life>0});tX.globalAlpha=1;requestAnimationFrame(aTrl)}aTrl();
+function aTrl(){tX.clearRect(0,0,tC2.width,tC2.height);trail.forEach(function(t,i){t.life-=0.06;if(t.life<=0)return;tX.globalAlpha=t.life*.7;tX.font=(12+i*.5)+'px serif';tX.fillText(t.e,t.x-8,t.y+8)});trail=trail.filter(function(t){return t.life>0});tX.globalAlpha=1;requestAnimationFrame(aTrl)}
+aTrl();
 
-// FLOATERS
+/* ─── FLOATERS ─── */
 var fl=document.getElementById('floaters');
 ['🌸','🌺','🌷','⭐','✨'].forEach(function(e){for(var i=0;i<5;i++){var b=document.createElement('div');b.className='blossom';b.textContent=e;b.style.cssText='left:'+rand(0,100)+'%;top:-20px;animation-duration:'+rand(6,14)+'s;animation-delay:'+rand(0,14)+'s;font-size:'+rand(12,22)+'px';fl.appendChild(b)}});
-var bC2=['linear-gradient(135deg,#f8a8c0,#e86090)','linear-gradient(135deg,#d8b8f8,#b080e0)','linear-gradient(135deg,#ffd8a8,#f8a060)','linear-gradient(135deg,#a8e0f8,#60b8e8)'];
-function mkBal(){var e=document.createElement('div');e.className='balloon';e.style.cssText='width:34px;height:42px;background:'+bC2[Math.floor(Math.random()*bC2.length)]+';left:'+rand(2,92)+'%;top:'+rand(6,80)+'%;animation-duration:'+rand(3,6)+'s;animation-delay:'+rand(0,5)+'s';e.addEventListener('click',function(){var r=e.getBoundingClientRect();glitter(r.left+17,r.top+21,8);e.style.transition='all .3s';e.style.transform='scale(0)';e.style.opacity='0';setTimeout(function(){e.remove();setTimeout(mkBal,4000)},350)});fl.appendChild(e)}
+var bC=['linear-gradient(135deg,#f8a8c0,#e86090)','linear-gradient(135deg,#d8b8f8,#b080e0)','linear-gradient(135deg,#ffd8a8,#f8a060)','linear-gradient(135deg,#a8e0f8,#60b8e8)'];
+function mkBal(){var e=document.createElement('div');e.className='balloon';e.style.cssText='width:34px;height:42px;background:'+bC[Math.floor(Math.random()*bC.length)]+';left:'+rand(2,92)+'%;top:'+rand(6,80)+'%;animation-duration:'+rand(3,6)+'s;animation-delay:'+rand(0,5)+'s';e.addEventListener('click',function(){var r=e.getBoundingClientRect();glitter(r.left+17,r.top+21,8);e.style.transition='all .3s';e.style.transform='scale(0)';e.style.opacity='0';setTimeout(function(){e.remove();setTimeout(mkBal,4000)},350)});fl.appendChild(e)}
 for(var bi=0;bi<10;bi++)mkBal();
 for(var si2=0;si2<24;si2++){var st=document.createElement('div');st.className='twinkle';st.textContent=['⭐','✨','💫','🌟'][Math.floor(Math.random()*4)];st.style.cssText='left:'+rand(2,97)+'%;top:'+rand(2,95)+'%;animation-duration:'+rand(1.5,4)+'s;animation-delay:'+rand(0,6)+'s;font-size:'+rand(10,18)+'px';fl.appendChild(st)}
 for(var hi=0;hi<10;hi++){var ht=document.createElement('div');ht.className='heart-up';ht.textContent=['💖','💕','💗','🩷','💝','⚡','💪'][Math.floor(Math.random()*7)];ht.style.cssText='left:'+rand(5,93)+'%;bottom:-20px;animation-duration:'+rand(7,15)+'s;animation-delay:'+rand(0,12)+'s;font-size:'+rand(14,26)+'px';fl.appendChild(ht)}
 
-// SCREEN NAV
-function showScreen(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});var t=document.getElementById(id);if(!t)return;t.classList.add('active');window.scrollTo(0,0);updatePgBar(id)}
+/* ─── SCREEN NAV ─── */
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});
+  var t=document.getElementById(id);if(!t)return;t.classList.add('active');
+  window.scrollTo(0,0);
+  updatePgBar(id);
+}
 window.goToScreen=function(id){launchConfetti();glitter(window.innerWidth/2,window.innerHeight/2,14);setTimeout(function(){showScreen(id)},600)};
 function updateAllNames(){
-  var en=document.getElementById('certN');if(en)en.textContent=userName;
-  var tn=document.getElementById('ticketName');if(tn)tn.textContent=userName;
-  var sn=document.getElementById('snapName');if(sn)sn.textContent='— '+userName+' 🌸';
-  document.querySelectorAll('.uname').forEach(function(el){el.textContent=userName})
+  document.getElementById('certN').textContent=userName;
+  document.getElementById('ticketName').textContent=userName;
+  document.getElementById('snapName').textContent='— '+userName+' 🌸';
+  document.querySelectorAll('.uname').forEach(function(el){el.textContent=userName});
 }
 
-// TAB SYSTEM
+/* ─── TAB SYSTEM ─── */
 document.querySelectorAll('.ntab').forEach(function(tab){
   tab.addEventListener('click',function(){
-    var tabId=tab.getAttribute('data-tab');var scr=tab.closest('.screen');
-    scr.querySelectorAll('[id^="t"]').forEach(function(tc){if(tc.id&&tc.id.length>2&&!tc.classList.contains('nav')&&!tc.classList.contains('ntab'))tc.style.display='none'});
+    var tabId=tab.getAttribute('data-tab');
+    var scr=tab.closest('.screen');
+    scr.querySelectorAll('[id^="t"]').forEach(function(tc){
+      if(tc.id&&tc.id.length>2&&!tc.classList.contains('nav')&&!tc.classList.contains('ntab'))tc.style.display='none'
+    });
     tab.closest('.nav').querySelectorAll('.ntab').forEach(function(n){n.classList.remove('active')});
     var el=document.getElementById(tabId);if(el)el.style.display='';
     tab.classList.add('active');
-    if(tabId==='t3memory')initMem();if(tabId==='t3spin')initSpin();if(tabId==='t3scramble')initScramble();
-    if(tabId==='t2ttt')initTTT();if(tabId==='t4poem')renderPoem();if(tabId==='t2dua')renderDua();
-    if(tabId==='t3music')startViz();if(tabId==='t5riddle')initRiddle();if(tabId==='t7trivia')initTrivia();
-    if(tabId==='t7draw')initDraw();if(tabId==='t9hang')initHangman();if(tabId==='t9sound')initSoundboard();
-    if(tabId==='t9tod')initToD();if(tabId==='t11cloud')initWordCloud();if(tabId==='t11horo')initHoro();
-    if(tabId==='t11photo')initPhotoBooth();if(tabId==='t12mem')initMemLane();if(tabId==='t12bucket')initBucket();
-    if(tabId==='t12gratitude')initGratitude();if(tabId==='t10meme')initMeme();if(tabId==='t10ball')initBall8();
-    if(tabId==='t10love')initLove();if(tabId==='t10cook')initCook();
+    if(tabId==='t3memory')initMem();
+    if(tabId==='t3spin')initSpin();
+    if(tabId==='t3scramble')initScramble();
+    if(tabId==='t2ttt')initTTT();
+    if(tabId==='t4poem')renderPoem();
+    if(tabId==='t2dua')renderDua();
+    if(tabId==='t3music')startViz();
+    if(tabId==='t5riddle')initRiddle();
+    if(tabId==='t7trivia')initTrivia();
+    if(tabId==='t7draw')initDraw();
   })
 });
 
-// SCREEN 0
+/* ─── SCREEN 0 ─── */
 window.setRole=function(role,emoji){
-  userRole=role;var roleNames={bestie:'Sara ke Best Friend',dost:'Sara ke Khaas Dost',yaar:'Sara ke Pyare Dost',legend:'Sara ke Legend'};
-  userName=roleNames[role]||role;glitter(window.innerWidth/2,window.innerHeight/2,16);launchConfetti();
+  userRole=role;
+  var roleNames={bestie:'Sara ke Best Friend',dost:'Sara ke Khaas Dost',yaar:'Sara ke Pyare Dost',legend:'Sara ke Legend'};
+  userName=roleNames[role]||role;
+  glitter(window.innerWidth/2,window.innerHeight/2,16);launchConfetti();
   setTimeout(function(){showScreen('s1');initCountdown();updateAllNames()},900)
 };
-document.getElementById('btnCustom').addEventListener('click',function(){var v=document.getElementById('customN').value.trim();if(!v){toast('Naam toh likhein janab! 😅');return}userName=v;glitter(window.innerWidth/2,window.innerHeight/2,16);launchConfetti();setTimeout(function(){showScreen('s1');initCountdown();updateAllNames()},900)});
+document.getElementById('btnCustom').addEventListener('click',function(){
+  var v=document.getElementById('customN').value.trim();
+  if(!v){toast('Naam toh likhein janab! 😅');return}
+  userName=v;glitter(window.innerWidth/2,window.innerHeight/2,16);launchConfetti();
+  setTimeout(function(){showScreen('s1');initCountdown();updateAllNames()},900)
+});
 document.getElementById('customN').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('btnCustom').click()});
 
-// SCREEN 1
-var saraNotes=['😂 Sara ki urgent baat: "Main ne 3 dafa yeh banane ki koshish ki. Pehli baar crash hua, doosri baar bhool gayi save karna. Teesri baar — yeh hai! Appreciate karo please!" 🙏','🤫 Sara ka secret: "Main ne actually bakre ko Eid Mubarak bol diya pehle, phir aap ko. Sorry..." 🐐😂','😅 Sara confession: "Yeh banate banate main ne 3 cups chai pi li. Aap ko kehna tha lekin bhool gayi." ☕','😂 Sara admits: "Phone mein 200 emojis try kiye pehle. 200 mein se yeh select kiye. Shukriya? Huh!" 😤💕','🌙 Sara ki serious baat: "Aap mere dost hain aur main ne honestly bahut pyaar se yeh banaya. Par nahi bataungi officially! 😤💖"'];
+/* ─── SCREEN 1 ─── */
+var saraNotes=[
+  '😂 Sara ki urgent baat: "Main ne 3 dafa yeh banane ki koshish ki. Pehli baar crash hua, doosri baar bhool gayi save karna. Teesri baar — yeh hai! Appreciate karo please!" 🙏',
+  '🤫 Sara ka secret: "Main ne actually bakre ko Eid Mubarak bol diya pehle, phir aap ko. Sorry..." 🐐😂',
+  '😅 Sara confession: "Yeh banate banate main ne 3 cups chai pi li. Aap ko kehna tha lekin bhool gayi." ☕',
+  '😂 Sara admits: "Phone mein 200 emojis try kiye pehle. 200 mein se yeh select kiye. Shukriya? Huh!" 😤💕',
+  '🌙 Sara ki serious baat: "Aap mere dost hain aur main ne honestly bahut pyaar se yeh banaya. Par nahi bataungi officially! 😤💖"'
+];
 var snIdx=0;
-document.getElementById('saraNoteBox').addEventListener('click',function(){snIdx=(snIdx+1)%saraNotes.length;var el=this;el.style.opacity='0';setTimeout(function(){el.textContent=saraNotes[snIdx];el.style.opacity='1'},200);glitter(el.getBoundingClientRect().left+80,el.getBoundingClientRect().top+20,5)});
-document.getElementById('moods').querySelectorAll('div').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('#moods div').forEach(function(b){b.style.borderColor='transparent';b.style.background='rgba(255,255,255,.5)'});btn.style.borderColor='#e8829a';btn.style.background='rgba(255,220,235,.7)';document.getElementById('moodResp').textContent=btn.getAttribute('data-msg');var m=parseInt(btn.getAttribute('data-m')||'70');document.getElementById('moodMW').style.display='block';setTimeout(function(){document.getElementById('moodMB').style.width=m+'%'},100);var r=btn.getBoundingClientRect();glitter(r.left+25,r.top+25,5)})});
+document.getElementById('saraNoteBox').addEventListener('click',function(){
+  snIdx=(snIdx+1)%saraNotes.length;var el=this;el.style.opacity='0';
+  setTimeout(function(){el.textContent=saraNotes[snIdx];el.style.opacity='1'},200);
+  glitter(el.getBoundingClientRect().left+80,el.getBoundingClientRect().top+20,5)
+});
+
+document.getElementById('moods').querySelectorAll('div').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('#moods div').forEach(function(b){b.style.borderColor='transparent';b.style.background='rgba(255,255,255,.5)'});
+    btn.style.borderColor='#e8829a';btn.style.background='rgba(255,220,235,.7)';
+    document.getElementById('moodResp').textContent=btn.getAttribute('data-msg');
+    var m=parseInt(btn.getAttribute('data-m')||'70');
+    document.getElementById('moodMW').style.display='block';
+    setTimeout(function(){document.getElementById('moodMB').style.width=m+'%'},100);
+    var r=btn.getBoundingClientRect();glitter(r.left+25,r.top+25,5)
+  })
+});
+
 function handleYes(){launchConfetti();glitter(window.innerWidth/2,window.innerHeight/2,18);for(var i=0;i<8;i++){(function(idx){setTimeout(function(){var el=document.createElement('div');el.textContent=['🎈','💪','💖','🌸','✨','🌟','🎵','🌙'][Math.floor(Math.random()*8)];el.style.cssText='position:fixed;bottom:-20px;left:'+rand(5,90)+'%;font-size:'+rand(24,40)+'px;z-index:150;animation:heartUp '+rand(2.5,5)+'s ease forwards;pointer-events:none';document.body.appendChild(el);setTimeout(function(){el.remove()},5500)},idx*160)})(i)}setTimeout(function(){showScreen('s2')},1100)}
 document.getElementById('btnS1Yes').addEventListener('click',handleYes);
 document.getElementById('btnS1Hmm').addEventListener('click',function(){document.getElementById('hmmOv').classList.add('show')});
 document.getElementById('btnHY').addEventListener('click',function(){document.getElementById('hmmOv').classList.remove('show');handleYes()});
 document.getElementById('btnHN').addEventListener('click',function(){toast('😭 Sara ro rahi hai!! 💔');var btn=document.getElementById('btnHN');btn.style.animation='shakeNo .6s ease forwards';setTimeout(function(){btn.style.animation=''},700)});
 
-// COUNTDOWN
-function initCountdown(){function upd(){var eid=new Date('2025-06-07T00:00:00');var now=new Date();var diff=Math.abs(now-eid);var d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1e3);function pad(v){return String(v).padStart(2,'0')}var el=document.getElementById('cd');if(el)el.innerHTML='<div class="cdbox"><span class="cdnum">'+d+'</span><span class="cdlbl">Days</span></div><div class="cdbox"><span class="cdnum">'+pad(h)+'</span><span class="cdlbl">Hours</span></div><div class="cdbox"><span class="cdnum">'+pad(m)+'</span><span class="cdlbl">Mins</span></div><div class="cdbox"><span class="cdnum">'+pad(s)+'</span><span class="cdlbl">Secs</span></div>'}upd();setInterval(upd,1000)}
+/* ─── COUNTDOWN ─── */
+function initCountdown(){
+  function upd(){var eid=new Date('2025-06-07T00:00:00');var now=new Date();var diff=Math.abs(now-eid);
+    var d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1e3);
+    function pad(v){return String(v).padStart(2,'0')}
+    var el=document.getElementById('cd');if(el)el.innerHTML='<div class="cdbox"><span class="cdnum">'+d+'</span><span class="cdlbl">Days</span></div><div class="cdbox"><span class="cdnum">'+pad(h)+'</span><span class="cdlbl">Hours</span></div><div class="cdbox"><span class="cdnum">'+pad(m)+'</span><span class="cdlbl">Mins</span></div><div class="cdbox"><span class="cdnum">'+pad(s)+'</span><span class="cdlbl">Secs</span></div>'
+  }upd();setInterval(upd,1000)
+}
 
-// EIDI
-document.getElementById('btnEidi').addEventListener('click',function(){var a=['500 rupay — Sara ki taraf se! 💰😂','1000 rupay — sirf agar Sara mood mein ho 😏','5000 rupay virtual 💸','Ek kilo biryani Sara banaegi... shayad 🍛😂','Sara ki full friendship 💖 — priceless!','Eid ki sabse bari dua 🤲🌙',"Sara ka 'I told you so' pass — 1 free use 😂",'Unlimited Sara ki baatein — whether aap chahein ya nahi! 😂'];var r=document.getElementById('eidiR');r.textContent='🎲 Sara calculate kar rahi hai...';setTimeout(function(){r.textContent='💰 Sara ka Eidi: '+a[Math.floor(Math.random()*a.length)]+'!';glitter(window.innerWidth/2,window.innerHeight*.4,12)},800)});
+/* ─── EIDI ─── */
+document.getElementById('btnEidi').addEventListener('click',function(){
+  var a=['500 rupay — Sara ki taraf se! 💰😂','1000 rupay — sirf agar Sara mood mein ho 😏','5000 rupay virtual 💸','Ek kilo biryani Sara banaegi... shayad 🍛😂','Sara ki full friendship 💖 — priceless!','Eid ki sabse bari dua 🤲🌙','Sara ka "I told you so" pass — 1 free use 😂','Unlimited Sara ki baatein — whether aap chahein ya nahi! 😂'];
+  var r=document.getElementById('eidiR');r.textContent='🎲 Sara calculate kar rahi hai...';
+  setTimeout(function(){r.textContent='💰 Sara ka Eidi: '+a[Math.floor(Math.random()*a.length)]+'!';glitter(window.innerWidth/2,window.innerHeight*.4,12)},800)
+});
 document.getElementById('btnS2Next').addEventListener('click',function(){glitter(window.innerWidth/2,window.innerHeight/2,14);launchConfetti();setTimeout(function(){showScreen('s3')},600)});
 document.getElementById('btnS3Next').addEventListener('click',function(){glitter(window.innerWidth/2,window.innerHeight/2,14);launchConfetti();setTimeout(function(){showScreen('s4')},600)});
-document.getElementById('btnFinale').addEventListener('click',function(){launchConfetti();setTimeout(function(){showScreen('s13');initS13()},600)});
+document.getElementById('btnFinale').addEventListener('click',function(){launchConfetti();setTimeout(function(){showScreen('s9');initS9()},600)});
 
-// QUIZ
-var qData=[{q:'What does "Eid ul Adha" celebrate?',o:["Prophet Ibrahim's (AS) devotion to Allah","End of Ramadan","Birthday of Prophet Muhammad (PBUH)","Night of Power"],a:0},{q:'Which sacred month does Eid ul Adha fall in?',o:['Rajab','Shaban','Ramadan','Dhul Hijjah'],a:3},{q:'What is the Eid prayer called?',o:['Salatul Fajr','Salatul Eid','Salatul Witr','Salatul Jumah'],a:1},{q:'Which city do pilgrims visit during Hajj?',o:['Medina','Jerusalem','Mecca','Baghdad'],a:2},{q:'What animals can be sacrificed on Eid ul Adha?',o:['Only goat/sheep','Only cow','Goat, cow, camel & more','Only camel'],a:2},{q:'How many days does Eid ul Adha last?',o:['1 day','2 days','3 days','4 days'],a:2},{q:'What fraction of Qurbani meat goes to the poor?',o:['All','Half','One third','One quarter'],a:2},{q:'Arabic word for the Eid ul Adha sacrifice?',o:['Zakat','Qurbani/Udhiyah','Fidyah','Sadaqah'],a:1}];
+/* ─── QUIZ ─── */
+var qData=[
+  {q:'What does "Eid ul Adha" celebrate?',o:["Prophet Ibrahim's (AS) devotion to Allah","End of Ramadan","Birthday of Prophet Muhammad (PBUH)","Night of Power"],a:0},
+  {q:'Which sacred month does Eid ul Adha fall in?',o:['Rajab','Shaban','Ramadan','Dhul Hijjah'],a:3},
+  {q:'What is the Eid prayer called?',o:['Salatul Fajr','Salatul Eid','Salatul Witr','Salatul Jumah'],a:1},
+  {q:'Which city do pilgrims visit during Hajj?',o:['Medina','Jerusalem','Mecca','Baghdad'],a:2},
+  {q:'What animals can be sacrificed on Eid ul Adha?',o:['Only goat/sheep','Only cow','Goat, cow, camel & more','Only camel'],a:2},
+  {q:'How many days does Eid ul Adha last?',o:['1 day','2 days','3 days','4 days'],a:2},
+  {q:'What fraction of Qurbani meat goes to the poor?',o:['All','Half','One third','One quarter'],a:2},
+  {q:'Arabic word for the Eid ul Adha sacrifice?',o:['Zakat','Qurbani/Udhiyah','Fidyah','Sadaqah'],a:1}
+];
 var qIdx=0,qSc=0,qAns=false;
-function renderQ(){if(qIdx>=qData.length){showQFinal();return}var q=qData[qIdx];document.getElementById('qProg').textContent='Question '+(qIdx+1)+' of '+qData.length;document.getElementById('qQ').textContent=q.q;document.getElementById('qRes').textContent='';document.getElementById('qOpts').innerHTML=q.o.map(function(o,i){return'<button class="qopt" onclick="ansQ('+i+')">'+o+'</button>'}).join('');qAns=false}
-window.ansQ=function(i){if(qAns)return;qAns=true;var q=qData[qIdx];var opts=document.querySelectorAll('.qopt');opts[q.a].classList.add('correct');if(i===q.a){qSc++;document.getElementById('qRes').textContent='🎉 Sahi! Sara ne bhi yahi socha!';glitter(window.innerWidth/2,window.innerHeight*.4,8)}else{if(opts[i])opts[i].classList.add('wrong');document.getElementById('qRes').textContent='😂 Nahi! Sara bhi nahi jaanti thi honestly!'}setTimeout(function(){qIdx++;renderQ()},1700)};
-function showQFinal(){document.getElementById('qOpts').innerHTML='';document.getElementById('qQ').textContent='';document.getElementById('qProg').textContent='Quiz Complete! 🌟';document.getElementById('qRes').textContent='';document.getElementById('qFinal').style.display='block';document.getElementById('qBadge').textContent=qSc+'/'+qData.length+' ⭐';var msgs=['Sara kehti hai: Thodi padhai karein! 📚😂','Decent! Sara proud hai! 🌸','Mashallah! Eid expert! Sara impress hai! 🌟','Genius hain aap! Sara ka best student! 🏆💪'];document.getElementById('qFinalMsg').textContent=msgs[Math.min(Math.floor(qSc/2),3)];launchConfetti()}
-document.getElementById('btnRQuiz').addEventListener('click',function(){qIdx=0;qSc=0;document.getElementById('qFinal').style.display='none';renderQ()});renderQ();
+function renderQ(){
+  if(qIdx>=qData.length){showQFinal();return}
+  var q=qData[qIdx];document.getElementById('qProg').textContent='Question '+(qIdx+1)+' of '+qData.length;
+  document.getElementById('qQ').textContent=q.q;document.getElementById('qRes').textContent='';
+  document.getElementById('qOpts').innerHTML=q.o.map(function(o,i){return'<button class="qopt" onclick="ansQ('+i+')">'+o+'</button>'}).join('');qAns=false
+}
+window.ansQ=function(i){
+  if(qAns)return;qAns=true;var q=qData[qIdx];var opts=document.querySelectorAll('.qopt');
+  opts[q.a].classList.add('correct');
+  if(i===q.a){qSc++;document.getElementById('qRes').textContent='🎉 Sahi! Sara ne bhi yahi socha! Mashallah!';glitter(window.innerWidth/2,window.innerHeight*.4,8)}
+  else{if(opts[i])opts[i].classList.add('wrong');document.getElementById('qRes').textContent='😂 Nahi! Sara bhi nahi jaanti thi honestly!'}
+  setTimeout(function(){qIdx++;renderQ()},1700)
+};
+function showQFinal(){
+  document.getElementById('qOpts').innerHTML='';document.getElementById('qQ').textContent='';document.getElementById('qProg').textContent='Quiz Complete! 🌟';document.getElementById('qRes').textContent='';
+  document.getElementById('qFinal').style.display='block';document.getElementById('qBadge').textContent=qSc+'/'+qData.length+' ⭐';
+  var msgs=['Sara kehti hai: Thodi padhai karein janab! 📚😂','Decent! Sara proud hai! 🌸','Mashallah! Eid expert! Sara impress hai! 🌟','Genius hain aap! Sara ka best student! 🏆💪'];
+  document.getElementById('qFinalMsg').textContent=msgs[Math.min(Math.floor(qSc/2),3)];launchConfetti()
+}
+document.getElementById('btnRQuiz').addEventListener('click',function(){qIdx=0;qSc=0;document.getElementById('qFinal').style.display='none';renderQ()});
+renderQ();
 
-// FORTUNE
-var fortunes=['Sara keh rahi hai: Kuch bada aane wala hai aap ke liye! 🌟','Is Eid ke baad aap ki life mein ek breakthrough aayega! 💪','Sara predict karti hai: Bahut khushiyan aane wali hain! 🌸','Allah aap ke saath hai — Sara bhi! Trust the journey 🌙','Sara guarantee karti hai: Aap ki mehnat rang laayegi soon! 🚀','Aap jitna sochte hain ussse zyada deserve karte hain! 💕'];
+/* ─── FORTUNE ─── */
+var fortunes=['Sara keh rahi hai: Kuch bada aane wala hai aap ke liye! 🌟','Is Eid ke baad aap ki life mein ek breakthrough aayega! 💪','Sara predict karti hai: Bahut khushiyan aane wali hain! 🌸','Allah aap ke saath hai — Sara bhi! Trust the journey 🌙','Sara guarantee karti hai: Aap ki mehnat rang laayegi soon! 🚀','Aap jitna sochte hain ussse zyada deserve karte hain! 💕','Sara ki nazar mein: Aap already chhupe hue legend hain! 🏆','Aap ki dua hogi qabool — Sara wali bhi! 🤲✨'];
 var lFortune=-1;
 function revF(){var idx;do{idx=Math.floor(Math.random()*fortunes.length)}while(idx===lFortune);lFortune=idx;var fc=document.getElementById('fCard');fc.style.transform='scale(.9)';fc.style.opacity='.4';setTimeout(function(){fc.textContent=fortunes[idx];fc.style.transform='';fc.style.opacity='1';glitter(window.innerWidth/2,window.innerHeight/2,10)},300)}
 document.getElementById('btnFortune').addEventListener('click',revF);document.getElementById('fCard').addEventListener('click',revF);
-document.getElementById('btnFShare').addEventListener('click',function(){var t=document.getElementById('fCard').textContent;if(navigator.share)navigator.share({text:'Sara ki prediction: '+t+' 🌙'});else{if(navigator.clipboard)navigator.clipboard.writeText(t);toast('Copied! 📤')}});
+document.getElementById('btnFShare').addEventListener('click',function(){var t=document.getElementById('fCard').textContent;if(navigator.share)navigator.share({text:'Sara ki prediction for me: '+t+' 🌙'});else{if(navigator.clipboard)navigator.clipboard.writeText(t);toast('Copied! Share karein! 📤')}});
 
-// ROAST
-var rData={sweet:["Aap itne zyada caring hain ke Sara bhi sharminda ho jaati hai! 💕😂","Aap ki smile contagious hai — Sara ne officially test kiya hai! 😊💖"],savage:["Sara keh rahi hai: Aap khud ko jitna smart samajhte hain, uss ka 80% hain! 😂💕","GPS bhi aap ki decisions se confuse ho jaata hai! 🗺️😂"],sara:["Sara officially declare karti hai: Aap meri life ka most entertaining chapter hain 😂💖","Sara ne survey kiya: 100% logon ne kaha aap adorable hain. Sample size: sirf Sara 😂"],truth:["Sachchi baat? Aap apne aap ko jo credit dete hain ussse zyada deserve karte hain 💪","Aap ki quiet strength — yahi aap ko genuinely powerful banati hai 🌙"]};
+/* ─── ROAST ─── */
+var rData={
+  sweet:["Aap itne zyada caring hain ke Sara bhi sharminda ho jaati hai! 💕😂","Bina maange advice dete hain — exactly like Sara would! 🌸","Aap ki smile contagious hai — Sara ne officially test kiya hai! 😊💖","Aap hamesha sahi waqt par sahi bol dete hain — Sara bhi seekh rahi hai! 🌟"],
+  savage:["Aap itne dramatic hain ke Bollywood aap ko hire karna chahta tha — par aap busy the! 😂🎬","Sara keh rahi hai: Aap khud ko jitna smart samajhte hain, uss ka 80% hain! 😂💕","GPS bhi aap ki decisions se confuse ho jaata hai! 🗺️😂","Aap ki advice follow karo toh seedha bakre ke saath Eid manao! 🐐😂"],
+  sara:["Sara officially declare karti hai: Aap meri life ka most entertaining chapter hain 😂💖","Sara ne survey kiya: 100% logon ne kaha aap adorable hain. Sample size: sirf Sara 😂","Aap message karte hain 'k' — Sara ki jaan nikal jaati hai! Proper reply likhein! 😤💕","Sara keh rahi hai: Aap ki dosti sara investment worth it thi! Pun intended! 😂🌸"],
+  truth:["Sachchi baat? Aap apne aap ko jo credit dete hain ussse zyada deserve karte hain 💪","Aap ki quiet strength — yahi aap ko genuinely powerful banati hai 🌙","Mushkilon mein bhi haath nahi chhodhte apnon ka — yahi legend banata hai 💖","Sara dekh sakti hai potential jo aap khud nahi dekhte — trust the process! ✨"]
+};
 var curRT='sweet';
 document.getElementById('rTypeBtns').querySelectorAll('.rtype').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#rTypeBtns .rtype').forEach(function(x){x.classList.remove('active')});b.classList.add('active');curRT=b.getAttribute('data-t');genRoast()})});
 function genRoast(){var list=rData[curRT];var txt=list[Math.floor(Math.random()*list.length)];var box=document.getElementById('rBox');box.style.opacity='.3';setTimeout(function(){box.textContent=txt;box.style.opacity='1';glitter(window.innerWidth/2,window.innerHeight*.5,8)},250)}
 document.getElementById('btnRoast').addEventListener('click',genRoast);
 document.getElementById('btnRSave').addEventListener('click',function(){var txt=document.getElementById('rBox').textContent;if(!txt||txt.includes('Generate'))return;var s=document.getElementById('savedR');var t=document.createElement('div');t.className='wtag';t.textContent=txt.substring(0,40)+'...';s.appendChild(t);toast('Saved! 💾😂')});
 
-// DUA
-var duas=[{ar:'تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُم',tr:'Taqabbal Allahu minna wa minkum',mn:'May Allah accept from us and you 🌙'},{ar:'كُلُّ عَامٍ وَأَنْتُمْ بِخَيْر',tr:"Kullu 'amin wa antum bikhayr",mn:'May every year find you well 🌸'},{ar:'اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ',tr:"Allahumma inni as'aluka al-'afiyah",mn:'O Allah, I ask You for well-being 💪'},{ar:'رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً',tr:'Rabbana atina fid-dunya hasanah',mn:'Our Lord, give us good in this world & Hereafter ✨'},{ar:'اللَّهُمَّ اجْعَلْنَا مِنَ الْفَائِزِينَ',tr:"Allahumma aj'alna minal fa'izin",mn:'O Allah, make us among the winners 🏆'}];
+/* ─── DUA ─── */
+var duas=[
+  {ar:'تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُم',tr:'Taqabbal Allahu minna wa minkum',mn:'May Allah accept from us and you 🌙'},
+  {ar:'كُلُّ عَامٍ وَأَنْتُمْ بِخَيْر',tr:"Kullu 'amin wa antum bikhayr",mn:'May every year find you well 🌸'},
+  {ar:'اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ',tr:"Allahumma inni as'aluka al-'afiyah",mn:'O Allah, I ask You for well-being 💪'},
+  {ar:'رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً',tr:'Rabbana atina fid-dunya hasanah',mn:'Our Lord, give us good in this world & Hereafter ✨'},
+  {ar:'اللَّهُمَّ اجْعَلْنَا مِنَ الْفَائِزِينَ',tr:"Allahumma aj'alna minal fa'izin",mn:'O Allah, make us among the winners 🏆'}
+];
 var dIdx=0;
 function renderDua(){var d=duas[dIdx%duas.length];document.getElementById('duaL').innerHTML='<div class="dbox"><div class="darabic">'+d.ar+'</div><div style="font-size:.82rem;color:#b07090;font-style:italic;margin-bottom:6px">'+d.tr+'</div><div style="font-size:.92rem;color:#9a5030;font-weight:700">'+d.mn+'</div></div>'}
 document.getElementById('btnDua').addEventListener('click',function(){dIdx++;renderDua();glitter(window.innerWidth/2,window.innerHeight*.5,6)});
 
-// TTT
+/* ─── TTT ─── */
 var tB=Array(9).fill(''),tPT=true,tWW=0,tLL=0,tDD=0,tGO=false;
 function initTTT(){tB=Array(9).fill('');tPT=true;tGO=false;document.getElementById('tttS').textContent='Aap ki baari! Sara ka AI ready hai! 💪';renderTTT()}
 function renderTTT(){var g=document.getElementById('tttG');g.innerHTML='';tB.forEach(function(c,i){var el=document.createElement('div');el.className='tcell'+(c?' taken':'');el.textContent=c;el.addEventListener('click',function(){if(!tGO&&tPT&&!c)tttMove(i)});g.appendChild(el)})}
-function tttMove(i){if(tB[i]||!tPT||tGO)return;tB[i]='❌';tPT=false;renderTTT();var w=tttChk();if(w==='❌'){tGO=true;document.getElementById('tttS').textContent='🎉 Aap jeet gaye!!';tWW++;updTTT();launchConfetti();return}if(w==='draw'){tGO=true;document.getElementById('tttS').textContent='🤝 Draw!';tDD++;updTTT();return}document.getElementById('tttS').textContent='Sara ka AI soch raha hai... 🤖';setTimeout(function(){tttAI();renderTTT();var w2=tttChk();if(w2==='⭕'){tGO=true;document.getElementById('tttS').textContent='🤖 AI jeet gaya!';tLL++;updTTT()}else if(w2==='draw'){tGO=true;document.getElementById('tttS').textContent='🤝 Draw!';tDD++;updTTT()}else{tPT=true;document.getElementById('tttS').textContent='Aap ki baari! 🎯'}},600)}
+function tttMove(i){if(tB[i]||!tPT||tGO)return;tB[i]='❌';tPT=false;renderTTT();var w=tttChk();if(w==='❌'){tGO=true;document.getElementById('tttS').textContent='🎉 Aap jeet gaye!! Sara ka AI sharminda! 🏆';tWW++;updTTT();launchConfetti();return}if(w==='draw'){tGO=true;document.getElementById('tttS').textContent='🤝 Draw! Sara par nahi! Next time! 😤';tDD++;updTTT();return}document.getElementById('tttS').textContent='Sara ka AI soch raha hai... 🤖';setTimeout(function(){tttAI();renderTTT();var w2=tttChk();if(w2==='⭕'){tGO=true;document.getElementById('tttS').textContent='🤖 Sara ka AI jeet gaya! Try again janab! 💪';tLL++;updTTT()}else if(w2==='draw'){tGO=true;document.getElementById('tttS').textContent='🤝 Draw! Sara khush nahi! 😤';tDD++;updTTT()}else{tPT=true;document.getElementById('tttS').textContent='Aap ki baari! 🎯'}},600)}
 function tttAI(){var best=-Infinity,bi=-1;for(var i=0;i<9;i++){if(!tB[i]){tB[i]='⭕';var sc=tttMM(tB,false);tB[i]='';if(sc>best){best=sc;bi=i}}}if(bi>-1)tB[bi]='⭕'}
 function tttMM(b,isM){var w=tttChk();if(w==='⭕')return 10;if(w==='❌')return -10;if(w==='draw')return 0;if(isM){var bv=-Infinity;for(var i=0;i<9;i++){if(!b[i]){b[i]='⭕';bv=Math.max(bv,tttMM(b,false));b[i]=''}}return bv}else{var bv2=Infinity;for(var j=0;j<9;j++){if(!b[j]){b[j]='❌';bv2=Math.min(bv2,tttMM(b,true));b[j]=''}}return bv2}}
 function tttChk(){var ww=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];for(var i=0;i<ww.length;i++){var w=ww[i];if(tB[w[0]]&&tB[w[0]]===tB[w[1]]&&tB[w[1]]===tB[w[2]])return tB[w[0]]}if(tB.every(function(c){return c}))return'draw';return null}
 function updTTT(){document.getElementById('tW').textContent=tWW;document.getElementById('tL').textContent=tLL;document.getElementById('tD').textContent=tDD}
 document.getElementById('btnTReset').addEventListener('click',initTTT);initTTT();
 
-// MEMORY
-var mEmojis=['🌙','🌸','✨','💖','🕌','🐐','🎀','🌟'];var mCards2=[],mFlipped=[],mMoves2=0,mPairs2=0,mBusy=false,mBest=Infinity;
-function initMem(){var all=mEmojis.concat(mEmojis).sort(function(){return Math.random()-.5});mCards2=all;mFlipped=[];mMoves2=0;mPairs2=0;mBusy=false;document.getElementById('mMv').textContent='0';document.getElementById('mPr').textContent='0';var g=document.getElementById('mGrid');g.innerHTML='';all.forEach(function(e,i){var c=document.createElement('div');c.className='mcard';c.textContent='❓';c.setAttribute('data-e',e);c.addEventListener('click',function(){flipM(c)});g.appendChild(c)})}
-function flipM(el){if(mBusy||el.classList.contains('flipped')||el.classList.contains('matched'))return;el.textContent=el.getAttribute('data-e');el.classList.add('flipped');mFlipped.push(el);if(mFlipped.length===2){mMoves2++;document.getElementById('mMv').textContent=mMoves2;mBusy=true;if(mFlipped[0].getAttribute('data-e')===mFlipped[1].getAttribute('data-e')){mFlipped[0].classList.replace('flipped','matched');mFlipped[1].classList.replace('flipped','matched');mPairs2++;document.getElementById('mPr').textContent=mPairs2;glitter(window.innerWidth/2,window.innerHeight/2,6);mFlipped=[];mBusy=false;if(mPairs2===8){if(mMoves2<mBest){mBest=mMoves2;document.getElementById('mBs').textContent=mBest}setTimeout(function(){launchConfetti();toast('🎉 '+mMoves2+' moves! Sara approves! 🌸')},400)}}else{var f0=mFlipped[0],f1=mFlipped[1];setTimeout(function(){f0.classList.remove('flipped');f0.textContent='❓';f1.classList.remove('flipped');f1.textContent='❓';mFlipped=[];mBusy=false},850)}}}
+/* ─── MEMORY ─── */
+var mEmojis=['🌙','🌸','✨','💖','🕌','🐐','🎀','🌟'];var mCards=[],mFlipped=[],mMoves=0,mPairs=0,mBusy=false,mBest=Infinity;
+function initMem(){var all=mEmojis.concat(mEmojis).sort(function(){return Math.random()-.5});mCards=all;mFlipped=[];mMoves=0;mPairs=0;mBusy=false;document.getElementById('mMv').textContent='0';document.getElementById('mPr').textContent='0';var g=document.getElementById('mGrid');g.innerHTML='';all.forEach(function(e,i){var c=document.createElement('div');c.className='mcard';c.textContent='❓';c.setAttribute('data-e',e);c.addEventListener('click',function(){flipM(c)});g.appendChild(c)})}
+function flipM(el){if(mBusy||el.classList.contains('flipped')||el.classList.contains('matched'))return;el.textContent=el.getAttribute('data-e');el.classList.add('flipped');mFlipped.push(el);if(mFlipped.length===2){mMoves++;document.getElementById('mMv').textContent=mMoves;mBusy=true;if(mFlipped[0].getAttribute('data-e')===mFlipped[1].getAttribute('data-e')){mFlipped[0].classList.replace('flipped','matched');mFlipped[1].classList.replace('flipped','matched');mPairs++;document.getElementById('mPr').textContent=mPairs;glitter(window.innerWidth/2,window.innerHeight/2,6);mFlipped=[];mBusy=false;if(mPairs===8){if(mMoves<mBest){mBest=mMoves;document.getElementById('mBs').textContent=mBest}setTimeout(function(){launchConfetti();toast('🎉 '+mMoves+' moves! Sara approves! 😂🌸')},400)}}else{var f0=mFlipped[0],f1=mFlipped[1];setTimeout(function(){f0.classList.remove('flipped');f0.textContent='❓';f1.classList.remove('flipped');f1.textContent='❓';mFlipped=[];mBusy=false},850)}}}
 document.getElementById('btnMNew').addEventListener('click',initMem);initMem();
 
-// SPINNER
+/* ─── SPINNER ─── */
 var spinSegs=[{t:"Sara ki Dua 🤲",c:'#f8c8d4'},{t:'Bada Win! 🏆',c:'#d8b8f8'},{t:'Khushkhabri Soon 📨',c:'#ffd6c0'},{t:"Allah's Noor 💖",c:'#a8e8f0'},{t:'Sara-approved Luck! ✨',c:'#e8f8a8'},{t:'Virtual Eidi 💰',c:'#f8e0a8'},{t:'Sukoon & Peace 🕊',c:'#f8a8c0'},{t:'Joy Overflows 🎉',c:'#c8f0d8'}];
 var spinning=false,spinAng=0;
 function initSpin(){drawSpin(0)}
@@ -1485,55 +1263,68 @@ function drawSpin(rot){var cv=document.getElementById('spinC');if(!cv)return;var
 function spinWheel(){if(spinning)return;spinning=true;var vel=rand(18,28),dur=rand(3,5),st=performance.now();function fr(now){var el=(now-st)/1000,dec=Math.max(0,1-el/dur);spinAng+=vel*dec*0.05;drawSpin(spinAng);if(dec>0)requestAnimationFrame(fr);else{spinning=false;var sa2=(2*Math.PI)/spinSegs.length,n=(((-spinAng%(2*Math.PI))+(2*Math.PI))%(2*Math.PI)),idx=Math.floor(n/sa2)%spinSegs.length;document.getElementById('spinR').textContent='🎁 Sara keh rahi hai: '+spinSegs[idx].t;glitter(window.innerWidth/2,window.innerHeight*.45,12);toast('Blessing: '+spinSegs[idx].t)}}requestAnimationFrame(fr)}
 document.getElementById('spinW').addEventListener('click',spinWheel);document.getElementById('btnSpinA').addEventListener('click',spinWheel);initSpin();
 
-// SCRAMBLE
-var srWords=[{w:'QURBANI',h:'🐐 The Eid ul Adha sacrifice'},{w:'MUBARAK',h:'🌙 What Sara says on Eid'},{w:'BIRYANI',h:'🍛 Most important Eid food ever!'},{w:'PROPHET',h:'📖 Ibrahim (AS) was one'},{w:'BLESSED',h:'✨ What Sara thinks you are'}];
+/* ─── SCRAMBLE ─── */
+var srWords=[{w:'QURBANI',h:'🐐 The Eid ul Adha sacrifice'},{w:'MUBARAK',h:'🌙 What Sara says on Eid'},{w:'BIRYANI',h:'🍛 Most important Eid food ever!'},{w:'PROPHET',h:'📖 Ibrahim (AS) was one'},{w:'BLESSED',h:'✨ What Sara thinks you are'},{w:'PRAYER',h:'🤲 5 times a day'},{w:'GENEROUS',h:'💖 Sara thinks you are this'},{w:'CHARITY',h:'💰 Sharing with the poor'}];
 var srSc=0,srSt=0,srCur='';
 function scr(s){return s.split('').sort(function(){return Math.random()-.5}).join('')}
 function initScramble(){var w=srWords[Math.floor(Math.random()*srWords.length)];srCur=w.w;document.getElementById('srW').textContent=scr(w.w);document.getElementById('srH').textContent='💡 Hint: '+w.h;document.getElementById('srIn').value='';document.getElementById('srRes').textContent=''}
-function chkSr(){var ans=document.getElementById('srIn').value.trim().toUpperCase();if(ans===srCur){srSc+=10;srSt++;document.getElementById('srRes').textContent='✅ Sahi! Sara super proud! 🏆';glitter(window.innerWidth/2,window.innerHeight*.4,10);setTimeout(initScramble,1500)}else{srSt=0;document.getElementById('srRes').textContent='❌ Nahi! Try again! 💪'}document.getElementById('srSc').textContent=srSc;document.getElementById('srSt').textContent=srSt}
+function chkSr(){var ans=document.getElementById('srIn').value.trim().toUpperCase();if(ans===srCur){srSc+=10+srSt*2;srSt++;document.getElementById('srRes').textContent='✅ Sahi! Sara super proud! 🏆 +'+(10+srSt*2)+'pts';glitter(window.innerWidth/2,window.innerHeight*.4,10);setTimeout(initScramble,1500)}else{srSt=0;document.getElementById('srRes').textContent='❌ Nahi! Sara hints de rahi hai ke try again! 💪'}document.getElementById('srSc').textContent=srSc;document.getElementById('srSt').textContent=srSt}
 document.getElementById('btnSrCheck').addEventListener('click',chkSr);document.getElementById('srIn').addEventListener('keydown',function(e){if(e.key==='Enter')chkSr()});
 document.getElementById('btnSrNext').addEventListener('click',function(){srSt=0;initScramble()});
-document.getElementById('btnSrReveal').addEventListener('click',function(){document.getElementById('srRes').textContent='👀 Answer: '+srCur+' — Sara ne bataya! 😂';srSt=0;setTimeout(initScramble,2000)});initScramble();
+document.getElementById('btnSrReveal').addEventListener('click',function(){document.getElementById('srRes').textContent='👀 Answer: '+srCur+' — Sara ne bataya! 😂';srSt=0;setTimeout(initScramble,2000)});
+initScramble();
 
-// LETTER
+/* ─── LETTER ─── */
 var lRev=false;
 document.getElementById('btnRevL').addEventListener('click',function(){if(lRev)return;lRev=true;document.getElementById('lTxt').classList.remove('lblur');glitter(window.innerWidth/2,window.innerHeight*.4,14);launchConfetti();this.textContent='💌 Dobara parhna chahte hain? 🌸';this.disabled=true;toast('💌 Sara ka letter khul gaya! 🌸')});
 
-// POETRY
-var poems={hindi:[["Sara ne socha — kuch special likhoon aaj, 🌙","Aap ke liye yeh pyaara message banaya! 💕","Aap meri zindagi ka ek khaas chapter hain, 🌟","Sara kehti hai: Allah kare aap ki har khwahish puri ho 🌸"]],english:[["Sara wrote this poem just for you today 🌙","From her heart, she wants to say: you're okay! 💕","A friend like you makes every Eid shine bright 🌟","Sara's grateful you exist — morning, noon, and night 🌸"]],urdu:[["سارہ نے یہ لکھا آپ کے لئے 🌙","دل سے کہتی ہے، رہیں خوش ہمیشہ 💕","عید کا یہ دن ہو مبارک آپ کو ✨","سارہ کی دعا ہے، اللہ رکھے آپ کو 🤲"]],funny:[["Sara spent 3 hours on this 🌙","Aap ko appreciate karna hoga! 😤","She almost cried making it...","Okay no she didn't — but still! 😂💕"]]};
+/* ─── POETRY ─── */
+var poems={
+  hindi:[["Sara ne socha — kuch special likhoon aaj, 🌙","Aap ke liye yeh pyaara message banaya! 💕","Aap meri zindagi ka ek khaas chapter hain, 🌟","Sara kehti hai: Allah kare aap ki har khwahish puri ho 🌸"],["Sara ki dua hai aap ke liye har subah 🤲","Aap ki smile dekh ke Sara ka din banta hai 😊","Is Eid pe aap khush rahein — Sara ka yahi farman 💪","Dost hain aap jaisa — Sara ki khushi ka kharana 🌟"]],
+  english:[["Sara wrote this poem just for you today 🌙","From her heart, she wants to say: you're okay! 💕","A friend like you makes every Eid shine bright 🌟","Sara's grateful you exist — morning, noon, and night 🌸"],["On this blessed Eid, Sara prays for your success ✨","May Allah lift your burdens and reduce your stress 💪","A friendship like ours — Sara thinks it's rare 🌙","Eid Mubarak from Sara — with love and care! 💖"]],
+  urdu:[["سارہ نے یہ لکھا آپ کے لئے 🌙","دل سے کہتی ہے، رہیں خوش ہمیشہ 💕","عید کا یہ دن ہو مبارک آپ کو ✨","سارہ کی دعا ہے، اللہ رکھے آپ کو 🤲"],["آپ میری زندگی کا حصہ ہیں 💖","سارہ یہ جانتی ہے، مانتی ہے 🌸","عید مبارک — دل کی گہرائی سے 🌙","یہ سب بنایا، آپ کی خوشی کے لئے ✨"]],
+  funny:[["Sara spent 3 hours on this 🌙","Aap ko appreciate karna hoga! 😤","Usne almost cry kiya banate banate...","Okay no she didn't — but still! 😂💕"],["Eid Mubarak said the bakra 🐐","Then Sara said it too — with drama 😂","She made you this entire thing!","Aap thankyou message bhejein please! 📱😤💖"]]
+};
 var pIdx={hindi:0,english:0,urdu:0,funny:0},curP='hindi';
 document.getElementById('poemTabs').querySelectorAll('.rtype').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#poemTabs .rtype').forEach(function(x){x.classList.remove('active')});b.classList.add('active');curP=b.getAttribute('data-p');pIdx[curP]=0;renderPoem()})});
 function renderPoem(){var list=poems[curP];var idx=pIdx[curP]%list.length;var lines=list[idx];var isUrdu=curP==='urdu';document.getElementById('poemD').innerHTML=lines.map(function(l,i){return'<div class="poem-line '+(isUrdu?'poem-urdu':'')+'" style="animation-delay:'+(i*.15)+'s">'+l+'</div>'}).join('')}
 document.getElementById('btnNPoem').addEventListener('click',function(){pIdx[curP]++;renderPoem();glitter(window.innerWidth/2,window.innerHeight*.45,8)});renderPoem();
 
-// CHALLENGES
-var chs=["10 push-ups Sara ki khushi ke liye! 💪🔥","Eid Mubarak bhejein 3 logon ko 📱","Al-Fatiha ek baar parhein 🤲","Biryani khaiye — Sara ka order hai! 🍛😂","Family ko compliment dein 💖","Kisi ko hasaiye aaj 😂","Sara ke liye dua karein! 🌙🤲","Aaj raat chand dekhein 🌙✨","Ek dost ko call karein 📞💕","10 baar Alhamdulillah kahein 🌟"];
+/* ─── CHALLENGES ─── */
+var chs=["10 push-ups Sara ki khushi ke liye! 💪🔥","Eid Mubarak bhejein 3 logon ko 📱","Al-Fatiha ek baar parhein 🤲","Biryani khaiye — Sara ka order hai! 🍛😂","Family ko compliment dein 💖","Kisi ko hasaiye aaj 😂","Sara ke liye dua karein! 🌙🤲","Aaj raat chand dekhein 🌙✨","Ek dost ko call karein jo yaad aaye 📞💕","10 baar Alhamdulillah kahein 🌟","Sara ko thank you message bhejein 😂💕","Eid wali selfie lein! 🤳✨"];
 var chCnt=0,curCh='';
 document.getElementById('btnGetCh').addEventListener('click',function(){curCh=chs[Math.floor(Math.random()*chs.length)];document.getElementById('chCard').textContent='⚔️ '+curCh;document.getElementById('btnDoneCh').style.display='inline-flex';glitter(window.innerWidth/2,window.innerHeight*.4,8)});
-document.getElementById('btnDoneCh').addEventListener('click',function(){chCnt++;document.getElementById('chCnt').textContent=chCnt;var t=document.createElement('div');t.className='wtag';t.style.background='rgba(180,240,180,.6)';t.textContent='✅ '+curCh.substring(0,25)+'...';document.getElementById('chList').appendChild(t);document.getElementById('btnDoneCh').style.display='none';glitter(window.innerWidth/2,window.innerHeight*.4,10);toast('Challenge done! 🏆 x'+chCnt)});
+document.getElementById('btnDoneCh').addEventListener('click',function(){chCnt++;document.getElementById('chCnt').textContent=chCnt;var t=document.createElement('div');t.className='wtag';t.style.background='rgba(180,240,180,.6)';t.textContent='✅ '+curCh.substring(0,25)+'...';document.getElementById('chList').appendChild(t);document.getElementById('btnDoneCh').style.display='none';glitter(window.innerWidth/2,window.innerHeight*.4,10);toast('Challenge done! Sara ki taraf se 🏆 x'+chCnt)});
 
-// WISHES
+/* ─── WISHES ─── */
 function addWish(){var inp=document.getElementById('wIn');var v=inp.value.trim();if(!v)return;var b=document.getElementById('wBoard');var t=document.createElement('div');t.className='wtag';t.textContent=v;t.addEventListener('click',function(){var r=t.getBoundingClientRect();glitter(r.left+40,r.top+16,6)});b.appendChild(t);b.scrollTop=b.scrollHeight;inp.value='';toast('Sara ko message gaya! 💖');glitter(window.innerWidth/2,window.innerHeight*.6,8)}
 document.getElementById('btnWish').addEventListener('click',addWish);document.getElementById('wIn').addEventListener('keydown',function(e){if(e.key==='Enter')addWish()});
 document.querySelectorAll('.wtag[data-w]').forEach(function(t){t.addEventListener('click',function(){document.getElementById('wIn').value=t.getAttribute('data-w');addWish()})});
 
-// BATTLE
+/* ─── BATTLE ─── */
 var bRun=false,bPS=50,bAS=50,bInt=null,bTL=0;
-document.getElementById('btnBS').addEventListener('click',function(){if(bRun)return;bRun=true;bPS=50;bAS=50;bTL=10;document.getElementById('btnBS').style.display='none';document.getElementById('btnBT').style.display='inline-flex';bInt=setInterval(function(){bTL-=0.1;document.getElementById('bTimer').textContent=bTL<=0?'⏰ DONE!':'⏱ '+bTL.toFixed(1)+'s';bAS=Math.min(95,bAS+rand(.05,.25));bPS=Math.max(5,100-bAS);document.getElementById('bPF').style.width=bPS+'%';document.getElementById('bPF').textContent=Math.round(bPS)+'%';document.getElementById('bAF').style.width=bAS+'%';document.getElementById('bAF').textContent=Math.round(bAS)+'%';if(bTL<=0){clearInterval(bInt);bRun=false;document.getElementById('btnBS').style.display='inline-flex';document.getElementById('btnBT').style.display='none';var won=bPS>bAS;document.getElementById('bStatus').textContent=won?'🏆 AAP JEET GAYE!':'🤖 AI jeet gaya!';if(won)launchConfetti()}},100)});
+document.getElementById('btnBS').addEventListener('click',function(){if(bRun)return;bRun=true;bPS=50;bAS=50;bTL=10;document.getElementById('btnBS').style.display='none';document.getElementById('btnBT').style.display='inline-flex';document.getElementById('bStatus').textContent='Sara ka AI vs Aap — TAP FAST!! 💥⚡';bInt=setInterval(function(){bTL-=0.1;document.getElementById('bTimer').textContent=bTL<=0?'⏰ DONE!':'⏱ '+bTL.toFixed(1)+'s';bAS=Math.min(95,bAS+rand(.05,.25));bPS=Math.max(5,100-bAS);document.getElementById('bPF').style.width=bPS+'%';document.getElementById('bPF').textContent=Math.round(bPS)+'%';document.getElementById('bAF').style.width=bAS+'%';document.getElementById('bAF').textContent=Math.round(bAS)+'%';if(bTL<=0){clearInterval(bInt);bRun=false;document.getElementById('btnBS').style.display='inline-flex';document.getElementById('btnBT').style.display='none';var won=bPS>bAS;document.getElementById('bStatus').textContent=won?'🏆 AAP JEET GAYE!! Sara ka AI sharminda! 🎉':'🤖 Sara ka AI jeet gaya! Sara khush! Next time janab! 💪';if(won)launchConfetti()}},100)});
 document.getElementById('btnBT').addEventListener('click',function(){if(!bRun)return;bPS=Math.min(95,bPS+rand(1.5,3.5));bAS=Math.max(5,100-bPS);glitter(window.innerWidth/2,window.innerHeight*.6,3)});
 
-// GOALS
+/* ─── GOALS ─── */
 var goals=[];
 function renderGoals(){var list=document.getElementById('gList');if(!goals.length){list.innerHTML='<p style="color:#b07090;font-style:italic;font-size:.9rem">Sara ka first goal: Aap ko impress karna ✅ 😂</p>';return}list.innerHTML=goals.map(function(g,i){return'<div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.6);border-radius:14px;padding:10px 14px;margin:5px 0;border:1.5px solid rgba(230,150,180,'+(g.done?.6:.3)+')" onclick="toggleG('+i+')"><span style="font-size:1.2rem;cursor:pointer">'+(g.done?'✅':'⬜')+'</span><span style="flex:1;font-size:.9rem;color:'+(g.done?'#60b870':'#9a4060')+';'+(g.done?'text-decoration:line-through':'')+'">'+g.text+'</span></div>'}).join('');var done=goals.filter(function(g){return g.done}).length;document.getElementById('gProg').textContent=done+'/'+goals.length}
 window.toggleG=function(i){goals[i].done=!goals[i].done;renderGoals();if(goals[i].done){glitter(window.innerWidth/2,window.innerHeight/2,8);toast('Goal done! Sara impressed! 🏆')}};
 document.getElementById('btnGAdd').addEventListener('click',function(){var v=document.getElementById('gIn').value.trim();if(!v)return;goals.push({text:v,done:false});document.getElementById('gIn').value='';renderGoals();toast('Goal add hua! 🎯')});
 document.getElementById('gIn').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('btnGAdd').click()});
 
-// RIDDLES
-var riddleData=[{q:'Sara ne socha: Main kya hoon jo hamesha badhta hoon, ghatna nahi jaanta? 🌙',h:'Hint: Dekho din raat!',a:['umra','age','umar','umer']},{q:'Jis ke aane se raat roshni mein badal jaati hai — wo kya hai? ✨',h:'Hint: Raat ke aasman mein!',a:['chand','chaand','moon']},{q:'Sara kehti hai: Kya cheez hai jo seedha nahi chalta par sab jagah pohonch jaata hai? 📱',h:'Hint: Aap abhi use kar rahe hain!',a:['internet','wifi','signal']},{q:'Main tumhara hoon, par sab mujhe zyada use karte hain — main kya hoon? 🤔',h:"Hint: It's your identity!",a:['naam','name']},{q:'Eid ki biryani khate khate Sara ne socha — kya cheez hai jo hamesha hot hai, kabhi thandi nahi hoti? ☀️',h:'Hint: Subah dekhte hain!',a:['suraj','sun','dhoop']}];
+/* ─── RIDDLES (Screen 5) ─── */
+var riddleData=[
+  {q:'Sara ne socha: Main kya hoon jo hamesha badhta hoon, ghatna nahi jaanta? 🌙',h:'Sara hint: Dekho din raat!',a:['umra','age','umar','umer','age']},
+  {q:'Jis ke aane se raat roshni mein badal jaati hai — wo kya hai? ✨',h:'Sara hint: Raat ke aasman mein!',a:['chand','chaand','moon']},
+  {q:'Sara kehti hai: Kya cheez hai jo seedha nahi chalta par sab jagah pohonch jaata hai? 📱',h:'Sara hint: Aap abhi use kar rahe hain!',a:['internet','wifi','signal']},
+  {q:'Main tumhara hoon, par sab mujhe zyada use karte hain tumhare naam se — main kya hoon? 🤔',h:"Sara hint: It's your identity!",a:['naam','name']},
+  {q:'Eid ki biryani khate khate Sara ne socha — kya cheez hai jo hamesha hot hai, kabhi thandi nahi hoti? ☀️',h:'Sara hint: Subah dekhte hain!',a:['suraj','sun','dhoop']},
+  {q:'Sara ka sawaal: Woh kya hai jo toota nahi, phir bhi chips ho jata hai? 😂',h:'Sara hint: Sara use khaati hai!',a:['chip','chips','potato chips']}
+];
 var riddleIdx=0,riddleSc2=0,riddleHintShown=false;
 function initRiddle(){riddleIdx=Math.floor(Math.random()*riddleData.length);showRiddle()}
-function showRiddle(){var r=riddleData[riddleIdx];document.getElementById('riddleQ').textContent=r.q;document.getElementById('riddleHint').style.display='none';document.getElementById('riddleIn').value='';document.getElementById('riddleRes').textContent='';riddleHintShown=false}
+function showRiddle(){var r=riddleData[riddleIdx];document.getElementById('riddleQ').textContent=r.q;document.getElementById('riddleHint').style.display='none';document.getElementById('riddleHint').textContent=r.h;document.getElementById('riddleIn').value='';document.getElementById('riddleRes').textContent='';riddleHintShown=false}
 document.getElementById('btnRiddleCheck').addEventListener('click',function(){var ans=document.getElementById('riddleIn').value.trim().toLowerCase();var r=riddleData[riddleIdx];var correct=r.a.some(function(a){return ans===a||ans.includes(a)||a.includes(ans)});if(correct){riddleSc2+=(riddleHintShown?5:10);document.getElementById('riddleRes').textContent='✅ Waah! Sara ka genius dost! +'+( riddleHintShown?5:10)+' pts! 🏆';document.getElementById('riddleSc').textContent=riddleSc2;glitter(window.innerWidth/2,window.innerHeight*.4,10);setTimeout(function(){riddleIdx=(riddleIdx+1)%riddleData.length;showRiddle()},1800)}else{document.getElementById('riddleRes').textContent='❌ Nahi janab! Sara bhi confuse thi! 😂'}});
 document.getElementById('riddleIn').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('btnRiddleCheck').click()});
 document.getElementById('btnRiddleHint').addEventListener('click',function(){var r=riddleData[riddleIdx];document.getElementById('riddleHint').style.display='block';document.getElementById('riddleHint').textContent='💡 '+r.h;riddleHintShown=true});
@@ -1541,36 +1332,65 @@ document.getElementById('btnRiddleNext').addEventListener('click',function(){rid
 document.getElementById('btnRiddleReveal').addEventListener('click',function(){document.getElementById('riddleRes').textContent='👀 Jawab: '+riddleData[riddleIdx].a[0]+' — Sara ne bataya! 😂';setTimeout(function(){riddleIdx=(riddleIdx+1)%riddleData.length;showRiddle()},2000)});
 initRiddle();
 
-// COMPLIMENTS
-var complData={general:["Aap ki smile sara kamra roshni kar deti hai 🌟","Aap ki presence se sab kuch better ho jaata hai 💖"],friend:["Iss duniya mein aap jaisa dost milna — qismat ki baat hai 💎","Sara guarantee karti hai: Aap ke bina zindagi bekar hai! 💕"],eid:["Is Eid, Allah aap ko woh sab de jis ke aap haqdar hain 🌙","Eid ka yeh din aap ki life ka turning point ban jaye! 🌟"],sara:["Sara officially declare karti hai: Aap perfect hain! 😂💖","Sara ki life mein best addition aap hain — confirmed! ✅"]};
+/* ─── COMPLIMENTS ─── */
+var complData={
+  general:["Aap ki smile sara kamra roshni kar deti hai 🌟","Aap ki presence se sab kuch better ho jaata hai 💖","Aap woh hain jo dusron ki zindagi mein rang bharte hain 🌸","Aap ka dil sach mein sona hai 🏅","Aap ki baat karna best therapy hai — Sara approve karti hai! 😊"],
+  friend:["Iss duniya mein aap jaisa dost milna — qismat ki baat hai 💎","Sara guarantee karti hai: Aap ke bina zindagi bekar hai! 💕","Jo dost aap hain, woh hona bahut mushkil hai 🌟","Aap ki loyalty sara ka treasure hai 🏆","Sara kehti hai: Aap meri favorite person hain! 😄💖"],
+  eid:["Is Eid, Allah aap ko woh sab de jis ke aap haqdar hain 🌙","Aap ki dua mein barkat ho — Eid Mubarak janab! 🤲","Is Eid ki khushiyan aap ke andar ki roshni jitni hon! ✨","Eid ka yeh din aap ki life ka turning point ban jaye! 🌟","Allah aap ko hamesha apni hifazat mein rakhe 🛡️"],
+  sara:["Sara officially declare karti hai: Aap perfect hain! 😂💖","Aap ka sense of humor Sara ka hi level hai — matlab top tier! 😂","Sara ne 100 logon mein se aap ko chose kiya — aap lucky hain! 😤💕","Janab, aap ka swag Sara certified hai! 🏅","Sara ki life mein best addition aap hain — confirmed! ✅"]
+};
 var curCType='general';
 window.setCType=function(btn,t){document.querySelectorAll('[data-ct]').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');curCType=t};
 function getCompliment(){var list=complData[curCType];var c=list[Math.floor(Math.random()*list.length)];var box=document.getElementById('cMachine');box.style.transform='scale(.9)';box.style.opacity='.4';setTimeout(function(){box.textContent=c;box.style.transform='';box.style.opacity='1';glitter(window.innerWidth/2,window.innerHeight*.5,10)},300)}
 document.getElementById('btnCompliment').addEventListener('click',getCompliment);document.getElementById('cMachine').addEventListener('click',getCompliment);
-document.getElementById('btnSaveCompliment').addEventListener('click',function(){var txt=document.getElementById('cMachine').textContent;if(txt.includes('Tap'))return;var s=document.getElementById('savedC');var t=document.createElement('div');t.className='wtag';t.textContent=txt.substring(0,35)+'...';s.appendChild(t);toast('Saved! 💾💖')});
+document.getElementById('btnSaveCompliment').addEventListener('click',function(){var txt=document.getElementById('cMachine').textContent;if(txt.includes('Tap'))return;var s=document.getElementById('savedC');var t=document.createElement('div');t.className='wtag';t.textContent=txt.substring(0,35)+'...';s.appendChild(t);toast('Compliment save hua! 💾💖')});
 
-// AFFIRMATIONS
-var affs=["💖 Aap exactly wahan hain jahan aap ko hona chahiye. Trust the process!","🌟 Aap ki worth aap ki productivity se nahi naapi jaati!","🌙 Aap deserve karte hain pyaar, sukoon, aur khushiyan!","💪 Har mushkil jis se aap guzre — usne aap ko aur mazboot banaya!","🌸 Aap ki unique qualities is duniya ko better banati hain!","✨ Aap ka best chapter abhi likha ja raha hai — keep going janab!","🤲 Allah aap ke saath hai — aur Sara bhi!","🏆 Aap jitna sochte hain ussse kahin zyada capable hain!"];
+/* ─── AFFIRMATIONS ─── */
+var affs=["💖 Aap exactly wahan hain jahan aap ko hona chahiye. Trust the process!","🌟 Aap ki worth aap ki productivity se nahi naapi jaati — aap inherently valuable hain!","🌙 Aap deserve karte hain pyaar, sukoon, aur khushiyan — Sara personally vouch karti hai!","💪 Har mushkil jis se aap guzre — usne aap ko aur mazboot banaya!","🌸 Aap ki unique qualities is duniya ko better banati hain — Sara witness hai!","✨ Aap ka best chapter abhi likha ja raha hai — keep going janab!","🤲 Allah aap ke saath hai — aur Sara bhi! Dono milke powerful team hain! 😂💖","🏆 Aap jitna sochte hain ussse kahin zyada capable hain — Sara swear karti hai!"];
 var affIdx=0,affCntN=0;
 function nextAff(){var card=document.getElementById('affCard');card.style.transform='rotateY(90deg)';card.style.opacity='0';setTimeout(function(){affIdx=(affIdx+1)%affs.length;card.textContent=affs[affIdx];card.style.transform='';card.style.opacity='1';affCntN++;document.getElementById('affCnt').textContent=affCntN;glitter(window.innerWidth/2,window.innerHeight*.4,8)},300)}
 document.getElementById('btnAff').addEventListener('click',nextAff);document.getElementById('affCard').addEventListener('click',nextAff);
 document.getElementById('btnAffShare').addEventListener('click',function(){var t=affs[affIdx];if(navigator.share)navigator.share({text:'Sara ki affirmation: '+t+' 🌙'});else{if(navigator.clipboard)navigator.clipboard.writeText(t);toast('Copied! 📤')}});
 
-// DREAM TICKET
-var destData={mecca:{emoji:'🕋',name:'Mecca, Saudi Arabia',msg:"Sara ki sabse bari dua: Aap ko Hajj ka mauqa mile! 🤲🌙"},medina:{emoji:'🕌',name:'Medina, Saudi Arabia',msg:"Prophet ﷺ ki qurbat mein — Sara ki dua hai! 💚"},istanbul:{emoji:'🇹🇷',name:'Istanbul, Turkey',msg:"Sara bhi saath chalegi — chai aur tulip gardens! ☕🌷😂"},dubai:{emoji:'🇦🇪',name:'Dubai, UAE',msg:"Sara ka order: Khalifa tower se photo lein! 📸😂"},lahore:{emoji:'🏙️',name:'Lahore, Pakistan',msg:"Lahore ka nihari aur Badshahi Masjid — Sara ka dream! 🍲🕌"},paris:{emoji:'🗼',name:'Paris, France',msg:"Sara kehti hai: Eiffel Tower pe Eid — unbeatable! 🗼🌙"}};
+/* ─── DREAM TICKET ─── */
+var destData={
+  mecca:{emoji:'🕋',name:'Mecca, Saudi Arabia',msg:"Sara ki sabse bari dua: Aap ko Hajj ka mauqa mile! 🤲🌙"},
+  medina:{emoji:'🕌',name:'Medina, Saudi Arabia',msg:"Prophet ﷺ ki qurbat mein — Sara ki dua hai yeh aap ke liye! 💚"},
+  istanbul:{emoji:'🇹🇷',name:'Istanbul, Turkey',msg:"Sara bhi saath chalegi — chai aur tulip gardens! ☕🌷😂"},
+  dubai:{emoji:'🇦🇪',name:'Dubai, UAE',msg:"Sara ka order: Aap khalifa tower se photo lein — main social media pe share karo! 📸😂"},
+  lahore:{emoji:'🏙️',name:'Lahore, Pakistan',msg:"Lahore ka nihari aur Badshahi Masjid — Sara ka dream! 🍲🕌"},
+  paris:{emoji:'🗼',name:'Paris, France',msg:"Sara kehti hai: Eiffel Tower pe Eid — unbeatable! 🗼🌙 Aap deserve karte hain!"}
+};
 var curDest=null;
 window.setDest=function(btn){document.querySelectorAll('[data-dest]').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');curDest=btn.getAttribute('data-dest');var d=destData[curDest];document.getElementById('ticketDest').textContent=d.emoji+' '+d.name;document.getElementById('ticketMsg').textContent=d.msg;glitter(window.innerWidth/2,window.innerHeight*.5,8)};
-document.getElementById('btnTicketShare').addEventListener('click',function(){if(!curDest){toast('Destination choose karein pehle! ✈️');return}var d=destData[curDest];var msg='✈️ Sara ke saath '+d.name+' ja raha hoon Eid pe! 🌙';if(navigator.share)navigator.share({text:msg});else{if(navigator.clipboard)navigator.clipboard.writeText(msg);toast('Copied! 📤')}});
+document.getElementById('btnTicketShare').addEventListener('click',function(){if(!curDest){toast('Destination choose karein pehle! ✈️');return}var d=destData[curDest];var msg='✈️ Sara ke saath '+d.name+' ja raha hoon Eid pe! 🌙 Sara ka dream ticket! 💖';if(navigator.share)navigator.share({text:msg});else{if(navigator.clipboard)navigator.clipboard.writeText(msg);toast('Copied! Share karein! 📤')}});
 
-// STORY
-var storyData={start:{chap:1,text:"🌙 Eid ki subah — aap ki aankhein khulti hain. Sara ne already 17 messages bhej diye hain. Pehla kaam kya karein aap?",choices:[{t:"☕ Pehle chai",n:'chai'},{t:"📱 Sara ko reply",n:'sara'},{t:"🤲 Fajr namaz",n:'namaz'}]},chai:{chap:2,text:"Chai bana rahe hain — perfect! Sara ka 18waan message aata hai: 'CHAI KE BAAD JALDI AANA 😤🌙' Kya karein?",choices:[{t:"🏃 Jaldi jaiye",n:'sara_happy'},{t:"😂 Sara ko tease karein",n:'tease'},{t:"📸 Chai ki photo bhejein",n:'chai_win'}]},sara:{chap:2,text:"Aap Sara ko reply karte hain. Sara: 'FINALLY! Main sooch rahi thi aap bakra ban gaye! 🐐😂 Eid Mubarak!'",choices:[{t:"😂 Sara ko tease karein",n:'tease'},{t:"💖 Dil se reply",n:'sweet'},{t:"🎁 Virtual Eidi bhejein",n:'eidi_win'}]},namaz:{chap:2,text:"Mashallah! Aap namaz padhte hain. Sara: 'Main bhi parhna chahti thi! Next Eid pakka!' 🤲",choices:[{t:"🌸 Sara ko encourage karein",n:'sweet'},{t:"😂 Tease karein",n:'tease'}]},tease:{chap:3,text:"Sara ka reply: 'MAIN TUMSE BAAT NAHI KARNA 😤' ... phir 3 seconds baad: 'Okay fine hi Eid Mubarak 🌙😂'",choices:[{t:"🏆 Victory dance",n:'ending_hero'},{t:"💕 Apologize cutely",n:'sweet'}]},sweet:{chap:3,text:"Aap Sara ko pyaar se reply karte hain. Sara: 'Okay yaar aap bohot sweet hain 😭💖'",choices:[{t:"🌙 Eid Mubarak kehein",n:'ending_sweet'},{t:"🤲 Dua karein",n:'ending_dua'}]},sara_happy:{chap:3,text:"Aap phoran Sara ke paas jaate hain! Sara ne already biryani banai hai! 💖",choices:[{t:"💖 Sara ko hug virtually",n:'ending_sweet'},{t:"🍛 Biryani khao",n:'ending_hero'}]},chai_win:{chap:3,text:"Aap chai ki photo bhejte hain. Sara: 'Main aa rahi hoon! 5 minute mein!' 😂",choices:[{t:"😂 Sara ko chai pilao",n:'ending_hero'},{t:"💕 Saath Eid manao",n:'ending_sweet'}]},eidi_win:{chap:3,text:"Aap Sara ko virtual Eidi bhejte hain. Sara: 'YEH BEST EIDI HAI JANAB! 🥺💖'",choices:[{t:"🎊 Celebrate!",n:'ending_hero'},{t:"🤲 Shukriya",n:'ending_dua'}]},ending_sweet:{chap:'Final',text:"🌸 THE END — Eid ka yeh din aap ke liye bahut khaas raha. Sara Mubarak deti hai! 🌙✨",choices:[]},ending_hero:{chap:'Final',text:"🏆 THE HERO ENDING — Aap ne sab challenges jeet liye! Sara ne 'Eid Legend 2025' award diya! 🏅",choices:[]},ending_dua:{chap:'Final',text:"🤲 THE BLESSED ENDING — Aap ki Eid dua aur sukoon se bhari rahi! Ameen. 🌙💖",choices:[]}};
+/* ─── STORY (Screen 6) ─── */
+var storyData={
+  start:{chap:1,text:"🌙 Eid ki subah — aap ki aankhein khulti hain. Bahar se bakre ki awaaz aa rahi hai. Sara ne already WhatsApp pe 17 messages bhej diye hain. Pehla kaam kya karein aap?",choices:[{t:"☕ Pehle chai — phir sab",n:'chai'},{t:"📱 Sara ko reply — warna tension",n:'sara'},{t:"🤲 Fajr namaz padhein",n:'namaz'}]},
+  chai:{chap:2,text:"Aap chai bana rahe hain — perfect! Sara ka 18waan message aata hai: 'CHAI KE BAAD JALDI AANA 😤🌙' Kya karein aap?",choices:[{t:"🏃 Jaldi jaiye Sara ke paas",n:'sara_happy'},{t:"😂 Sara ko tease karein thoda",n:'tease'},{t:"📸 Chai ki photo bhejein Sara ko",n:'chai_win'}]},
+  sara:{chap:2,text:"Aap Sara ko reply karte hain. Sara ka message aata hai: 'FINALLY! Main sooch rahi thi aap bakra ban gaye! 🐐😂 Eid Mubarak janab!' Phir?",choices:[{t:"😂 Sara ko tease karein",n:'tease'},{t:"💖 Dil se reply karein",n:'sweet'},{t:"🎁 Virtual Eidi bhejein",n:'eidi_win'}]},
+  namaz:{chap:2,text:"Mashallah! Aap namaz padhte hain — Sara ko pata chalta hai aur wo kehti hai: 'Main bhi parhna chahti thi! Next Eid pakka!' 😂🤲 Ab Sara intezaar mein hai.",choices:[{t:"🌸 Sara ko encourage karein",n:'sweet'},{t:"😂 Tease karein thoda",n:'tease'},{t:"🍛 Biryani ke liye invite karein",n:'biryani'}]},
+  tease:{chap:3,text:"Aap Sara ko tease karte hain. Sara ka reply: 'MAIN TUMSE BAAT NAHI KARNA 😤' ... aur phir 3 seconds baad: 'Okay fine hi Eid Mubarak 🌙😂' Sara ka anger record: 3 seconds!",choices:[{t:"🏆 Victory dance karein",n:'ending_hero'},{t:"💕 Apologize cutely",n:'sweet'},{t:"😂 Double tease",n:'ending_drama'}]},
+  sweet:{chap:3,text:"Aap Sara ko pyaar se reply karte hain. Sara thodi der baad send karti hai: '...Okay yaar fine aap bohot sweet hain 😭💖 Mujhe Sara wala 'I'm not crying' moment aa gaya!' Bohot touching!",choices:[{t:"🌙 Eid Mubarak kehein",n:'ending_sweet'},{t:"🤲 Mil ke dua karein",n:'ending_dua'}]},
+  sara_happy:{chap:3,text:"Aap phoran Sara ke paas jaate hain! Sara ne already biryani banai hai, Eid ka saman set kiya hai, aur ek handmade card banaya hai sirf aap ke liye. 💖 'Main jaanti thi aap aayenge!'",choices:[{t:"💖 Sara ko hug karein virtually",n:'ending_sweet'},{t:"🍛 Biryani khake chai piyein",n:'ending_hero'}]},
+  chai_win:{chap:3,text:"Aap chai ki photo bhejte hain. Sara: '☕ Main aa rahi hoon chai peene! 5 minute mein!' Aur sach mein 5 minute mein Sara ka call aata hai! 😂",choices:[{t:"😂 Sara ko chai pilao",n:'ending_hero'},{t:"💕 Saath Eid manao",n:'ending_sweet'}]},
+  eidi_win:{chap:3,text:"Aap Sara ko virtual Eidi bhejte hain: '💰 Ek acha dost ka time!' Sara: 'YEH BEST EIDI HAI JANAB! 🥺💖' Aur phir Sara ne bhi aap ko Eidi di — yeh poora surprise hi tha! 🎁",choices:[{t:"🎊 Celebrate!",n:'ending_hero'},{t:"🤲 Shukriya ada karein",n:'ending_dua'}]},
+  biryani:{chap:3,text:"Biryani ka invite! Sara immediately: 'MAIN AA RAHI HOON 🍛🏃‍♀️' Aur 10 minutes mein sara ki biryani bhi aati hai — ek extra daig! 😂 Best Eid ever!",choices:[{t:"🏆 Khush hoiye",n:'ending_hero'}]},
+  ending_sweet:{chap:'Final',text:"🌸 THE END — Eid ka yeh din aap ke liye bahut khaas raha. Sara ki dua hai ke aap ki zindagi mein hamesha aisi khushiyan hon! Sara ka officially best ending — rated 💖/💖! Eid Mubarak Janab! 🌙✨",choices:[]},
+  ending_hero:{chap:'Final',text:"🏆 THE HERO ENDING — Aap Sara ke sab challenges mein jeet gaye! Sara ne aap ko 'Eid Legend 2025' ka award diya hai! 🏅 Sara says: Aap hamesha yahi rahen — amazing! 🌟 Eid Mubarak! 🌙",choices:[]},
+  ending_dua:{chap:'Final',text:"🤲 THE BLESSED ENDING — Aap ki Eid dua aur sukoon se bhari rahi! Sara ki dua hai ke Allah aap ki har dua qabool kare. Yeh ending Sara ka favorite hai — because aap ne sab sahi kiya! Ameen. 🌙💖",choices:[]},
+  ending_drama:{chap:'Final',text:"😂 THE DRAMA ENDING — Sara aur aap ne milkar sabse dramatic Eid celebrate ki! Sara ne officially 'Most Entertaining Dost Award' aap ko diya! 🎭 Eid Mubarak — sara ka favourite chaos! 💖",choices:[]}
+};
 var storyCur='start';
-function renderStory(){var s=storyData[storyCur];document.getElementById('storyChap').textContent=s.chap;document.getElementById('storyText').textContent=s.text;var choicesEl=document.getElementById('storyChoices');choicesEl.innerHTML='';if(s.choices.length===0){document.getElementById('storyEnd').textContent='✅ Done!';document.getElementById('btnStoryRestart').style.display='block';launchConfetti()}else{s.choices.forEach(function(c){var btn=document.createElement('button');btn.className='story-choice';btn.textContent=c.t;btn.addEventListener('click',function(){storyCur=c.n;renderStory();glitter(window.innerWidth/2,window.innerHeight*.5,6)});choicesEl.appendChild(btn)})}}
-document.getElementById('btnStoryRestart').addEventListener('click',function(){storyCur='start';document.getElementById('storyEnd').textContent='???';document.getElementById('btnStoryRestart').style.display='none';renderStory()});renderStory();
+function renderStory(){var s=storyData[storyCur];document.getElementById('storyChap').textContent=s.chap;document.getElementById('storyText').textContent=s.text;var choicesEl=document.getElementById('storyChoices');choicesEl.innerHTML='';if(s.choices.length===0){document.getElementById('storyEnd').textContent='✅ Done!';document.getElementById('btnStoryRestart').style.display='block';launchConfetti();toast('Story complete! Sara proud hai! 🎉')}else{s.choices.forEach(function(c){var btn=document.createElement('button');btn.className='story-choice';btn.textContent=c.t;btn.addEventListener('click',function(){storyCur=c.n;renderStory();glitter(window.innerWidth/2,window.innerHeight*.5,6)});choicesEl.appendChild(btn)})}}
+document.getElementById('btnStoryRestart').addEventListener('click',function(){storyCur='start';document.getElementById('storyEnd').textContent='???';document.getElementById('btnStoryRestart').style.display='none';renderStory()});
+renderStory();
 
-// DRAWING
+/* ─── DRAWING (Screen 7) ─── */
 var drawColor='#e8829a',drawSize=6,drawing=false;
-function initDraw(){var cv=document.getElementById('colorCanvas');if(!cv)return;var ctx=cv.getContext('2d');cv.width=Math.min(400,window.innerWidth-60);cv.height=260;ctx.fillStyle='rgba(255,255,255,.95)';ctx.fillRect(0,0,cv.width,cv.height);
+function initDraw(){var cv=document.getElementById('colorCanvas');if(!cv)return;var ctx=cv.getContext('2d');
+  cv.width=Math.min(400,window.innerWidth-60);cv.height=260;ctx.fillStyle='rgba(255,255,255,.95)';ctx.fillRect(0,0,cv.width,cv.height);
   function getPos(e){var r=cv.getBoundingClientRect();if(e.touches){return{x:e.touches[0].clientX-r.left,y:e.touches[0].clientY-r.top}}return{x:e.clientX-r.left,y:e.clientY-r.top}}
   cv.onmousedown=function(e){drawing=true;var p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)};
   cv.onmousemove=function(e){if(!drawing)return;var p=getPos(e);ctx.lineTo(p.x,p.y);ctx.strokeStyle=drawColor;ctx.lineWidth=drawSize;ctx.lineCap='round';ctx.stroke()};
@@ -1578,68 +1398,180 @@ function initDraw(){var cv=document.getElementById('colorCanvas');if(!cv)return;
   cv.ontouchstart=function(e){e.preventDefault();drawing=true;var p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)};
   cv.ontouchmove=function(e){e.preventDefault();if(!drawing)return;var p=getPos(e);ctx.lineTo(p.x,p.y);ctx.strokeStyle=drawColor;ctx.lineWidth=drawSize;ctx.lineCap='round';ctx.stroke()};
   cv.ontouchend=function(){drawing=false};
-  document.getElementById('colorPicker').querySelectorAll('.ccolor').forEach(function(c){c.addEventListener('click',function(){document.querySelectorAll('.ccolor').forEach(function(x){x.classList.remove('selected')});c.classList.add('selected');drawColor=c.getAttribute('data-c')})});
+
+  document.getElementById('colorPicker').querySelectorAll('.ccolor').forEach(function(c){
+    c.addEventListener('click',function(){document.querySelectorAll('.ccolor').forEach(function(x){x.classList.remove('selected')});c.classList.add('selected');drawColor=c.getAttribute('data-c')})
+  });
   var bs=document.getElementById('brushSize');if(bs){bs.addEventListener('input',function(){drawSize=parseInt(bs.value);document.getElementById('brushVal').textContent=drawSize+'px'})}
-  document.getElementById('btnClearDraw').onclick=function(){ctx.fillStyle='rgba(255,255,255,.95)';ctx.fillRect(0,0,cv.width,cv.height);toast('Canvas saaf! 🎨')};
-  document.getElementById('btnSaveDraw').onclick=function(){var a=document.createElement('a');a.download='sara_eid_art.png';a.href=cv.toDataURL();a.click();toast('Downloaded! 🖼️')};
-  document.getElementById('btnStampDraw').onclick=function(){ctx.font='40px serif';ctx.fillText('🌙',rand(20,cv.width-60),rand(40,cv.height-20));toast('Moon stamp! 🌙')};
+  document.getElementById('btnClearDraw').onclick=function(){ctx.fillStyle='rgba(255,255,255,.95)';ctx.fillRect(0,0,cv.width,cv.height);toast('Canvas saaf! Sara fresh start! 🎨')};
+  document.getElementById('btnSaveDraw').onclick=function(){var a=document.createElement('a');a.download='sara_eid_art.png';a.href=cv.toDataURL();a.click();toast('Download hua! Sara ka art! 🖼️')};
+  document.getElementById('btnStampDraw').onclick=function(){ctx.font='40px serif';ctx.fillText('🌙',rand(20,cv.width-60),rand(40,cv.height-20));toast('Moon stamp! 🌙 Sara khush hai!')};
 }
 
-// TRIVIA
-var triviaData=[{q:'Eid ul Adha kis prophet ki sunnah hai?',o:['Ibrahim AS','Musa AS','Isa AS','Yusuf AS'],a:0},{q:'Qurbani ka gosht kitne hisson mein baanta jaata hai?',o:['2','3','4','5'],a:1},{q:'Hajj kab farz hota hai?',o:['Har saal','Zindagi mein ek baar','Har 5 saal','Kabhi nahi'],a:1},{q:'Dhul Hijjah ka kaunsa din Eid ul Adha hai?',o:['8th','9th','10th','11th'],a:2},{q:'Sara ki favorite Eid khana kya hai? (Wild guess! 😂)',o:['Halwa puri','Biryani','Nihari','Seviyan'],a:1},{q:'Sara ne yeh surprise kitne ghante mein banaya? (Guess! 😂)',o:['1 ghanta','5 ghante','Puri raat','Teen din'],a:3}];
+/* ─── SPEED TRIVIA (Screen 7) ─── */
+var triviaData=[
+  {q:'Eid ul Adha kis prophet ki sunnah hai?',o:['Ibrahim AS','Musa AS','Isa AS','Yusuf AS'],a:0},
+  {q:'Qurbani ka gosht kitne hisson mein baanta jaata hai?',o:['2','3','4','5'],a:1},
+  {q:'Hajj kab farz hota hai?',o:['Har saal','Zindagi mein ek baar','Har 5 saal','Kabhi nahi'],a:1},
+  {q:'Dhul Hijjah ka kaunsa din Eid ul Adha hai?',o:['8th','9th','10th','11th'],a:2},
+  {q:'Qurbani ka janwar kitna pura hona chahiye?',o:['6 mahine','1 saal','Umar depend karta hai','Koi shart nahi'],a:2},
+  {q:'Takbeer Tashreeq kab kahein?',o:['Ramadan mein','9-13 Dhul Hijjah','Shab e Qadr','Sirf Eid day'],a:1},
+  {q:'Jabal e Arafat kahan hai?',o:['Medina','Mecca ke qareeb','Jerusalem','Taif'],a:1},
+  {q:'Sara ki favorite Eid khana kya hai? (Wild guess! 😂)',o:['Halwa puri','Biryani','Nihari','Seviyan'],a:1},
+  {q:'Hajj ka Rukn e Azam kya hai?',o:['Tawaf','Wuquf e Arafat','Sa\'ee','Rami Jamarat'],a:1},
+  {q:'Sara ne yeh surprise kitne ghante mein banaya? (Guess! 😂)',o:['1 ghanta','5 ghante','Puri raat','Teen din'],a:3}
+];
 var triIdx=0,triSc2=0,triAns=false,triTimer=null;
 function initTrivia(){triIdx=0;triSc2=0;triAns=false;document.getElementById('triviaFinal').style.display='none';renderTrivia()}
 function renderTrivia(){if(triIdx>=triviaData.length){showTriviaFinal();return}var q=triviaData[triIdx];document.getElementById('triviaProg').textContent='Question '+(triIdx+1)+' of '+triviaData.length;document.getElementById('triviaQ').textContent=q.q;document.getElementById('triviaRes').textContent='';document.getElementById('triviaOpts').innerHTML=q.o.map(function(o,i){return'<button class="qopt" onclick="ansTrivia('+i+')">'+o+'</button>'}).join('');triAns=false;startTriviaTimer()}
-function startTriviaTimer(){clearInterval(triTimer);var t=10;document.getElementById('triviaTimer').textContent='⏱️ '+t;document.getElementById('triviaBar').style.width='100%';triTimer=setInterval(function(){t--;document.getElementById('triviaTimer').textContent='⏱️ '+t;document.getElementById('triviaBar').style.width=(t/10*100)+'%';if(t<=0){clearInterval(triTimer);if(!triAns){triAns=true;var opts=document.querySelectorAll('#triviaOpts .qopt');if(opts[triviaData[triIdx].a])opts[triviaData[triIdx].a].classList.add('correct');document.getElementById('triviaRes').textContent='⏰ Time up!';setTimeout(function(){triIdx++;renderTrivia()},1500)}}},1000)}
-window.ansTrivia=function(i){if(triAns)return;triAns=true;clearInterval(triTimer);var q=triviaData[triIdx];var opts=document.querySelectorAll('#triviaOpts .qopt');opts[q.a].classList.add('correct');if(i===q.a){triSc2++;document.getElementById('triviaRes').textContent='🎉 Bilkul sahi!';glitter(window.innerWidth/2,window.innerHeight*.4,8)}else{if(opts[i])opts[i].classList.add('wrong');document.getElementById('triviaRes').textContent='❌ Galat!'}setTimeout(function(){triIdx++;renderTrivia()},1500)};
-function showTriviaFinal(){clearInterval(triTimer);document.getElementById('triviaOpts').innerHTML='';document.getElementById('triviaFinal').style.display='block';document.getElementById('triviaBadge').textContent=triSc2+'/'+triviaData.length+' ⚡';var msgs=['Sara kehti hai: Practice karein! 😂','Not bad! Sara surprised hai! 🌸','Solid! Sara impressed! 💪','GENIUS! 🏆💖'];document.getElementById('triviaFMsg').textContent=msgs[Math.min(Math.floor(triSc2/1.5),3)];launchConfetti()}
+function startTriviaTimer(){clearInterval(triTimer);var t=10;document.getElementById('triviaTimer').textContent='⏱️ '+t;document.getElementById('triviaBar').style.width='100%';triTimer=setInterval(function(){t--;document.getElementById('triviaTimer').textContent='⏱️ '+t;document.getElementById('triviaBar').style.width=(t/10*100)+'%';if(t<=0){clearInterval(triTimer);if(!triAns){triAns=true;var opts=document.querySelectorAll('#triviaOpts .qopt');if(opts[triviaData[triIdx].a])opts[triviaData[triIdx].a].classList.add('correct');document.getElementById('triviaRes').textContent='⏰ Time up! Sara ki speed se seekhein! 😂';setTimeout(function(){triIdx++;renderTrivia()},1500)}}},1000)}
+window.ansTrivia=function(i){if(triAns)return;triAns=true;clearInterval(triTimer);var q=triviaData[triIdx];var opts=document.querySelectorAll('#triviaOpts .qopt');opts[q.a].classList.add('correct');if(i===q.a){triSc2++;document.getElementById('triviaRes').textContent='🎉 Bilkul sahi! Lightning fast janab! ⚡';glitter(window.innerWidth/2,window.innerHeight*.4,8)}else{if(opts[i])opts[i].classList.add('wrong');document.getElementById('triviaRes').textContent='❌ Galat! Sara bhi confused thi! 😂'}setTimeout(function(){triIdx++;renderTrivia()},1500)};
+function showTriviaFinal(){clearInterval(triTimer);document.getElementById('triviaOpts').innerHTML='';document.getElementById('triviaBar').style.width='100%';document.getElementById('triviaTimer').textContent='';document.getElementById('triviaProg').textContent='Trivia Complete! 🌟';document.getElementById('triviaFinal').style.display='block';document.getElementById('triviaBadge').textContent=triSc2+'/10 ⚡';var msgs=['Sara kehti hai: Thodi aur practice karein! 😂','Not bad! Sara surprised hai! 🌸','Solid! Sara impressed hai! 💪','GENIUS! Sara ka top student! 🏆💖'];document.getElementById('triviaFMsg').textContent=msgs[Math.min(Math.floor(triSc2/2.5),3)];launchConfetti()}
 document.getElementById('btnRTrivia').addEventListener('click',initTrivia);
 
-// SNAP FILTER
-var snapThemes={eid:{bg:'linear-gradient(135deg,rgba(255,220,240,.8),rgba(230,200,255,.8))',tl:'🌙',tr:'✨',bl:'🌸',br:'💖',heading:'Eid Mubarak! 🌙',color:'#c05070'},dosti:{bg:'linear-gradient(135deg,rgba(255,240,220,.8),rgba(255,200,230,.8))',tl:'💖',tr:'💕',bl:'🌟',br:'💝',heading:'Dosti Forever! 💖',color:'#a03060'},gold:{bg:'linear-gradient(135deg,rgba(255,240,180,.8),rgba(255,220,140,.8))',tl:'⭐',tr:'🏆',bl:'✨',br:'👑',heading:'Eid Mubarak! 🏆',color:'#8a5010'},nature:{bg:'linear-gradient(135deg,rgba(200,240,220,.8),rgba(220,255,200,.8))',tl:'🌸',tr:'🌿',bl:'🌷',br:'🦋',heading:'Blessed Eid! 🌸',color:'#2a7a40'}};
-window.setSnapTheme=function(theme){var t=snapThemes[theme];var f=document.getElementById('snapFrame');f.style.background=t.bg;document.getElementById('snapTL').textContent=t.tl;document.getElementById('snapTR').textContent=t.tr;document.getElementById('snapBL').textContent=t.bl;document.getElementById('snapBR').textContent=t.br;document.getElementById('snapHeading').textContent=t.heading;document.getElementById('snapHeading').style.color=t.color};
-document.getElementById('btnSnapApply').addEventListener('click',function(){var n=document.getElementById('snapNameIn').value.trim();if(n){document.getElementById('snapName').textContent='— '+n+' 🌸';document.getElementById('ticketName').textContent=n}toast('Applied! ✨');glitter(window.innerWidth/2,window.innerHeight*.5,8)});
+/* ─── SNAP FILTER (Screen 7) ─── */
+var snapThemes={
+  eid:{bg:'linear-gradient(135deg,rgba(255,220,240,.8),rgba(230,200,255,.8))',tl:'🌙',tr:'✨',bl:'🌸',br:'💖',heading:'Eid Mubarak! 🌙',color:'#c05070'},
+  dosti:{bg:'linear-gradient(135deg,rgba(255,240,220,.8),rgba(255,200,230,.8))',tl:'💖',tr:'💕',bl:'🌟',br:'💝',heading:'Dosti Forever! 💖',color:'#a03060'},
+  gold:{bg:'linear-gradient(135deg,rgba(255,240,180,.8),rgba(255,220,140,.8))',tl:'⭐',tr:'🏆',bl:'✨',br:'👑',heading:'Eid Mubarak! 🏆',color:'#8a5010'},
+  nature:{bg:'linear-gradient(135deg,rgba(200,240,220,.8),rgba(220,255,200,.8))',tl:'🌸',tr:'🌿',bl:'🌷',br:'🦋',heading:'Blessed Eid! 🌸',color:'#2a7a40'}
+};
+function setSnapTheme2(theme){var t=snapThemes[theme];var f=document.getElementById('snapFrame');f.style.background=t.bg;document.getElementById('snapTL').textContent=t.tl;document.getElementById('snapTR').textContent=t.tr;document.getElementById('snapBL').textContent=t.bl;document.getElementById('snapBR').textContent=t.br;document.getElementById('snapHeading').textContent=t.heading;document.getElementById('snapHeading').style.color=t.color}
+window.setSnapTheme=function(theme){setSnapTheme2(theme)};
+document.getElementById('btnSnapApply').addEventListener('click',function(){var n=document.getElementById('snapNameIn').value.trim();if(n){document.getElementById('snapName').textContent='— '+n+' 🌸';document.getElementById('ticketName').textContent=n}toast('Applied! Sara ka filter! ✨');glitter(window.innerWidth/2,window.innerHeight*.5,8)});
+document.getElementById('btnSnapDownload').addEventListener('click',function(){toast('Screenshot lein — Sara ka frame! 📸💖');});
 
-// DICE
+/* ─── DICE GAME (Screen 8) ─── */
 var diceRolls2=0;
-var diceResults=[{dice:'⚀',msg:"Sara says: 1 — Aap ko ek bakra gift aane wala hai! 🐐😂"},{dice:'⚁',msg:"Sara says: 2 — Aaj 2x khushiyan! 🎉✨"},{dice:'⚂',msg:"Sara says: 3 — Teen baar Alhamdulillah kahein! 🤲"},{dice:'⚃',msg:"Sara says: 4 — Aap ki 4 duayen zaroor qabool hongi! 🌙"},{dice:'⚄',msg:"Sara says: 5 — Aaj 5 logon ko Eid Mubarak! Sara ka order! 😤💕"},{dice:'⚅',msg:"Sara says: 6 — JACKPOT! Aap Sara ke 6/5 favorite person hain! 😂💖"}];
-document.getElementById('btnRollDice').addEventListener('click',function(){diceRolls2++;document.getElementById('diceRolls').textContent=diceRolls2;var idx=Math.floor(Math.random()*diceResults.length);var r=diceResults[idx];var die=document.getElementById('diceEmoji');die.style.transform='scale(0) rotate(360deg)';setTimeout(function(){die.textContent=r.dice;die.style.transform='';die.style.transition='all .4s cubic-bezier(.34,1.56,.64,1)';document.getElementById('diceResult').textContent=r.msg;glitter(window.innerWidth/2,window.innerHeight*.4,8)},100)});
+var diceResults=[
+  {dice:'⚀',msg:"Sara says: 1 — Aap ko ek bakra gift aane wala hai! 🐐😂"},
+  {dice:'⚁',msg:"Sara says: 2 — Aaj 2x khushiyan milein gi! 🎉✨"},
+  {dice:'⚂',msg:"Sara says: 3 — Teen baar Alhamdulillah kahein! 🤲 Sara ne bhi kaha!"},
+  {dice:'⚃',msg:"Sara says: 4 — Aap ki 4 duayen is Eid pe zaroor qabool hongi! 🌙"},
+  {dice:'⚄',msg:"Sara says: 5 — Aaj 5 logon ko Eid Mubarak bolein! Sara ka order hai! 😤💕"},
+  {dice:'⚅',msg:"Sara says: 6 — JACKPOT! Aap Sara ke 6/5 favorite person hain! 😂💖"}
+];
+document.getElementById('btnRollDice').addEventListener('click',function(){diceRolls2++;document.getElementById('diceRolls').textContent=diceRolls2;var idx=Math.floor(Math.random()*diceResults.length);var r=diceResults[idx];var die=document.getElementById('diceEmoji');die.style.animation='none';die.style.transform='scale(0) rotate(360deg)';setTimeout(function(){die.textContent=r.dice;die.style.transform='';die.style.transition='all .4s cubic-bezier(.34,1.56,.64,1)';document.getElementById('diceResult').textContent=r.msg;glitter(window.innerWidth/2,window.innerHeight*.4,8)},100)});
 
-// SARA QUIZ
-var saraQuizData=[{q:"Sara ka favorite Eid khana kya hai?",o:["Halwa puri","Biryani","Nihari","Seviyan"],a:1,exp:"Sara aur biryani — inseparable! 🍛😂"},{q:"Sara ne yeh surprise mein kitni baar save karna bhuli?",o:["0","1 baar","2 baar","3 baar"],a:1,exp:"Ek baar bhuli! 😂"},{q:"Sara ka favorite Eid activity kya hai?",o:["Sona","Chai peena","Dost ko surprise karna","Bakre ko naam dena"],a:2,exp:"Dost ko surprise karna — obviously! 😂💖"}];
+/* ─── SARA QUIZ (Screen 8) ─── */
+var saraQuizData=[
+  {q:"Sara ka favorite Eid khana kya hai?",o:["Halwa puri","Biryani","Nihari","Seviyan"],a:1,exp:"Sara aur biryani — inseparable! 🍛😂"},
+  {q:"Sara ne yeh surprise mein kitni baar save karna bhuli?",o:["0 baar","1 baar","2 baar","3 baar"],a:1,exp:"Ek baar bhuli — phir teesri koshish mein complete kiya! 😂"},
+  {q:"Sara ka favorite Eid activity kya hai?",o:["Sona","Chai peena","Dost ko surprise karna","Bakre ko naam dena"],a:2,exp:"Dost ko surprise karna — obviously! Aap dekh rahe hain! 😂💖"},
+  {q:"Sara ne is surprise mein kitne screens banaye?",o:["5","7","10","15"],a:2,exp:"10 screens! Sara ne badi mehnat ki janab! 🌸"},
+  {q:"Sara ka dua sabse zyada kisn ke liye hoti hai?",o:["Khud ke liye","Bakre ke liye","Aap ke liye","Biryani ke liye 😂"],a:2,exp:"Aap ke liye! Sara ki sabse special dua! 🤲💖"}
+];
 var saraQIdx=0,saraSc2=0,saraAns=false;
-function renderSaraQ(){if(saraQIdx>=saraQuizData.length){document.getElementById('saraQ').textContent='Sara ka sab kuch pata chal gaya! 💖🌟';document.getElementById('saraOpts').innerHTML='';toast('Sara Quiz complete! 🏆');return}var q=saraQuizData[saraQIdx];document.getElementById('saraQ').textContent=q.q;document.getElementById('saraRes').textContent='';document.getElementById('saraOpts').innerHTML=q.o.map(function(o,i){return'<button class="qopt" onclick="ansSara('+i+')">'+o+'</button>'}).join('');document.getElementById('saraTotal').textContent=saraQIdx+1;saraAns=false}
+function renderSaraQ(){if(saraQIdx>=saraQuizData.length){document.getElementById('saraQ').textContent='Sara ka sab kuch pata chal gaya! Aap Sara ke dost hain truly! 💖🌟';document.getElementById('saraOpts').innerHTML='';toast('Sara Quiz complete! 🏆');return}var q=saraQuizData[saraQIdx];document.getElementById('saraQ').textContent=q.q;document.getElementById('saraRes').textContent='';document.getElementById('saraOpts').innerHTML=q.o.map(function(o,i){return'<button class="qopt" onclick="ansSara('+i+')">'+o+'</button>'}).join('');document.getElementById('saraTotal').textContent=saraQIdx+1;saraAns=false}
 window.ansSara=function(i){if(saraAns)return;saraAns=true;var q=saraQuizData[saraQIdx];var opts=document.querySelectorAll('#saraOpts .qopt');opts[q.a].classList.add('correct');if(i===q.a){saraSc2++;document.getElementById('saraSc').textContent=saraSc2;document.getElementById('saraRes').textContent='✅ Sahi! '+q.exp;glitter(window.innerWidth/2,window.innerHeight*.5,8)}else{if(opts[i])opts[i].classList.add('wrong');document.getElementById('saraRes').textContent='❌ '+q.exp}};
-document.getElementById('btnSaraNext').addEventListener('click',function(){saraQIdx++;renderSaraQ()});renderSaraQ();
+document.getElementById('btnSaraNext').addEventListener('click',function(){saraQIdx++;renderSaraQ()});
+renderSaraQ();
 
-/* ═══════ NEW SCREENS ═══════ */
+/* ─── SCREEN 9 (GRAND FINALE) ─── */
+var s9done=false;
+function initS9(){
+  if(s9done)return;s9done=true;
+  document.getElementById('certN').textContent=userName;
+  launchConfetti();
+  ['sb1','sb2','sb3','sb4','sb5'].forEach(function(id,i){
+    setTimeout(function(){
+      var el=document.getElementById(id);if(el)el.classList.add('vis');
+      if(id==='sb3'){setTimeout(function(){
+        [{id:'fm1',v:98,l:'98% — Unbreakable 🛡️'},{id:'fm2',v:100,l:'100% — Sara certified 💖'},{id:'fm3',v:100,l:'∞ — Legend Level 🏆'}].forEach(function(m,mi){
+          setTimeout(function(){var e=document.getElementById(m.id);if(!e)return;e.style.width=m.v+'%';e.textContent=m.l},mi*400)
+        })
+      },300)}
+      glitter(window.innerWidth/2,window.innerHeight*.6,4)
+    },i*900)
+  });
+  setTimeout(function(){document.getElementById('gCTA').style.display='block';launchConfetti();toast('🌙 Grand Surprise Complete! Sara loves aap! 💖✨',5000);var bg=document.getElementById('s6bg');for(var si3=0;si3<60;si3++){var s=document.createElement('div');s.className='sburst';var cs=['#f8c8d4','#e8829a','#f5c842','#d8b8f8','#a8e0f8'];s.style.cssText='left:'+rand(0,100)+'%;top:'+rand(0,100)+'%;width:'+rand(3,7)+'px;height:'+rand(3,7)+'px;background:'+cs[Math.floor(Math.random()*cs.length)]+';animation-duration:'+rand(4,10)+'s;animation-delay:'+rand(0,8)+'s;border-radius:50%';bg.appendChild(s)}},5*900+600)
+}
+document.getElementById('btnGCC').addEventListener('click',function(){launchConfetti();glitter(window.innerWidth/2,window.innerHeight/2,24);toast('🌙 EID MUBARAK!! Sara ki taraf se janab! 💖✨',5000);for(var i=0;i<12;i++){(function(idx){setTimeout(function(){var el=document.createElement('div');el.textContent=['🎊','🌙','💖','✨','🌸','🏆','💪','⭐'][Math.floor(Math.random()*8)];el.style.cssText='position:fixed;bottom:-20px;left:'+rand(5,90)+'%;font-size:'+rand(28,48)+'px;z-index:150;animation:heartUp '+rand(3,6)+'s ease forwards;pointer-events:none';document.body.appendChild(el);setTimeout(function(){el.remove()},6500)},idx*120)})(i)}});
+document.getElementById('btnGShare').addEventListener('click',function(){var msg='🌙 Sara ne mujhe Eid ka grand surprise diya! Eid ul Adha Mubarak! Sara ki taraf se! 💖✨ #EidMubarak';if(navigator.share)navigator.share({text:msg});else{if(navigator.clipboard)navigator.clipboard.writeText(msg);toast('Copied! Share karein! 📤')}});
+document.getElementById('btnGRestart').addEventListener('click',function(){showScreen('s0');s9done=false;document.getElementById('s6bg').innerHTML='';document.getElementById('pgbar').style.width='0%'});
 
-// ─── HANGMAN ───
-var hmWords=[{w:'BIRYANI',h:'🍛 Sara ki sabse zaruri cheez'},{w:'QURBANI',h:'🐐 Eid ul Adha ka symbol'},{w:'MUBARAK',h:'🌙 Eid greeting ka hissa'},{w:'BAKRA',h:'🐐 Eid ka VIP mehman'},{w:'DOSTI',h:'💖 Sara ki sab se badi asset'},{w:'EIDWEAR',h:'👗 Eid ke din pehni jaati hai'},{w:'PRAYER',h:'🤲 5 times a day'},{w:'HENNA',h:'🪷 Eid ke haath pe lagti hai'}];
-var hmCur='',hmGuessed=[],hmWrong=0,hmScore=0;
-var hmFigures=['😊','😐','😟','😥','😰','😨','💀'];
-function initHangman(){var w=hmWords[Math.floor(Math.random()*hmWords.length)];hmCur=w.w;hmGuessed=[];hmWrong=0;document.getElementById('hmFigure').textContent=hmFigures[0];document.getElementById('hmWrongCount').textContent='Wrong: 0 / 6';document.getElementById('hmHint').textContent='💡 '+w.h;document.getElementById('hmResult').textContent='';renderHmLetters();renderHmKeys()}
-function renderHmLetters(){document.getElementById('hmLetters').innerHTML=hmCur.split('').map(function(l){return'<span class="hm-letter">'+(hmGuessed.includes(l)?l:' ')+'</span>'}).join('')}
-function renderHmKeys(){var abc='ABCDEFGHIJKLMNOPQRSTUVWXYZ';document.getElementById('hmKeys').innerHTML=abc.split('').map(function(l){var status=hmGuessed.includes(l)?(hmCur.includes(l)?'correct':'wrong'):'';return'<button class="hm-key '+status+'" onclick="hmGuess(\''+l+'\')" '+(hmGuessed.includes(l)?'disabled':'')+'>'+ l+'</button>'}).join('')}
-window.hmGuess=function(l){if(hmGuessed.includes(l))return;hmGuessed.push(l);if(!hmCur.includes(l))hmWrong++;document.getElementById('hmFigure').textContent=hmFigures[Math.min(hmWrong,6)];document.getElementById('hmWrongCount').textContent='Wrong: '+hmWrong+' / 6';renderHmLetters();renderHmKeys();var won=hmCur.split('').every(function(c){return hmGuessed.includes(c)});if(won){hmScore++;document.getElementById('hmScore').textContent=hmScore;document.getElementById('hmResult').textContent='🎉 Correct! Sara bhi nahi jaanti thi! 🏆';glitter(window.innerWidth/2,window.innerHeight*.4,12);launchConfetti()}else if(hmWrong>=6){document.getElementById('hmResult').textContent='💀 Game Over! Word: '+hmCur+' — Sara ne bataya!'}};
-document.getElementById('btnHmNew').addEventListener('click',initHangman);initHangman();
+/* ─── GLOBAL CLICK FX ─── */
+document.addEventListener('click',function(e){var r=document.createElement('div');r.style.cssText='position:fixed;left:'+(e.clientX-10)+'px;top:'+(e.clientY-10)+'px;pointer-events:none;z-index:50;font-size:16px;animation:gfly .8s ease-out forwards;--tx:translateY(-30px) scale(0)';r.textContent=['✨','💖','🌸','💫','🎵','💪','⚡','😂'][Math.floor(Math.random()*8)];document.body.appendChild(r);setTimeout(function(){r.remove()},900)});
 
-// ─── SOUNDBOARD ───
-var sndTexts={taadat:'😤 "MAIN TUMSE BAAT NAHI KARNA! ... okay fine 5 more minutes" — Sara',aww:'🥺 "Awww yaar tumne toh mujhe rula diya! (main nahi ro rahi, kuch pada tha aankh mein) 😭"',haha:'😂 "HAHAHAHAHA yeh sab kya ho raha hai!! Sara is dying of laughter!!! 🤣🤣"',wow:'🤩 "WOW!! Sara officially impressed hai!! Mashallah!! 🌟✨"',eid:'🌙 "EID MUBARAK JANAB!! Sara ki taraf se — officially! Taqabbal Allahu minna wa minkum! 🤲"',yay:'🎉 "YAYYYY!! Sara so happy!! Confetti everywhere!!! 🎊🎉🎈"',shhh:'🤫 "Ssshhh... Sara ko important kaam hai. (The important kaam is biryani) 🍛😂"',biryani:'🍛 "BIRYANI TIME!! Sara declares today a national biryani holiday! Allah hafiz diet plan! 😂🍛"',dua:'🤲 "Ya Allah — mere pyare dost ko hamesha khush rakho. Unhe health, wealth aur Sara wali energy do! Ameen! 🌙"'};
-function initSoundboard(){document.querySelectorAll('#soundBoard .snd-btn').forEach(function(btn){btn.addEventListener('click',function(){var snd=btn.getAttribute('data-snd');var disp=document.getElementById('sndDisplay');disp.style.opacity='0';setTimeout(function(){disp.textContent=sndTexts[snd]||'Sara says hi! 😂';disp.style.opacity='1';glitter(window.innerWidth/2,window.innerHeight*.5,8)},200);btn.style.transform='scale(.85)';setTimeout(function(){btn.style.transform=''},200)})})}
-initSoundboard();
+/* ═══════════════════════════════════════════════
+   MUSIC SYSTEM — 5 HINDI/NASHEED THEMED SONGS
+   ═══════════════════════════════════════════════ */
+var aCtx=null,mPlay=false,mTimer=null,lStep=0,lTimer=null,rNode=null,mgain=null;
+var curSong=0,songMenuOpen=false;
 
-// ─── TRUTH OR DARE ───
-var todData={truth:["Sachchi baat: Aap ne kabhi Sara ka message late reply kiya — kyun??? 😤💕","Kya aap ne kabhi sirf Sara ke liye kuch special kiya? 🌸","Aap ki sabse embarrassing Eid memory kya hai? 😂","Kya aap Sara ki biryani try karna chahenge honestly? 🍛","Bataiye — Sara aap ko best dost lagti hai ya nahi? 👀💖"],dare:["Sara ka challenge: Abhi 5 logon ko Eid Mubarak message karein! ⏱️","Dare: Phone ki gallery se Eid wali photo post karein! 📸","Sara ka dare: 10 jumping jacks Eid ki khushi mein! 💪😂","Dare: Abhi biryani order karein — Sara ki taraf se virtual order! 🍛😂","Challenge: Sara ke baare mein ek pyaari baat sochein aur likhein! 💖","Dare: Eid wali selfie lein aur Sara ko bhejein! 📱🤳"]};
-var todMode='truth',todDoneCount=0;
-var todRatings=['⭐','⭐⭐','⭐⭐⭐','⭐⭐⭐⭐','⭐⭐⭐⭐⭐'];
-function initToD(){}
-function showToD(mode){todMode=mode;var list=todData[mode];var item=list[Math.floor(Math.random()*list.length)];var card=document.getElementById('todCard');card.style.opacity='0';setTimeout(function(){card.innerHTML='<div class="tod-badge '+mode+'">'+( mode==='truth'?'🤔 TRUTH':'🔥 DARE')+'</div><div>'+item+'</div>';card.style.opacity='1';glitter(window.innerWidth/2,window.innerHeight*.5,8)},250)}
-document.getElementById('btnTruth').addEventListener('click',function(){showToD('truth')});
-document.getElementById('btnDare').addEventListener('click',function(){showToD('dare')});
-document.getElementById('btnTodNew').addEventListener('click',function(){showToD(todMode)});
-document.getElementById('btnTodDone').addEventListener('click',function(){todDoneCount++;document.getElementById('todDone').textContent=todDoneCount;document.getElementById('todRating').textContent=todRatings[Math.min(todDoneCount-1,4)]||'⭐⭐⭐⭐⭐';toast('Done! Sara says shabaash! 🏆');glitter(window.innerWidth/2,window.innerHeight*.5,10)});
+var N={
+  C3:130.81,D3:146.83,E3:164.81,F3:174.61,G3:196,A3:220,Bb3:233.08,B3:246.94,
+  C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392,A4:440,Bb4:466.16,B4:493.88,
+  C5:523.25,D5:587.33,E5:659.26,F5:698.46,G5:783.99
+};
 
-// ─── EMOJI RAIN ───
-var rainInterval=null;
-document.querySelectorAll('#rainEmojis .erain-btn').forEach(function(btn){btn.addEventListener('click',function(){clearInterval(rainInterval);var em=btn.getAttribute('data-em');document.getElementById('rainMsg').textContent='🌧️ '+em+' rain — Sara approved! 😂 (Click stop to halt!)';btn.style.transform='scale(.85)';setTimeout(function(){btn.style.transform
+// 5 Songs: different tempos, scales, vibes
+var songs=[
+  // SONG 0: Eid Nasheed — soft, Arabic-inspired, pentatonic
+  {name:'🌙 Eid Nasheed',bpm:70,key:'soft',
+    melody:[[N.G4,.5],[N.A4,.5],[N.C5,.75],[N.B4,.25],[N.A4,.5],[N.G4,1],[N.A4,.5],[N.C5,.5],[N.D5,.5],[N.C5,.5],[N.B4,1],[N.G4,.5],[N.E4,.5],[N.G4,.5],[N.A4,.5],[N.G4,2]],
+    chord:[N.G3,N.B3,N.D4],lyrs:['♪ Takbeer — Eid ka pyaar ♪','♪ Allah ki barkat — dil pe utaar ♪','♪ Chand chamka, Eid aayi ♪','♪ Sara ki dua — Eid Mubarak! 🌙 ♪','♪ Yeh Eid mubarak ho janab ko ♪','♪ Sara kehti hai — Ameen! 🤲 ♪']},
+
+  // SONG 1: Dosti Dhun — upbeat, happy, major key
+  {name:'🎶 Dosti Dhun',bpm:105,key:'happy',
+    melody:[[N.C5,.25],[N.E5,.25],[N.G5,.5],[N.E5,.25],[N.C5,.25],[N.D5,.5],[N.C5,.5],[N.G4,.5],[N.A4,.25],[N.C5,.25],[N.B4,.5],[N.A4,.25],[N.G4,.25],[N.C5,.75],[N.E5,.25],[N.D5,.5],[N.C5,1]],
+    chord:[N.C4,N.E4,N.G4],lyrs:['♪ Yeh dosti ka nagma ♪','♪ Sara aur dost — forever! 💖 ♪','♪ Khushiyan banti rahein ♪','♪ Eid pe yeh pyaar hai ✨ ♪','♪ Dil se dil tak — Sara ki dua! ♪','♪ Zindaabad dosti! 🌟 ♪']},
+
+  // SONG 2: Pyaar Wali Beat — romantic dosti vibe, minor pentatonic
+  {name:'🌸 Pyaar Beat',bpm:82,key:'emotional',
+    melody:[[N.A4,.5],[N.G4,.5],[N.E4,.5],[N.G4,.5],[N.A4,1],[N.C5,.5],[N.B4,.5],[N.A4,.75],[N.G4,.25],[N.E4,.5],[N.A4,.5],[N.G4,.5],[N.E4,1.5]],
+    chord:[N.A3,N.C4,N.E4],lyrs:['♪ Dil ki baat Sara ne kahi ♪','♪ Aap ke liye yeh pyaar hai 💕 ♪','♪ Judaai ho to dil rota hai ♪','♪ Sara hamesha aap ke saath! 🌸 ♪','♪ Is Eid pe dua karo ♪','♪ Allah hamein sath rakhe 🤲 ♪']},
+
+  // SONG 3: Sara ki Peppy Tune — fast, bollywood-ish, energetic
+  {name:'💃 Peppy Tune',bpm:128,key:'peppy',
+    melody:[[N.C5,.25],[N.D5,.25],[N.E5,.25],[N.D5,.25],[N.C5,.5],[N.G4,.25],[N.A4,.25],[N.C5,.25],[N.B4,.25],[N.A4,.5],[N.G4,.25],[N.F4,.25],[N.G4,.25],[N.A4,.25],[N.G4,.5],[N.C5,.25],[N.E5,.25],[N.D5,.5],[N.C5,1]],
+    chord:[N.F3,N.A3,N.C4],lyrs:['♪ Sara DHAMAKA mode on! 🔥 ♪','♪ Eid pe sabse bada party! 💃 ♪','♪ Biryani + dost = life goals! 🍛 ♪','♪ Aap bhi nacho thoda! 😂 ♪','♪ Sara certified peppy! ✨ ♪','♪ Eid Mubarak — LOUD version! 🎉 ♪']},
+
+  // SONG 4: Shukar ki Dhun — slow, reflective, spiritual feel
+  {name:'🤲 Shukar Dhun',bpm:60,key:'spiritual',
+    melody:[[N.D4,.75],[N.E4,.25],[N.G4,.5],[N.A4,.5],[N.G4,1],[N.E4,.5],[N.D4,.5],[N.C4,.5],[N.D4,.5],[N.E4,.75],[N.G4,.25],[N.A4,.5],[N.G4,.5],[N.E4,1.5],[N.D4,2]],
+    chord:[N.D3,N.F3,N.A3],lyrs:['♪ Shukar — Allah ka pyaar ♪','♪ Har nemat uski ata hai 🤲 ♪','♪ Is Eid pe shukar ada ♪','♪ Sara ka dil bhar aaya ✨ ♪','♪ Ameen — har dua ke liye ♪','♪ Allah hamara hamesha 🌙 ♪']}
+];
+
+window.toggleMusicMenu=function(){songMenuOpen=!songMenuOpen;document.getElementById('songSel').classList.toggle('show',songMenuOpen)};
+window.selectSong=function(idx){curSong=idx;songMenuOpen=false;document.getElementById('songSel').classList.remove('show');document.querySelectorAll('.sSongBtn,.rtype[data-song]').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('[data-song="'+idx+'"]').forEach(function(b){b.classList.add('active')});document.getElementById('songNowTxt').textContent=songs[idx].name;document.getElementById('songNow').classList.add('show');if(mPlay){stopMusic();setTimeout(startMusic,300)}else{toast(songs[idx].name+' selected! Sara play button dabao! 🎵')}};
+
+function initAudio(){if(aCtx)return;try{aCtx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}
+function setupGraph(){if(!aCtx||rNode)return;mgain=aCtx.createGain();mgain.gain.value=0.75;var rd=aCtx.createDelay(.5);rd.delayTime.value=.18;var rg=aCtx.createGain();rg.gain.value=.22;var comp=aCtx.createDynamicsCompressor();comp.threshold.value=-18;comp.knee.value=8;comp.ratio.value=4;mgain.connect(comp);comp.connect(aCtx.destination);mgain.connect(rd);rd.connect(rg);rg.connect(aCtx.destination);rNode=mgain}
+
+function playNote(freq,when,beats,vol,type){if(!aCtx||!rNode)return;type=type||'sine';var BEAT=60/songs[curSong].bpm;var dur=beats*BEAT;var o=aCtx.createOscillator();var g=aCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(0,when);g.gain.linearRampToValueAtTime((vol||.12),when+.06);g.gain.setValueAtTime((vol||.12),when+dur*.65);g.gain.exponentialRampToValueAtTime(.001,when+dur+.1);o.connect(g);g.connect(rNode);o.start(when);o.stop(when+dur+.15)}
+
+function playChord(notes,when,beats){if(!aCtx||!rNode)return;var BEAT=60/songs[curSong].bpm;var dur=beats*BEAT;notes.forEach(function(f,i){var o=aCtx.createOscillator();var g=aCtx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,when);g.gain.linearRampToValueAtTime(.028-i*.005,when+.25);g.gain.setValueAtTime(.028-i*.005,when+dur-.25);g.gain.linearRampToValueAtTime(0,when+dur);o.connect(g);g.connect(rNode);o.start(when);o.stop(when+dur)})}
+
+var mStep2=0;
+function startMusic(){if(!aCtx)return;setupGraph();var s=songs[curSong];var BEAT=60/s.bpm;var t=aCtx.currentTime+.1;mStep2=0;
+  // Play chord loop
+  for(var ci=0;ci<16;ci++){playChord(s.chord,t+ci*4*BEAT,4)}
+  // Add bass note
+  for(var bi=0;bi<16;bi++){playNote(s.chord[0]*.5,t+bi*2*BEAT,1.8,.04,'sine')}
+  function schedNote(){if(!mPlay)return;var note=s.melody[mStep2%s.melody.length];playNote(note[0],t,note[1]);t+=note[1]*BEAT;mStep2++;mTimer=setTimeout(schedNote,Math.max(10,(note[1]*BEAT-.05)*1000))}schedNote();
+  function rotLyrs(){if(!mPlay)return;var tk=document.getElementById('ticker');var ld=document.getElementById('lyrD');var line=s.lyrs[lStep%s.lyrs.length];tk.textContent=line;if(ld)ld.textContent=line;lStep++;lTimer=setTimeout(rotLyrs,2500)}rotLyrs()}
+
+function stopMusic(){mPlay=false;clearTimeout(mTimer);clearTimeout(lTimer);rNode=null;var ld=document.getElementById('lyrD');if(ld)ld.textContent='♪ Sara keh rahi hai: Play dabao! ♪';document.getElementById('mIcon').textContent='🎵';document.getElementById('mTitle').textContent='Play';document.getElementById('mBtn').classList.remove('playing');document.getElementById('ticker').classList.remove('show');document.getElementById('songNow').classList.remove('show')}
+
+function toggleMusic(){initAudio();if(!mPlay){if(aCtx&&aCtx.state==='suspended')aCtx.resume();rNode=null;mPlay=true;document.getElementById('mIcon').textContent='🎶';document.getElementById('mTitle').textContent='♪';document.getElementById('mBtn').classList.add('playing');document.getElementById('ticker').classList.add('show');document.getElementById('songNow').classList.add('show');document.getElementById('songNowTxt').textContent=songs[curSong].name;startMusic();toast(songs[curSong].name+' — Sara ki taraf se! 🎵🌸')}else{stopMusic();toast('Music ruk gayi 🤫')}}
+
+document.getElementById('mBtn').addEventListener('click',function(e){e.stopPropagation();if(songMenuOpen){songMenuOpen=false;document.getElementById('songSel').classList.remove('show')}else{toggleMusic()}});
+document.addEventListener('click',function(){if(songMenuOpen){songMenuOpen=false;document.getElementById('songSel').classList.remove('show')}});
+
+document.getElementById('btnPlayV').addEventListener('click',function(){if(!mPlay)toggleMusic();startViz()});
+document.getElementById('btnStopV').addEventListener('click',function(){if(mPlay)toggleMusic();stopViz()});
+
+/* ─── VISUALIZER ─── */
+var vizRun=false,vizAF=null,vizH=[];
+for(var vii=0;vii<32;vii++)vizH.push(Math.random()*20+5);
+function drawViz(){var cv=document.getElementById('vizC');if(!cv)return;var ctx=cv.getContext('2d'),W=cv.width,H=cv.height;ctx.clearRect(0,0,W,H);var bw=W/32;for(var i=0;i<32;i++){if(mPlay){var targetH=Math.random()*85+10;vizH[i]+=(targetH-vizH[i])*.18}else{vizH[i]+=(8-vizH[i])*.1}var h=vizH[i],hue=300+(i/32)*60;var gr=ctx.createLinearGradient(0,H-h,0,H);gr.addColorStop(0,'hsla('+hue+',80%,75%,.9)');gr.addColorStop(1,'hsla('+(hue+20)+',90%,60%,.5)');ctx.fillStyle=gr;var x=i*bw+bw*.1,w=bw*.8,r2=Math.min(w/2,5);ctx.beginPath();ctx.moveTo(x+r2,H-h);ctx.lineTo(x+w-r2,H-h);ctx.quadraticCurveTo(x+w,H-h,x+w,H-h+r2);ctx.lineTo(x+w,H);ctx.lineTo(x,H);ctx.lineTo(x,H-h+r2);ctx.quadraticCurveTo(x,H-h,x+r2,H-h);ctx.fill()}}
+function vizLoop(){drawViz();vizAF=requestAnimationFrame(vizLoop)}
+function startViz(){if(!vizRun){vizRun=true;vizLoop()}}
+function stopViz(){vizRun=false;if(vizAF)cancelAnimationFrame(vizAF);var cv=document.getElementById('vizC');if(cv)cv.getContext('2d').clearRect(0,0,cv.width,cv.height)}
+startViz();
+
+})();
+</script>
+</body>
+</html>
